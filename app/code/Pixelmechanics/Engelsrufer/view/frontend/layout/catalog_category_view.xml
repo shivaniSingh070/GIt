@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * For product list page, set the lements as per design
+ * updated by AA on 1.05.2019
+ * https://trello.com/c/pjgXbpAN/
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+     <!-- Added conatiner for main container, moved the elemnets and removed unwanted elements -->
+       <referenceContainer name="main.content" htmlTag="div" htmlClass="category-container container" />
+        <move element="page.main.title" destination="content" before="-"/>
+        <move element="category.image" destination="page.top"  before="breadcrumbs"/>
+        <move element="category.description" destination="content"  after="-"/>
+        <referenceBlock name="category.product.addto.compare" remove="true"/>
+        <referenceBlock name="category.product.addto.wishlist" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/> 
+        <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+    <!-- Called top description after category title-->
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="category.topDescription" template="Magento_Catalog::category/topDescription.phtml" before="-"/>
+        </referenceContainer>
+    </body>
+</page>

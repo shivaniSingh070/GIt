@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Blog
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ 
+ /**
+ * override to set layout of blog categories
+ * Updated by AA on 30.04.2019
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="main.content" htmlTag="div" htmlClass="blog-container container" />
+    <referenceContainer name="page.main.title" htmlTag="div" htmlClass="blog-title" />
+    <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+    <referenceContainer name="page.top">
+        <container name="blog.banner" label="Blog banner Container" htmlTag="div" htmlClass="blog banner-container" before="breadcrumbs">
+            <block class="Magento\Cms\Block\Block" name="blog-banner">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">blog-banner</argument>
+                </arguments>
+            </block>
+        </container>
+    </referenceContainer>
+    <referenceContainer name="content">
+        <block class="Magento\Framework\View\Element\Template" name="product_detail" template="Pixelmechanics_Engelsrufer::blog/blogCatgeories.phtml" before="mpblog.category.post.list"/>
+    </referenceContainer>
+    <referenceContainer name="footer-container">
+        <container name="blog.bottom" label="Blog bottom Container" htmlTag="div" htmlClass="statics-block-wrap bot-wrap" before="-">
+            <block class="Magento\Cms\Block\Block" name="blog-static-footer">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">bottom-static-banners</argument>
+                </arguments>
+            </block> 
+        </container>
+    </referenceContainer>
+</page>

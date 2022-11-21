@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Ulmod. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+               <resource id="Magento_Backend::system">
+                    <resource id="Ulmod_OrderImportExport::orderimportexport" title="Export/Import Orders by Ulmod" sortOrder="910">
+                            <resource id="Ulmod_OrderImportExport::import" title="Import Orders" sortOrder="10"/>
+                            <resource id="Ulmod_OrderImportExport::export" title="Export Orders" sortOrder="20"/>
+                            <resource id="Ulmod_OrderImportExport::exportlog" title="Export Orders History" sortOrder="30"/>   
+                            <resource id="Ulmod_OrderImportExport::importlog" title="Import Orders History" sortOrder="40"/>                             
+                    </resource> 
+                </resource> 
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Ulmod_OrderImportExport::config_orderimportexport" title="Export/Import Orders by Ulmod" />
+                        </resource>
+                    </resource>
+                </resource>				
+            </resource>
+        </resources>
+    </acl>
+</config>

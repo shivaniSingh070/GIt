@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * @author : PM RH, 22.10.2019
+ * @Description : System Configuration file of theme to add the general configuration
+ *				See also Ankitas Version: https://bitbucket.org/pixelmechanics/engelsrufer-relaunch/pull-requests/495/add-css-and-system-configuration/diff
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="pixelmechanics" translate="label" sortOrder="10">
+            <label>PixelMechanics</label>
+        </tab>
+        <section id="pixelmechanics_configuration" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Navision Configuration</label>
+            <tab>pixelmechanics</tab>
+            <resource>Pixelmechanics_ExportOrder::config</resource>
+            
+            <group id="navision" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Navision Configuration</label>
+                
+                <field id="webservice_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Webservice URL</label>
+                    <comment>Example: https://entwicklung.schmuckzeiteurope.com/Webshop_Sync/WS/Schmuckzeit%20Europe%20GmbH/Page/</comment>
+                </field>
+                <field id="webservice_login" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Webservice Login</label>
+                    <comment>Example: b2c</comment>
+                </field>
+                <field id="webservice_pw" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Webservice Password</label>
+                    <comment>Example: b2c2018!</comment>
+                </field>
+                <field id="webservice_soapaction" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Soap-Action</label>
+                    <comment>Please only use 'default' here.</comment>
+                </field>
+            </group>
+			
+            
+            <group id="navisionExport" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Export-Settings</label>
+                
+                <field id="doExportProcessingOnly" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Export only when State changed to processing?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Ja=Nur exportieren, wenn Order-Status auf processing geht. Nein bedeutet, der Export wird sofort angestoßen.</comment>
+                </field>
+                
+                <field id="createXML" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Create XML-File?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Ja wählen, um im Ordner var/export/orders eine XML-Kopie zu erstellen, wenn die Order exportiert wird</comment>
+                </field>
+                
+				<field id="send2navision" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Send to Navision?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Ja wählen, um das Senden zu Navision zu aktivieren (Debitor und Auftrag)</comment>
+                </field>
+				
+                <field id="kundenflyersku" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Kundenflyer Artikelnr Navision</label>
+                    <comment>zB: DER KUNDENFLYER FS. Wird jeder Bestellung hinzugefügt.</comment>
+                </field>
+				
+				<!--
+				PM RH https://trello.com/c/t7O8hXRa/45-orderexport-rabattcodes-zb-f%C3%BCr-newsletter-anmeldungen
+				change 13.11.2019: https://trello.com/c/t7O8hXRa/45-orderexport-rabattcodes-zb-f%C3%BCr-newsletter-anmeldungen#action-5dcc11d752f797379ad706dd
+				-->
+                <field id="rabattsku" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Rabattcode Sachkonto-No aus Navision</label>
+                    <comment>zB: 8774; Magento-Rabatte werden dann als Sachkonto-Eintrag dem Verkaufsauftrag hinzugefügt. Die Sachkonten für europäische Bestellungen sind im Code hinterlegt.</comment>
+                </field>
+				
+				<!--
+				PM RH 07.05.20 https://trello.com/c/SqZE9KHX/27-magento-gift-cards-f%C3%BCr-navision-exportieren-als-salesorderline#comment-5dc180e6ab4bc564203b7f7f
+				und https://trello.com/c/SqZE9KHX/27-magento-gift-cards-f%C3%BCr-navision-exportieren-als-salesorderline#comment-5eb5201d0a3d3d0cda0ecfe5
+				-->
+                <field id="giftcardsku" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Gift-Card Sachkonto-No aus Navision</label>
+                    <comment>zB: '1718'. Es wird dann eine Zeile als Sachkonto-Eintrag dem Verkaufsauftrag hinzugefügt für Kauf einer Gift-Card.</comment>
+                </field>
+				
+				<!-- PM RH https://trello.com/c/t7O8hXRa/45-orderexport-rabattcodes-zb-f%C3%BCr-newsletter-anmeldungen -->
+                <field id="debitorartikelgruppencodes" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Debitor Artikelgruppen-Codes</label>
+                    <comment>zB: ER,ERWATCH,GOLDHE,GOLDER,HE,KT. Werden dem Debitor in Nav hinzugefügt, damit er bestellberechtigt ist.</comment>
+                </field>
+				
+            </group>
+			
+            
+            <group id="navisionImport" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Import-Settings</label>
+                
+                <field id="doImportFromNavision" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Import QTY from Navision?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Ja wählen, um die Bestandsdaten aus Navision für Produkte zu imporieren</comment>
+                </field>			
+                
+				
+                <field id="import_size" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Eintraege pro Seite </label>
+                    <comment>zB 30 oder 50</comment>
+                </field>
+				
+				<field id="webservice_url_import" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Import-URL (falls anders als oben)</label>
+                    <comment>Hiermit kann zB der Live-Bestand importiert werden im DEV-System: https://b2c.engelsrufer.de:9047/Webshop_Sync/WS/Schmuckzeit%20Europe%20GmbH/Page/</comment>
+                </field>
+				
+				<field id="import_emailadress" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sende Logs per Email an</label>
+                    <comment>Sendet die Log-Ausgabe jedes Imports an diese E-Mailadresse (kommagetrennt möglich)</comment>
+                </field>
+                
+				
+            </group>
+            
+        </section>
+        
+    </system>
+</config>

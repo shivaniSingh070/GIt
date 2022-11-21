@@ -1,0 +1,242 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="amgiftcard" sortOrder="80903" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="sms_notification" sortOrder="80903" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Sms Notification</label>
+                <field id="enable" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>amgiftcard/sms_notification/enable</config_path>
+                </field>
+                <group id="recipient_notification" sortOrder="70903" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Recipient Notification</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <field id="enable_recipient_notificaction" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>amgiftcard/recipient_notification/enable</config_path>
+                    </field>
+                    <field id="template" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Notification Text</label>
+                        <comment><![CDATA[Variable:<br />
+                            1. {{var gcard_email.getBalance()}} - Gift Card Balance<br />
+                            2. {{var store.getName()}} - Store Name<br />
+                            3. {{var gcard_email.getGiftCardCode()}} - Gift Card Code
+                        ]]></comment>
+                        <config_path>amgiftcard/recipient_notification/template</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_recipient_notificaction">1</field>
+                        </depends>
+                        <validate>required-entry</validate>
+                    </field>
+                    <field id="dltid" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>DLT Template ID</label>
+                        <config_path>amgiftcard/recipient_notification/dltid</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_recipient_notificaction">1</field>
+                        </depends>
+                    </field>
+                </group>
+                <group id="expiry_notification" sortOrder="70905" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Expiry Notification</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <field id="enable_expiry_notification" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>amgiftcard/expiry_notification/enable</config_path>
+                    </field>
+                    <field id="template" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Notification Text</label>
+                        <comment><![CDATA[Variable:<br />
+                            1. {{var gcard_email.getGiftCardCode()}} - Gift Card Code<br />
+                            2. {{var gcard_email.getExpiryDays()}} - Number of days<br />
+                            3. {{var store.getName()}} - Store Name
+                        ]]>
+                        </comment>
+                        <config_path>amgiftcard/expiry_notification/template</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_expiry_notification">1</field>
+                        </depends>
+                        <validate>required-entry</validate>
+                    </field>
+                    <field id="notify_expires_date_days" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Number of Days Before Expiry</label>
+                        <comment><![CDATA[When set to 0 (zero), the notification is sent once the certificate expires.]]></comment>
+                        <validate>validate-digits</validate>
+                        <config_path>amgiftcard/expiry_notification/notify_expires_date_days</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_expiry_notification">1</field>
+                        </depends>
+                    </field>
+                    <field id="dltid" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>DLT Template ID</label>
+                        <config_path>amgiftcard/expiry_notification/dltid</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_expiry_notification">1</field>
+                        </depends>
+                    </field>
+                </group>
+                <group id="change_balance_notification" sortOrder="70908" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Change Balance Notification</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <field id="enable_change_balance_notification" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>amgiftcard/change_balance_notification/enable</config_path>
+                    </field>
+                    <field id="template" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Notification Text</label>
+                        <comment><![CDATA[Variable:<br />
+                            {{var gcard_email.getGiftCode()}} - Gift Card Code<br />
+                            {{var gcard_email.getBalance()}} - Gift Card Balance<br />
+                        ]]></comment>
+                        <config_path>amgiftcard/change_balance_notification/template</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_change_balance_notification">1</field>
+                        </depends>
+                        <validate>required-entry</validate>
+                    </field>
+                    <field id="dltid" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>DLT Template ID</label>
+                        <config_path>amgiftcard/change_balance_notification/dltid</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_change_balance_notification">1</field>
+                        </depends>
+                    </field>
+                </group>
+            </group>
+        </section>
+        <section id="usertemplate" sortOrder="70903" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="sms_notification" sortOrder="80903" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Amasty Gift Card Notification</label>
+                <field id="enable" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>amgiftcard/sms_notification/enable</config_path>
+                </field>
+                <group id="recipient_notification" sortOrder="70903" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Recipient Notification</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <field id="enable_recipient_notificaction" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>amgiftcard/recipient_notification/enable</config_path>
+                    </field>
+                    <field id="template" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Notification Text</label>
+                        <comment><![CDATA[Variable:<br />
+                            1. {{var gcard_email.getBalance()}} - Gift Card Balance<br />
+                            2. {{var store.getName()}} - Store Name<br />
+                            3. {{var gcard_email.getGiftCardCode()}} - Gift Card Code
+                        ]]></comment>
+                        <config_path>amgiftcard/recipient_notification/template</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_recipient_notificaction">1</field>
+                        </depends>
+                        <validate>required-entry</validate>
+                    </field>
+                    <field id="dltid" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>DLT Template ID</label>
+                        <config_path>amgiftcard/recipient_notification/dltid</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_recipient_notificaction">1</field>
+                        </depends>
+                    </field>
+                </group>
+                <group id="expiry_notification" sortOrder="70905" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Expiry Notification</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <field id="enable_expiry_notification" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>amgiftcard/expiry_notification/enable</config_path>
+                    </field>
+                    <field id="template" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Notification Text</label>
+                        <comment><![CDATA[Variable:<br />
+                            1. {{var gcard_email.getGiftCardCode()}} - Gift Card Code<br />
+                            2. {{var gcard_email.getExpiryDays()}} - Number of days<br />
+                            3. {{var store.getName()}} - Store Name
+                        ]]></comment>
+                        <config_path>amgiftcard/expiry_notification/template</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_expiry_notification">1</field>
+                        </depends>
+                        <validate>required-entry</validate>
+                    </field>
+                    <field id="notify_expires_date_days" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Number of Days Before Expiry</label>
+                        <comment><![CDATA[When set to 0 (zero), the notification is sent once the certificate expires.]]></comment>
+                        <validate>validate-digits</validate>
+                        <config_path>amgiftcard/expiry_notification/notify_expires_date_days</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_expiry_notification">1</field>
+                        </depends>
+                    </field>
+                    <field id="dltid" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>DLT Template ID</label>
+                        <config_path>amgiftcard/expiry_notification/dltid</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_expiry_notification">1</field>
+                        </depends>
+                    </field>
+                </group>
+                <group id="change_balance_notification" sortOrder="70908" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Change Balance Notification</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <field id="enable_change_balance_notification" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>amgiftcard/change_balance_notification/enable</config_path>
+                    </field>
+                    <field id="template" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Notification Text</label>
+                        <comment><![CDATA[Variable:<br />
+                            {{var gcard_email.getGiftCode()}} - Gift Card Code<br />
+                            {{var gcard_email.getBalance()}} - Gift Card Balance<br />
+                        ]]></comment>
+                        <config_path>amgiftcard/change_balance_notification/template</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_change_balance_notification">1</field>
+                        </depends>
+                        <validate>required-entry</validate>
+                    </field>
+                    <field id="dltid" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>DLT Template ID</label>
+                        <config_path>amgiftcard/change_balance_notification/dltid</config_path>
+                        <depends>
+                            <field id="enable">1</field>
+                            <field id="enable_change_balance_notification">1</field>
+                        </depends>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

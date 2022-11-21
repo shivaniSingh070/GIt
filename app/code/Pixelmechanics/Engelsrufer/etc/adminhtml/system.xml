@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--/*
+* @author : NA
+* @Date : 8th July'19
+* @Description : System Configuration file of theme to add the general configuration
+*/ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="opengraph" translate="label" sortOrder="10">
+            <label>Opengraph</label>
+        </tab>
+        <section id="opengraph_configuration" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Theme Configuration</label>
+            <tab>opengraph</tab>
+            <resource>Pixelmechanics_Opengraph::config</resource>
+            <!--/**
+             * @author: NA
+             * @date: 8th jul 2019
+             * @description: Add the Logo upload section in the store configuration.
+            */-->
+            <group id="head" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Head</label>
+                <field id="oglogo" translate="label" type="Magento\Config\Block\System\Config\Form\Field\Image" sortOrder="6" showInDefault="1" showInWebsite="1" >
+                    <label>Upload Opengraph Logo</label>
+                    <comment>og:image sollte mindestens 200x200 groß sein (ideal 1500x1500) mit Seitenverhältnis 4:3 oder 16:9. Siehe auch http://blog.pooliestudios.com/ogimage-ordentlich-gross-fuer-facebook-anlegen/. Wird gespeichert in /pub/media/opengraph. </comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\File</backend_model>
+                    <base_url type="media" scope_info="1">opengraph</base_url>
+                    <upload_dir config="system" scope_info="1">opengraph</upload_dir>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

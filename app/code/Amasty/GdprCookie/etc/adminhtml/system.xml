@@ -1,0 +1,505 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="amasty_gdprcookie" translate="label" type="text" sortOrder="31503" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Cookie Consent</label>
+            <tab>amasty</tab>
+            <resource>Amasty_GdprCookie::config</resource>
+            <group id="cookie_policy" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="bar" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Cookie Policy Bar</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="first_visit_show" translate="label tooltip" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hide the Cookie Bar if No Decision Was Taken</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip>The cookie bar will not be displayed to customers on new pages if they don't accept or decline cookies on the bar. Thus the customer will less be distracted from purchasing.</tooltip>
+                </field>
+                <field id="bar_visibility" translate="label tooltip" type="select" sortOrder="63" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Countries Restrictment</label>
+                    <source_model>Amasty\GdprCookie\Model\Config\Source\CountriesRestrictment</source_model>
+                    <tooltip>It is possible to adjust the visibility of Cookie Policy Bar on frontend according to customer location. Enable the Cookie Policy Bar for All Countries, EEA Countries or specific Countries selected in the list below..</tooltip>
+                    <depends>
+                        <field id="bar">1</field>
+                    </depends>
+                </field>
+                <field id="bar_countries" translate="label" type="multiselect" sortOrder="66" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display for Specific Countries</label>
+                    <source_model>Amasty\GdprCookie\Model\Config\Source\Countries</source_model>
+                    <depends>
+                        <field id="bar">1</field>
+                        <field id="bar_visibility">2</field>
+                    </depends>
+                </field>
+                <field id="log_guest" translate="label tooltip" type="select" sortOrder="68" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Log Guest Cookie Consent</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip>If enabled, guest users who give the consent will be logged and displayed in Consent Log.</tooltip>
+                </field>
+                <field id="auto_cleaning_days" translate="label tooltip" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Cookie Log Auto-Cleaning Period (Days)</label>
+                    <tooltip>All records that been stored for the longer period will be automatically removed from the Cookie Consent Log and your database.</tooltip>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <depends>
+                        <field id="bar">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="cookie_bar_customisation" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cookie Bar Customization</label>
+                <field id="cookies_bar_style" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cookie Bar Style</label>
+                    <source_model>Amasty\GdprCookie\Model\Config\Source\CookiePolicyBarStyle</source_model>
+                </field>
+                <group id="classic_bar" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Classic Bar</label>
+                    <depends>
+                        <field id="cookies_bar_style">0</field>
+                    </depends>
+                    <field id="cookies_bar_location" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Cookie Bar Location</label>
+                        <source_model>Amasty\GdprCookie\Model\Config\Source\CookieBarLocation</source_model>
+                    </field>
+                    <field id="notification_text" translate="label comment" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Notification Text</label>
+                        <comment>You can use any HTML-tags in this field. Please, mind the security.</comment>
+                    </field>
+                    <field id="background_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Background Color</label>
+                        <comment><![CDATA[Click the field to choose color]]></comment>
+                        <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                    </field>
+                    <field id="policy_text_color" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Policy Text Color</label>
+                        <comment><![CDATA[Click the field to choose color]]></comment>
+                        <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                    </field>
+                    <field id="links_color" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Links Color</label>
+                        <comment><![CDATA[Click the field to choose color]]></comment>
+                        <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                    </field>
+                    <group id="accept_button" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Accept Button</label>
+                        <depends>
+                            <field id="cookies_bar_style">0</field>
+                        </depends>
+                        <field id="button_text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Name</label>
+                        </field>
+                        <field id="button_order" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Sort Order</label>
+                            <validate>validate-digits</validate>
+                        </field>
+                        <field id="button_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="button_color_hover" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="text_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="text_color_hover" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                    </group>
+                    <group id="decline_button" translate="label comment" type="text" sortOrder="75" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Decline Button</label>
+                        <depends>
+                            <field id="cookies_bar_style">0</field>
+                        </depends>
+                        <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Enable</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+                        <field id="button_text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Name</label>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                        <field id="button_order" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Sort Order</label>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                            <validate>validate-digits</validate>
+                        </field>
+                        <field id="button_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                        <field id="button_color_hover" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                        <field id="text_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                        <field id="text_color_hover" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                    </group>
+                    <group id="settings_button" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Custom Settings Button</label>
+                        <depends>
+                            <field id="cookies_bar_style">0</field>
+                        </depends>
+                        <field id="button_text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Name</label>
+                        </field>
+                        <field id="button_order" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Sort Order</label>
+                            <validate>validate-digits</validate>
+                        </field>
+                        <field id="button_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="button_color_hover" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="text_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="text_color_hover" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                    </group>
+                </group>
+                <group id="sidebar" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Side Bar</label>
+                    <depends>
+                        <field id="cookies_bar_style">1</field>
+                    </depends>
+                    <field id="notification_text" translate="label comment" type="textarea" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Notification Text</label>
+                        <comment>You can use any HTML-tags in this field. Please, mind the security.</comment>
+                    </field>
+                    <field id="background_color" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Background Color</label>
+                        <comment><![CDATA[Click the field to choose color]]></comment>
+                        <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                    </field>
+                    <field id="policy_text_color" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Policy Text Color</label>
+                        <comment><![CDATA[Click the field to choose color]]></comment>
+                        <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                    </field>
+                    <field id="links_color" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Links Color</label>
+                        <comment><![CDATA[Click the field to choose color]]></comment>
+                        <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                    </field>
+                    <field id="group_title_text_color" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Cookie Group Title Text Color</label>
+                        <comment><![CDATA[Click the field to choose color]]></comment>
+                        <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                    </field>
+                    <field id="group_desc_text_color" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Cookie Group Description Text Color</label>
+                        <comment><![CDATA[Click the field to choose color]]></comment>
+                        <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                    </field>
+                    <group id="accept_button" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Accept Button</label>
+                        <depends>
+                            <field id="cookies_bar_style" separator=",">1</field>
+                        </depends>
+                        <field id="button_text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Name</label>
+                        </field>
+                        <field id="button_order" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Sort Order</label>
+                            <validate>validate-digits</validate>
+                        </field>
+                        <field id="button_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="button_color_hover" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="text_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="text_color_hover" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                    </group>
+                    <group id="decline_button" translate="label comment" type="text" sortOrder="155" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Decline Button</label>
+                        <depends>
+                            <field id="cookies_bar_style">0</field>
+                        </depends>
+                        <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Enable</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+                        <field id="button_text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Name</label>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                        <field id="button_order" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Sort Order</label>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                            <validate>validate-digits</validate>
+                        </field>
+                        <field id="button_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                        <field id="button_color_hover" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                        <field id="text_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                        <field id="text_color_hover" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                    </group>
+                    <group id="settings_button" translate="label comment" type="text" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Allow All Button</label>
+                        <depends>
+                            <field id="cookies_bar_style" separator=",">1</field>
+                        </depends>
+                        <field id="button_text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Name</label>
+                        </field>
+                        <field id="button_order" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Sort Order</label>
+                            <validate>validate-digits</validate>
+                        </field>
+                        <field id="button_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="button_color_hover" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="text_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="text_color_hover" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                    </group>
+                </group>
+                <group id="popup" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Pop Up</label>
+                    <depends>
+                        <field id="cookies_bar_style">2</field>
+                    </depends>
+                    <field id="notification_text" translate="label comment" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Notification Text</label>
+                        <comment>You can use any HTML-tags in this field. Please, mind the security.</comment>
+                    </field>
+                    <field id="policy_text_color" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Policy Text Color</label>
+                        <comment><![CDATA[Click the field to choose color]]></comment>
+                        <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                    </field>
+                    <field id="background_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Background Color</label>
+                        <comment><![CDATA[Click the field to choose color]]></comment>
+                        <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                    </field>
+                    <field id="links_color" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Links Color</label>
+                        <comment><![CDATA[Click the field to choose color]]></comment>
+                        <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                    </field>
+                    <group id="accept_button" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Accept Button</label>
+                        <field id="button_text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Name</label>
+                        </field>
+                        <field id="button_order" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Sort Order</label>
+                            <validate>validate-digits</validate>
+                        </field>
+                        <field id="button_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="button_color_hover" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="text_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="text_color_hover" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                    </group>
+                    <group id="decline_button" translate="label comment" type="text" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Decline Button</label>
+                        <depends>
+                            <field id="cookies_bar_style">0</field>
+                        </depends>
+                        <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Enable</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+                        <field id="button_text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Name</label>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                        <field id="button_order" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Sort Order</label>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                            <validate>validate-digits</validate>
+                        </field>
+                        <field id="button_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                        <field id="button_color_hover" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                        <field id="text_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                        <field id="text_color_hover" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                            <depends>
+                                <field id="enable">1</field>
+                            </depends>
+                        </field>
+                    </group>
+                    <group id="settings_button" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Custom Settings Button</label>
+                        <field id="button_text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Name</label>
+                        </field>
+                        <field id="button_order" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Sort Order</label>
+                            <validate>validate-digits</validate>
+                        </field>
+                        <field id="button_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="button_color_hover" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Button Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="text_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                        <field id="text_color_hover" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Text Color on Hover</label>
+                            <comment><![CDATA[Click the field to choose color]]></comment>
+                            <frontend_model>Amasty\GdprCookie\Block\Color</frontend_model>
+                        </field>
+                    </group>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

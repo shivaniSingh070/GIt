@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
+    <type name="amgiftcard" label="Gift Card by Amasty" modelInstance="Amasty\GiftCard\Model\GiftCard\Product\Type\GiftCard"
+          composite="false"
+          indexPriority="50"
+          sortOrder="100"
+          isQty="true">
+        <priceModel instance="Amasty\GiftCard\Model\GiftCard\Product\Price" />
+        <customAttributes>
+            <attribute name="refundable" value="false"/>
+        </customAttributes>
+    </type>
+</config>

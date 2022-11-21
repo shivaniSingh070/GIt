@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Mostviewed
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Amasty\Mostviewed\Controller\Adminhtml\Product\Mui\Render">
+        <plugin name="Amasty_Mostviewed::save-matched-products" type="Amasty\Mostviewed\Plugin\Mui\Render" />
+    </type>
+</config>

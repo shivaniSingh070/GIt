@@ -1,0 +1,16 @@
+<?php
+/**
+ * @author: NA
+ * @date: 8th jul 2019
+ * @description: Opengraph template to load the meta tags on the Store home page..
+*/
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Pixelmechanics\Engelsrufer\Block\Cms\Opengraph */
+?>
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="<?=$block->getTitle();?>" />
+<meta property="og:image" content="<?= $block->getLogo();?>" />
+<meta property="og:url" content="<?= $block->getBaseUrl();?>" />

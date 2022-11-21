@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Blog
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+   /* 
+ * Override extension file in Engelsrufer extension
+ * Set elements as per design
+ * updated by AA on 14.05.2019
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="main.content" htmlTag="div" htmlClass="blog-container container" />
+    <referenceBlock name="page.main.title" remove="true"/>
+    <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+    <referenceContainer name="page.top">
+        <container name="blog.banner" label="Blog banner Container" htmlTag="div" htmlClass="blog banner-container" before="breadcrumbs">
+            <block class="Magento\Cms\Block\Block" name="blog-banner">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">blog-banner</argument>
+                </arguments>
+            </block>
+        </container>
+        <container name="blog.top" label="Blog top Container" htmlTag="div" htmlClass="page-title-wrapper container">
+            <block class="Magento\Framework\View\Element\Template" name="blog_title" template="Pixelmechanics_Engelsrufer::blog/blogTitle.phtml" after="breadcrumbs"/>
+        </container>
+    </referenceContainer>
+    <referenceContainer name="content">
+        <block class="Magento\Framework\View\Element\Template" name="blog_category" template="Pixelmechanics_Engelsrufer::blog/blogCatgeories.phtml" before="mpblog.post.view"/>
+        <block class="Mageplaza\Blog\Block\Post\View" name="mpblog.post.view" template="post/view.phtml" cacheable="false">
+            <block class="Mageplaza\Blog\Block\Post\RelatedProduct" name="related.category.products" as="related_products" template="Pixelmechanics_Engelsrufer::blog/product/list.phtml"/>
+        </block>    
+    </referenceContainer>
+    <referenceContainer name="footer-container">
+        <container name="blog.bottom" label="Blog bottom Container" htmlTag="div" htmlClass="statics-block-wrap bot-wrap" before="-">
+            <block class="Magento\Cms\Block\Block" name="blog-static-footer">
+                  <arguments>
+                      <argument name="block_id" xsi:type="string">bottom-static-banners</argument>
+                  </arguments>
+            </block> 
+        </container>
+    </referenceContainer>
+</page>

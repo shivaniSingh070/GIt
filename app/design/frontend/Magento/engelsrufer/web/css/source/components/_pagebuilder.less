@@ -1,0 +1,248 @@
+//
+// Common
+//__________________________________________
+
+& when (@media-common = true) {
+//pagebuilder page general width 
+body.cms-page-view{
+
+    #maincontent{
+        @maincontent-space: 20px;
+        @media screen and (max-width:1320px){
+            padding: 0 @maincontent-space;
+
+
+            .display-full-width{
+                margin-left: -@maincontent-space !important;
+                margin-right: -@maincontent-space !important;
+            }
+        } 
+    }
+
+}
+ 
+//tabs
+    .ui-tabs{
+            margin: 20px 0;
+
+            .tabs-content {
+                padding: 20px;
+
+                .ui-tabs-panel{
+                    >div{
+                        >*{
+                            color: @primary-text-color;
+                        }
+                    }
+                }
+            }
+    } 
+
+
+//buttons
+    div.pagebuilder-button-primary,
+    a.pagebuilder-button-primary{
+        //please use variables for colors
+        cursor:pointer;
+        background-color: @btn-text-link-color;
+        border-color:@btn-text-link-color;
+        border-radius:0;
+        transition: all 0.5s ease-in-out;
+
+        span{
+            transition: all 0.5s ease-in-out;
+            font-family: 'Josefin Sans',sans-serif;
+            color: #fff;
+        }
+
+        &:hover{
+            background-color: transparent;
+            border-color:@btn-text-link-color;
+
+            span{
+                transition: all 0.5s ease-in-out;
+                color: @btn-text-link-color;
+            }
+        }
+    }
+
+    div.pagebuilder-button-secondary,
+    a.pagebuilder-button-secondary{
+
+        background: #ffffff;
+        border: 1px solid #707070;
+        border-radius: 0;
+        transition: all 0.5s ease-in-out;
+
+        span{
+            color: #373f44;
+            font-family: 'Josefin Sans',sans-serif;
+            font-size: 18px;
+            font-weight: normal;
+            transition: all 0.5s ease-in-out;
+        }
+
+        &:hover{
+            background-color: @btn-text-link-color;
+            border-color:@btn-text-link-color;
+
+            span{
+                color: #fff;
+            }
+        }
+    }
+
+//banner slider
+    .pagebuilder-slider{
+        margin: 20px 0;
+        ul.slick-dots{
+            margin-top: 10px;
+
+            li{
+                button{
+                    border: 1px solid @primary-text-color;
+                }
+            }
+            li.slick-active{
+                button{
+                    background-color: @btn-text-link-color ;
+                    border-color: @btn-text-link-color;
+                }
+            }
+        }
+    }
+
+
+//product slider carousel/grid
+    ol.widget-product-carousel,
+    ol.widget-product-grid{
+        //products
+        .product-item{
+            max-width: 90% !important;
+
+            .product-item-info{
+                @media screen and (max-width:640px){
+                    width: auto !important;
+                    max-width: 280px;
+                }
+            }
+
+            button{
+                padding: 10px 20px; 
+                font-size: 16px;
+
+                span{
+                    white-space: break-spaces;
+                    hyphens: auto;
+
+                    @media screen and (min-width:768px){
+
+                        &::before{
+                            content: "";
+                            vertical-align: middle;
+                            background: url(../images/sprite2X.png) -0.5px -0 no-repeat;
+                            background-size: 200px 140px;
+                            width: 19px;
+                            height: 26px;
+                            display: inline-block;
+                            margin-right: 10px;
+                            filter:  brightness(0) invert(1);
+                            -webkit-transition : -webkit-filter all 0.5s ease-in-out;
+                        }
+
+                    }
+                }
+
+                &:hover{
+                    span{
+                        &::before{
+                            filter: brightness(0) saturate(100%) invert(70%) sepia(35%) saturate(696%) hue-rotate(327deg) brightness(99%) contrast(94%); 
+                        }
+                    }
+                }
+                
+            }
+            .action{
+                display: block;
+                width: 100%;
+                line-height: 20px;
+                margin: 10px 0;
+
+                &::before{
+                    display: none;
+                }
+
+                &.towishlist{
+                    span{
+                        white-space: break-spaces;
+                        hyphens: auto;
+
+
+                        @media screen and (min-width:768px){
+
+                            &::before{
+                                content: "";
+                                vertical-align: middle;
+                                background: url(../images/sprite2X.png) -152px -26px no-repeat;
+                                background-size: 200px 140px;
+                                width: 26px;
+                                height: 27px;
+                                display: inline-block;
+                                margin-right: 10px;
+                                filter: brightness(0) saturate(100%) invert(70%) sepia(35%) saturate(696%) hue-rotate(327deg) brightness(99%) contrast(94%); 
+                            }
+
+                        }
+
+                    }
+
+                    &:hover{
+                        opacity: 0.7;
+                    }
+                }
+
+                &.tocompare{
+                    display: none;
+                }
+            }
+        }
+
+
+
+        //slider dots
+        ul.slick-dots{
+            @media screen and (max-width:450px){
+                display: none !important;
+            }
+
+            li{
+                button{
+                    border: 1px solid @primary-text-color;
+                }
+
+                @media screen and (max-width:1099px){
+                    @dot-size-responsive: 10px;
+                    width: @dot-size-responsive;
+                    height: @dot-size-responsive;
+
+                    button{
+                        width: @dot-size-responsive;
+                        height: @dot-size-responsive;
+                    }
+                } 
+            }
+            li.slick-active{
+                button{
+                    background-color: @btn-text-link-color ;
+                    border-color: @btn-text-link-color;
+                }
+            }
+        }
+    }
+
+}
+      
+
+
+   
+

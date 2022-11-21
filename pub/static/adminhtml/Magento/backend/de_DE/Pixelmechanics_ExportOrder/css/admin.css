@@ -1,0 +1,50 @@
+/*
+	Add a CSS File to the whole Magento-Backend.
+	PM AA and RH, 22.10.2019m see https://trello.com/c/7yfEDXmg/#comment-5daef658288dcd6ce7de27e2
+	run "bin/magento setup:static-content:deploy -f", when updating this file and not in developer-mode
+
+	Example Message-Styling in Bootstrap Manner, see https://www.customy.com/blog/change-magento-alert-message-styles/
+*/
+	/* show PRE-messages in the order-comment section. See /pmadmin/sales/order/view/order_id/8708/ at the bottom for example. */
+	body .edit-order-comments .note-list-comment {
+		white-space: pre;
+		max-height: 500px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+	
+	/* Make the status-text orange*/
+	body .edit-order-comments .note-list-status, .edit-order-comments .note-list-customer{
+		color: #eb5202;
+	}
+
+	/* Make sure the content of a message is not too hight. */
+	body .message { 
+		white-space: pre;
+	    max-height: 300px;
+		overflow-x: hidden;
+		overflow-y: auto;
+	} 
+	body .message.message-success { 
+		background: #64c564;
+		color: white;
+	}
+	body .message-success:before {
+		color: white;
+	}
+	
+	/* place the icon at the top, not in the vertical middle */
+	body .message:before {
+		top: 26px;
+	}
+	
+	/* Used for DEV-Debugging Outputs. */
+	body .message.message-notice { 
+	}
+
+
+        table .navisiondata,
+        table .navisiondate div	{
+		max-width: 100px;
+		white-space: pre;
+	}

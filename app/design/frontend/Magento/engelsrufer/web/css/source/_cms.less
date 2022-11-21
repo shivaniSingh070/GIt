@@ -1,0 +1,129 @@
+/* CMS Pages CSS Start Here */
+/* Company Page CSS Start Here */
+.cms-banner{
+	margin-bottom: 50px;
+}
+.margin-tb{
+	margin: 95px 0;
+}
+.center-content{
+	text-align: @text-center;
+}
+.static-content-main-box{
+	margin-bottom: 90px;
+	p{
+		line-height: 28px;
+		a{
+			color: @btn-text-link-color;
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+	.cms-content-col {
+	    width: @width100;
+	    max-width: 960px;
+	    margin: 0 auto;
+	}
+	.cms-content-row{
+		margin: 0 -15px;
+		.flex-display();
+		.flex-wrap(wrap);
+	}
+	.cms-col-6{
+		width: @width50;
+		padding: 0 15px;
+	}
+	.Fright{
+		.flex-order(2);
+	}
+	.cms-col-12{
+		width: @width100;
+		padding: 0 15px;
+	}
+	.col-inner-content{
+	}
+	h4{
+		font-size: @heading-font24;
+		margin: 0 0 20px;
+		font-weight: @fontB;
+		text-transform: @uppercase-text;
+	}
+	.testimonial-wrap{
+		background-color: @gray-light-bg;
+	    padding: 95px 0;
+	    text-align: @text-center;
+	    .cms-content-col{
+	    	max-width: 690px;
+	    }
+	    h4{
+	    	font-size: @heading-font24;
+			font-weight: @fontB;
+			margin: 0 0 20px;
+	    }
+	}
+	.list-items{
+		ul{
+			li{
+				position: @pos_r;
+				padding: 3px 0 3px 12px;
+				&:before{
+					content:"";
+					background: @primary-text-color;
+				    width: 4px;
+				    height: 4px;
+				    display: inline-block;
+				    position: @pos_a;
+				    top: 8px;
+				    left: 0;
+				    border-radius: 100%;
+				}
+			}
+		}
+	}
+}
+/* Company Page CSS End Here */
+/* AGB Page CSS Start Here */
+.term-condition-lists{
+	margin-bottom: 50px;
+	h5{
+		font-size: @secondary-font;
+		color: @primary-text-color;
+		font-weight: @fontB02;
+		margin: 10px 0;
+	}
+}
+.terms-content{
+	margin-bottom: 50px;
+	h5{
+		font-size: @secondary-font;
+		color: @primary-text-color;
+		font-weight: @fontB02;
+	}
+}
+/* AGB Page CSS End Here */
+#accordion{
+	margin-top: 20px;
+}
+.accordion-col{
+	margin-top: 10px;
+	border: 1px solid @gray-light-bg03;
+	border-radius: 4px;
+	.heading-toggle{
+		padding: 16px;
+		margin: @marginNone;
+		background: #f7f7f7;
+		font-size: @heading-font24;
+		font-weight: @fontB;
+		cursor: pointer;
+	}
+	.toggle-content{
+		padding: 15px;
+		line-height: 28px;
+		display: @displayN;
+	}
+	.first-toggle{
+		display: @displayB;
+	}
+}
+/* CMS Pages CSS End Here */

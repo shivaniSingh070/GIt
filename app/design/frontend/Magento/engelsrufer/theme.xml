@@ -1,0 +1,13 @@
+<!--
+/**
+ * Define theme title, Parent theme and preview image of theme
+ * AA, 19.04.2019
+ */
+-->
+<theme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/theme.xsd">
+<title>Engelsrufer Theme</title>
+<parent>Magento/blank</parent>
+<media>
+<preview_image>media/engelsrufer.jpg</preview_image>
+</media>
+</theme>

@@ -1,0 +1,22 @@
+{
+    "name": "pixelmechanics/module-ExportOrder",
+    "description": "Observer to export Order-XML Files directly or from the backend. See https://trello.com/c/7yfEDXmg",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ankita Akrawal",
+            "email": "ankita@pixelmechanics-dev.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Pixelmechanics\\ExportOrder\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

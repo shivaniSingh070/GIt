@@ -1,0 +1,160 @@
+/* Popup CSS Start Here */
+.mb-ajaxsuite-popup-wrapper{	
+	max-width: 1050px;
+	width: @width100;
+	padding: 26px 30px;
+	#mb-ajaxcart-wrapper{
+		max-width: @width100;
+	    min-width: inherit;
+	    overflow: inherit;
+	}
+	.mb-login-popup-title{
+		display: @displayN;
+	}
+	.mb-ajaxsuite-popup-border{
+		max-width: @width100;
+		min-width: @width100;
+		padding: @paddingNone;
+	}
+	.ajaxcart-success-box{
+		.modal-content-col{
+			height: inherit !important;
+			text-align: left;
+			overflow: inherit !important;
+			.product-image{
+				width: 160px;
+				vertical-align: top;
+				display: inline-block;
+				 img{
+				 	width: @width100 !important;
+				}
+			}
+			.product-info{
+				display: inline-block;
+				vertical-align: top;
+				padding-left: 63px;
+				width: 83%;
+				.product-name{
+					font-size: @fontS20;
+					color: @secondary-text-color;
+					font-weight: @fontB;
+					text-transform: @uppercase-text;
+					margin: 0 0 25px !important;
+				}
+				.price{
+					font-size: @fontS20;
+					color: @secondary-text-color;
+					font-weight: @fontB;
+					margin-bottom: 15px;
+				}
+				.tax-info{
+					.engels-color{
+						color: @btn-text-link-color;
+					}
+				}
+				.swatch-opt{
+					margin: 25px 0 70px;
+					color: @secondary-text-color;
+					font-weight: @fontB;
+				}
+			}
+		}
+		.category-link{
+			margin-bottom: 50px;
+			p{
+				margin: @marginNone;				
+				display: @displayB;
+				a{
+					position: @pos_r;
+					background: @btn-text-link-color;
+					padding: 26px 30px;
+					text-align: @text-center;
+					border: 1px solid @btn-text-link-color;
+					color: @white-btn;
+					font-size: @heading-font24;
+					display: @displayB;
+					&:before{
+						content: "";
+						background: url(../images/explanation-icon.png) 0 0 no-repeat;
+	    				background-size: 100%;
+					    display: inline-block;
+					    height: 30px;
+					    width: 30px;
+					    vertical-align: @valignM;
+					    margin-right: 20px;				    
+					}				
+					&:hover{
+						text-decoration: none;
+						background: none;
+						color: @btn-text-link-color;
+						&:before{
+							background-position: 0 -29px;
+						}
+					}
+				}
+			}
+		}
+		.ajaxcart-buttons{
+			margin: @marginNone !important;
+			text-align: right;
+			.mb-ajaxsuite-close{
+				background: @white-btn !important;
+				border: 1px solid #707070 !important;
+				color: @text-color03 !important;
+				margin-right: 20px;
+				&:hover{
+					background: @btn-text-link-color !important;
+					border-color: @btn-text-link-color !important;
+					color: @white-btn !important;
+				}
+			}
+			.action.focus{
+				&:hover{
+					background: transparent!important;
+					color: @btn-text-link-color!important;
+				}
+			}
+		}
+	}
+	.popup-msg{
+		margin: 0 0 30px;
+		font-size: @fontS20;
+		line-height: 24px;
+		color: @secondary-text-color;
+		border-bottom: 1px solid #707070;
+		padding-bottom: 22px;
+		text-transform: inherit;
+		font-weight: normal;
+		text-align: @text-center;
+		span{
+			display: inline-block;
+			position: @pos_r;
+			padding-left: 48px;
+			&:before{
+				content: "\f058";
+				font-family: 'FontAwesome';
+				display: inline-block;
+				color: #378D15;
+				font-size: 38px;
+				position: @pos_a;
+				left: 0;
+			}
+		}
+	}
+	.error-content{
+		.popup-msg{
+			span{
+				&:before{
+					content: "\f06a";
+					color: #ef1b1b;
+				}
+			}
+		}
+	}
+	a.mb-ajaxsuite-close{
+		top: 26px;
+	    right: 28px;
+	    opacity: 0.4;
+	}
+}
+/* Popup CSS End Here */

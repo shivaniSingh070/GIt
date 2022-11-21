@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="content">
+            <block class="Magento\Newsletter\Block\Subscribe" name="newsletterForm" template="Hm_Newsletters::subscribe.phtml">
+                <!-- 
+                    Added captcha in newsletter form
+                    by AA on 8.10.2020
+                    https://trello.com/c/lXc1y0rq/166-captcha-f%C3%BCr-registrierung-und-newsletter-registrierung
+                -->
+                <container name="form.additional.info" label="Form Additional Info">
+                    <block class="Magento\Captcha\Block\Captcha" name="captcha" after="-" cacheable="false">
+                        <action method="setFormId">
+                            <argument name="formId" xsi:type="string">newsletter_form</argument>
+                        </action>
+                        <action method="setImgWidth">
+                            <argument name="width" xsi:type="string">230</argument>
+                        </action>
+                        <action method="setImgHeight">
+                            <argument name="width" xsi:type="string">50</argument>
+                        </action>
+                    </block>
+                </container>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="head.components">
+            <block class="Magento\Framework\View\Element\Js\Components" name="captcha_page_head_components" template="Magento_Captcha::js/components.phtml"/>
+        </referenceBlock>
+     <referenceBlock name="breadcrumbs">
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Home</item>
+                    <item name="label" xsi:type="string">Home</item>
+                    <item name="link" xsi:type="string">{{baseUrl}}</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Newsletter</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Newsletter</item>
+                    <item name="label" xsi:type="string">Newsletter</item>
+                </argument>
+            </action>
+        </referenceBlock>
+        <!-- moved page title in banner container --> 
+        <move element="page.main.title" destination="customer.account.banner" after="-"/>
+       <!-- Added page banner above breadcrumbs -->
+        <referenceContainer name="page.top">
+            <container name="customer.account.banner" label="Customer account banner Container" htmlTag="div" htmlClass="accountBanner banner-container" before="breadcrumbs">
+                    <block class="Magento\Cms\Block\Block" name="login-banner">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">account-banner</argument>
+                        </arguments>
+                    </block>
+            </container>
+        </referenceContainer>
+</page>

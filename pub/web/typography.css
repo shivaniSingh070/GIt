@@ -1,0 +1,8 @@
+/* vietnamese */
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url('fonts/JosefinSans-Bold.woff2');
+  font-display: swap;
+}

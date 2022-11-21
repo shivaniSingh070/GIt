@@ -1,0 +1,84 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+/*
+ * Override by AA on 09.05.2019
+ * Called qty box and delivery_time attribute value for simple products
+ */
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php if ($_product->isSaleable()): ?>
+<div class="box-tocart">
+    <div class="fieldset">
+      <?php $productType = $_product->getTypeId(); ?>   
+      <?php /* add check for configurable products */ ?>
+        <?php if ($block->shouldRenderQuantity() && $productType != "configurable" ): ?>
+            <div class="field qty">
+                <label class="label" for="qty"><span><?= /* @escapeNotVerified */ __('Qty') ?></span></label>
+                <div class="control">
+                    <input type="number"
+                           name="qty"
+                           id="qty"
+                           value="<?= /* @escapeNotVerified */ $block->getProductDefaultQty() * 1 ?>"
+                           title="<?= /* @escapeNotVerified */ __('Qty') ?>"
+                           class="input-text qty"
+                           data-validate="<?= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                           />
+                </div>
+            </div>
+        <?php /* show delivery time attribute value */ 
+        /*Update by NA show the gift cart hint on 26july19 https://trello.com/c/p2JjVqhG/114-042gutscheine-%C3%BCber-amasty-funktionen-vouchers-from-amasty-extension-gift-card#comment-5d3abdcf90c6002d6d9b1825*/
+        ?>
+        <?php if($_product->getTypeId() == 'amgiftcard'):?>
+              <?php if($_product->getGiftCardHint()): ?>
+                  <div class="gift_card_hint">
+                      <?php echo $_product->getGiftCardHint();?>
+                   </div>
+              <?php endif;?>
+        <?php endif;?>
+        
+        <?php if ($_product->getDeliveryTime()): ?>
+        <div class="delivery_time">
+             <?php echo $_product->getResource()->getAttribute('delivery_time')->getStoreLabel().": ". __($_product->getDeliveryTime());?>
+        </div>
+        <?php endif;?>
+        <?php endif; ?>
+        <?php if(($_product->getTypeId() == 'grouped') && $_product->getDeliveryTime()) :?>
+            <div class="delivery_time">
+                 <?php echo $_product->getResource()->getAttribute('delivery_time')->getStoreLabel().": ". __($_product->getDeliveryTime());?>
+            </div>
+        <?php endif;?>
+        <div class="actions">
+            <button type="submit"
+                    title="<?= /* @escapeNotVerified */ $buttonTitle ?>"
+                    class="action primary tocart"
+                    id="product-addtocart-button">
+                <span><?= /* @escapeNotVerified */ $buttonTitle ?></span>
+            </button>
+            <?= $block->getChildHtml('', true) ?>
+        </div>
+    </div>
+</div>
+<?php /*
+ * https://trello.com/c/gxk6SgNq/120-044handling-von-verf%C3%BCgbarkeit-availability-handling#comment-5de0de7e6f723b7de9ecc371
+ * If product is out of stock then show text Delivery Time: Available Soon
+ * Updated by AA on 29.11.2019
+ */?>
+<?php else: ?>
+    <div class="delivery_time">
+        <?php echo __('Delivery Time').": ".__("Available Soon"); ?>
+    </div>
+<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/js/validate-product": {}
+        }
+    }
+</script>

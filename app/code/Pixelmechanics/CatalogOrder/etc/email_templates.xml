@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author: Noshad Ali
+ * @package: Pixelmechanics_CatalogOrder
+ * @date: 1Aug2019
+ * trello: https://trello.com/c/UyuL2qfu/
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+
+    <template id="contact_catalog_order_email_email_template" label="Catalog  Email" file="catalog_email_template.html" type="html" module="Pixelmechanics_CatalogOrder" area="frontend"/>
+   
+</config>

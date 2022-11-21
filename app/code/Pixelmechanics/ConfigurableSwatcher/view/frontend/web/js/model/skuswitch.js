@@ -1,0 +1,247 @@
+define([
+    'jquery',
+    'mage/utils/wrapper'
+], function ($, wrapper) {
+    'use strict';
+
+    return function (targetModule) {
+
+        var reloadPrice = targetModule.prototype._reloadPrice;
+        var reloadPriceWrapper = wrapper.wrap(reloadPrice, function (original) {
+            var result = original();
+          //get value of attributes according to simple product selected and updated HTML, updated by AA on 22.08.2019
+            var simpleSku = this.options.spConfig.skus[this.simpleProduct];
+            var simpleDescription = this.options.spConfig.details[this.simpleProduct];
+            var simplebulletPoint1 = this.options.spConfig.bulletPoint1[this.simpleProduct];
+            var simplebulletPoint2 = this.options.spConfig.bulletPoint1[this.simpleProduct];
+            var simplebulletPoint3 = this.options.spConfig.bulletPoint1[this.simpleProduct];
+            var simplebulletPoint4 = this.options.spConfig.bulletPoint1[this.simpleProduct];
+            var simplebulletPoint5 = this.options.spConfig.bulletPoint1[this.simpleProduct];
+            var simpleproductType = this.options.spConfig.productType[this.simpleProduct];
+            var simplestoneType = this.options.spConfig.stoneType[this.simpleProduct];
+/** added extra 5 more attribute function to show more extra attributes on the PDP by NA 30.09.19
+* trello:https://trello.com/c/FUegOmvv/143-convert-csv-file-and-import-products-from-csv-file-into-relaunch-shop#comment-5d8c7cc8bf20101bda04929c
+*/ 
+            var simplefunktion = this.options.spConfig.funktion[this.simpleProduct];
+            var simpledurchmesser_hoehe = this.options.spConfig.durchmesser_hoehe[this.simpleProduct];
+            var simplethickness = this.options.spConfig.thickness[this.simpleProduct];
+            var simpleverschlusstypen = this.options.spConfig.verschlusstypen[this.simpleProduct];
+            var simplelange_cm = this.options.spConfig.lange_cm[this.simpleProduct];
+
+            var simplegoldlegierung = this.options.spConfig.goldlegierung[this.simpleProduct];
+            var simplematerialLegierung = this.options.spConfig.materialLegierung[this.simpleProduct];
+            var simplesize = this.options.spConfig.size[this.simpleProduct];
+            var simplecolor = this.options.spConfig.color[this.simpleProduct];
+            var simplequalityDetailsLabel = this.options.spConfig.qualityDetailsLabel[this.simpleProduct];
+            var simplequalityDetails = this.options.spConfig.qualityDetails[this.simpleProduct];
+            var simpleKlangfarbeLabel = this.options.spConfig.klangfarbeLabel[this.simpleProduct];
+            var simpleKlangfarbe = this.options.spConfig.klangfarbe[this.simpleProduct];
+            var simpleverpackungLabel = this.options.spConfig.verpackungLabel[this.simpleProduct];
+            var simpleverpackung = this.options.spConfig.verpackung[this.simpleProduct];
+            var simpleengelsruferKonzeptLabel = this.options.spConfig.engelsruferKonzeptLabel[this.simpleProduct];
+            var simpleengelsruferKonzeptValue = this.options.spConfig.engelsruferKonzeptValue[this.simpleProduct];
+            var simpleverpackungImage = this.options.spConfig.verpackungImage[this.simpleProduct];
+            var simpleengelsruferKonzeptImage = this.options.spConfig.engelsruferKonzeptImage[this.simpleProduct];
+            if (simpleSku != '') {
+                $('div.product-desc .sku-value').html(simpleSku);
+            }
+            if (simpleDescription != null) {
+                $('div.product-desc-value').html(simpleDescription); 
+                $('.prod-description').removeClass('hide-attribute');
+                $('.prod-description').addClass('show-attribute');
+            } else {
+                $('.prod-description').removeClass('show-attribute');
+                $('.prod-description').addClass('hide-attribute');
+            }
+            if (simplebulletPoint1 != null) {
+                $('li.bullet-point1').html(simplebulletPoint1);
+                $('li.bullet-point1').removeClass('hide-attribute');
+                $('li.bullet-point1').addClass('show-attribute');
+            } else {
+                $('li.bullet-point1').removeClass('show-attribute');
+                $('li.bullet-point1').addClass('hide-attribute');
+            }
+            if (simplebulletPoint2 != null) {
+                $('li.bullet-point2').html(simplebulletPoint2);
+                $('.bullet-point2').removeClass('hide-attribute');
+                $('.bullet-point2').addClass('show-attribute');
+            } else {
+                $('.bullet-point2').removeClass('show-attribute');
+                $('.bullet-point2').addClass('hide-attribute');
+            }
+            if (simplebulletPoint3 != null) {
+                $('li.bullet-point3').html(simplebulletPoint3);
+                $('.bullet-point3').removeClass('hide-attribute');
+                $('.bullet-point3').addClass('show-attribute');
+            } else {
+                $('.bullet-point3').removeClass('show-attribute');
+                $('.bullet-point3').addClass('hide-attribute');
+            }
+            if (simplebulletPoint4 != null) {
+                $('li.bullet-point4').html(simplebulletPoint4);
+                $('.bullet-point4').removeClass('hide-attribute');
+                $('.bullet-point4').addClass('show-attribute');
+            } else {
+                $('.bullet-point4').removeClass('show-attribute');
+                $('.bullet-point4').addClass('hide-attribute');
+            }
+            if (simplebulletPoint5 != null) {
+                $('li.bullet-point5').html(simplebulletPoint5);
+                $('.bullet-point5').removeClass('hide-attribute');
+                $('.bullet-point5').addClass('show-attribute');
+            } else {
+                $('.bullet-point5').removeClass('show-attribute');
+                $('.bullet-point5').addClass('hide-attribute');
+            }
+            if (simplestoneType != null) {
+                $('.stonetype-value').html(simplestoneType);
+                $('.stonetype').removeClass('hide-attribute');
+                $('.stonetype').addClass('show-attribute');
+            } else {
+                $('.stonetype').removeClass('show-attribute');
+                $('.stonetype').addClass('hide-attribute');
+            }
+/** added extra 5 more attribute function to show more extra attributes on the PDP by NA 30.09.19
+* trello:https://trello.com/c/FUegOmvv/143-convert-csv-file-and-import-products-from-csv-file-into-relaunch-shop#comment-5d8c7cc8bf20101bda04929c
+*/ 
+            if (simplefunktion != null) {
+                $('.function-value').html(simplefunktion);
+                $('.function').removeClass('hide-attribute');
+                $('.function').addClass('show-attribute');
+            } else {
+                $('.function').removeClass('show-attribute');
+                $('.function').addClass('hide-attribute');
+            }
+            if (simpledurchmesser_hoehe != null) {
+                $('.durchmesser_hoehe-value').html(simpledurchmesser_hoehe);
+                $('.durchmesser_hoehe').removeClass('hide-attribute');
+                $('.durchmesser_hoehe').addClass('show-attribute');
+            } else {
+                $('.durchmesser_hoehe').removeClass('show-attribute');
+                $('.durchmesser_hoehe').addClass('hide-attribute');
+            }
+            if (simplethickness != null) {
+                $('.thickness-value').html(simplethickness);
+                $('.thickness').removeClass('hide-attribute');
+                $('.thickness').addClass('show-attribute');
+            } else {
+                $('.thickness').removeClass('show-attribute');
+                $('.thickness').addClass('hide-attribute');
+            }
+            if (simpleverschlusstypen != null) {
+                $('.verschlusstypen-value').html(simpleverschlusstypen);
+                $('.verschlusstypen').removeClass('hide-attribute');
+                $('.verschlusstypen').addClass('show-attribute');
+            } else {
+                $('.verschlusstypen').removeClass('show-attribute');
+                $('.verschlusstypen').addClass('hide-attribute');
+            }
+            if (simplelange_cm != null) {
+                $('.lange_cm-value').html(simplelange_cm);
+                $('.lange_cm').removeClass('hide-attribute');
+                $('.lange_cm').addClass('show-attribute');
+            } else {
+                $('.lange_cm').removeClass('show-attribute');
+                $('.lange_cm').addClass('hide-attribute');
+            }
+
+
+            if (simplematerialLegierung != null) {
+                $('.materialLegierung-value').html(simplematerialLegierung);
+                $('.materialLegierung').removeClass('hide-attribute');
+                $('.materialLegierung').addClass('show-attribute');
+            } else {
+                $('.materialLegierung').removeClass('show-attribute');
+                $('.materialLegierung').addClass('hide-attribute');
+            }
+            
+            if (simpleproductType != false) {
+                $('.producttype-value').html(simpleproductType);
+                $('.producttype').removeClass('hide-attribute');
+                $('.producttype').addClass('show-attribute');
+            } else {
+                $('.producttype').removeClass('show-attribute');
+                $('.producttype').addClass('hide-attribute');
+            }
+            if (simplegoldlegierung != false) {
+                $('.goldlegierung-value').html(simplegoldlegierung);
+                $('.goldlegierung').removeClass('hide-attribute');
+                $('.goldlegierung').addClass('show-attribute');
+            } else {
+                $('.goldlegierung').removeClass('show-attribute');
+                $('.goldlegierung').addClass('hide-attribute');
+            }
+            if (simplesize != false) {
+                $('.size-value').html(simplesize);
+                $('.prod-size').removeClass('hide-attribute');
+                $('.prod-size').addClass('show-attribute');
+            } else {
+                $('.prod-size').removeClass('show-attribute');
+                $('.prod-size').addClass('hide-attribute');
+            }
+            if (simplecolor != false) {
+                $('.color-value').html(simplecolor);
+                $('.prod-color').removeClass('hide-attribute');
+                $('.prod-color').addClass('show-attribute');
+            } else {
+                $('.prod-color').removeClass('show-attribute');
+                $('.prod-color').addClass('hide-attribute');
+            }
+            if (simplequalityDetailsLabel != null) {
+                $('.qualityDetailsLabel').html(simplequalityDetailsLabel);
+            } 
+            if (simplequalityDetails != null) {
+                $('.qualityDetails').html(simplequalityDetails);
+                $('.qualityDetails-cont').removeClass('hide-attribute');
+                $('.qualityDetails-cont').addClass('show-attribute');
+            } else {
+                $('.qualityDetails-cont').removeClass('show-attribute');
+                $('.qualityDetails-cont').addClass('hide-attribute');
+            }
+            if (simpleKlangfarbeLabel != null) {
+                $('.klangfarbeLabel').html(simpleKlangfarbeLabel);
+            } 
+            if (simpleKlangfarbe != null) {
+                $('.klangfarbe').html(simpleKlangfarbe);
+                $('.klangfarbe-cont').removeClass('hide-attribute');
+                $('.klangfarbe-cont').addClass('show-attribute');
+            } else {
+                $('.klangfarbe-cont').removeClass('show-attribute');
+                $('.klangfarbe-cont').addClass('hide-attribute');
+            }
+            if (simpleverpackungLabel != null) {
+                $('.verpackungLabel').html(simpleverpackungLabel);
+            } 
+            if (simpleverpackung != null) {
+                $('.verpackung').html(simpleverpackung);
+                $('.verpackung-cont').removeClass('hide-attribute');
+                $('.verpackung-cont').addClass('show-attribute');
+            } else {
+                $('.verpackung-cont').removeClass('show-attribute');
+                $('.verpackung-cont').addClass('hide-attribute');
+            }
+            if (simpleengelsruferKonzeptLabel != null) {
+                $('.engelsruferKonzeptLabel').html(simpleengelsruferKonzeptLabel);
+            } 
+            if (simpleengelsruferKonzeptValue != null) {
+                $('.engelsruferKonzeptValue').html(simpleengelsruferKonzeptValue);
+                $('.engelsruferKonzept-cont').removeClass('hide-attribute');
+                $('.engelsruferKonzept-cont').addClass('show-attribute');
+            } else {
+                $('.engelsruferKonzept-cont').removeClass('show-attribute');
+                $('.engelsruferKonzept-cont').addClass('hide-attribute');
+            }
+            if (simpleverpackungImage != null) {
+               // $('.verpackungImg img').html(simpleverpackungImage);
+                $('verpackungImg img').attr("src", simpleverpackungImage);
+            } 
+            if (simpleengelsruferKonzeptImage != null) {
+                $('.engelsruferKonzeptImage img').attr("src", simpleengelsruferKonzeptImage);
+            } 
+
+            return result;
+        });
+        targetModule.prototype._reloadPrice = reloadPriceWrapper;
+        return targetModule;
+    };
+});

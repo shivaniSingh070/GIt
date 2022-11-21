@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * overrite by AA on 3.12.2020
+ * https://trello.com/c/MrcMayU9/187-header-not-loaded-bug#comment-5fbe2a645103f74e0727daaa
+ * Added script in body tag
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <referenceContainer name="after.body.start">
+	    <!--<block class="Magento\Framework\View\Element\Text" name="googletagmanager">
+			<arguments>
+			    <argument name="text" xsi:type="string"><![CDATA[<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBV5W3N"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>]]></argument>
+			</arguments>
+	    </block> -->
+		<block class="Magento\Framework\View\Element\Template" template="Magento_GoogleAnalytics::ga_after_body.phtml" name="after_body_js"/>
+    </referenceContainer>
+</layout>

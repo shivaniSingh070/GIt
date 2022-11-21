@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!--
+/*** Copyright © Ulmod. All rights reserved. **/
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <orderimportexport>
+            <settings>
+                <export><![CDATA[a:4:{s:4:"from";s:0:"";s:2:"to";s:0:"";s:9:"delimiter";s:1:",";s:9:"enclosure";s:1:""";}]]></export>
+                <import><![CDATA[a:7:{s:9:"delimiter";s:1:",";s:9:"enclosure";s:1:""";s:19:"import_order_number";i:1;s:14:"create_invoice";i:0;s:15:"create_shipment";i:0;s:18:"create_credit_memo";i:0;s:11:"error_limit";i:5;}]]></import>
+            </settings>
+        </orderimportexport>
+        <umorderimportexport>
+            <logs>
+                <export>1</export>
+                <import>1</import>                
+            </logs>  
+            <clear>
+                <export>30</export>
+                <import>30</import>                
+            </clear>              
+        </umorderimportexport>      
+    </default>
+</config>

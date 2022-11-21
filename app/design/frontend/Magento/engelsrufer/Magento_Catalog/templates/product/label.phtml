@@ -1,0 +1,28 @@
+<?php
+/**
+ * @author: NA
+ * @description: Display the New & %(Sale) Label on the prouct's page.
+ * @date: 22 May 2019
+ * @trello: https://trello.com/c/s3o1mtxK 
+ */
+
+?>
+<?php /* @var $block \Magento\Catalog\Block\Product\View */?>
+
+
+<?php $helper = $this->helper('Pixelmechanics\Engelsrufer\Helper\Catalog'); ?>
+<?php $_product = $block->getProduct() ?>
+<div class="label-row">
+	<?php if($helper->isProductNew($_product)): ?>
+		<div class="new-label">
+			<?php echo __('New'); ?>
+        </div>
+    <?php endif; ?>
+<?php $saleLabel = $helper->displayDiscountLabel($_product);?>
+  	<?php if($saleLabel):?>
+	    <div class="new-label sale-label">   
+	 		<?php echo $saleLabel; ?>
+		</div>
+	<?php endif; ?>
+</div>
+

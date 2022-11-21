@@ -1,0 +1,2 @@
+[07-Nov-2019 06:25:54 UTC] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/engelsrufer/testrelaunch/vendor/zendframework/zend-stdlib/src/ArrayObject.php on line 426
+[07-Nov-2019 06:26:09 UTC] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/engelsrufer/testrelaunch/vendor/zendframework/zend-stdlib/src/ArrayObject.php on line 426

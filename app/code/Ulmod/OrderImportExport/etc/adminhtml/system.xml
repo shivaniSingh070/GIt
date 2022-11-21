@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Ulmod. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="ulmod_extensions" translate="label" sortOrder="8888888">
+            <label>Ulmod Extensions</label>
+        </tab>		
+        <section id="umorderimportexport" translate="label" type="text" sortOrder="390" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Export/Import Orders</label>
+            <tab>ulmod_extensions</tab>
+            <resource>Ulmod_OrderImportExport::config_orderimportexport</resource>			
+            <group id="logs" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>History</label>
+                <field id="export" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Log all Orders Export History</label>
+					<comment><![CDATA[If 'Yes', all order export history will be logged under<strong> SYSTEM → Export/Import Orders by Ulmod → Export Order History</strong>]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="import" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Log all Orders Import History</label>
+					<comment><![CDATA[If 'Yes', all order import history will be logged under<strong> SYSTEM → Export/Import Orders by Ulmod → Import Order History</strong>]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>			
+            <group id="clear" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Clear</label>
+                <field id="export" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Clear Orders Export After X Days</label>
+                    <comment>Enter the number of days to automatically clear orders export history. Eg. 30. If you do not want to clear export orders history automatically, set this to 0.</comment>
+                </field>
+                <field id="import" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Clear Orders Import Log After X Days</label>
+                    <comment>Enter the number of days to automatically clear orders import history. Eg. 30. If you do not want to clear import orders history automatically, set this to 0.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Mostviewed
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="ammostviewed" translate="label" type="text" sortOrder="012118" showInDefault="1" showInWebsite="1" showInStore="1">
+            <resource>Amasty_Mostviewed::config</resource>
+            <class>separator-top</class>
+            <label>Automatic Related Products</label>
+            <tab>amasty</tab>
+            <group id="amasty_information" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Information</label>
+                <frontend_model>Amasty\Mostviewed\Block\Adminhtml\System\Config\Information</frontend_model>
+            </group>
+
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <frontend_model>Amasty\Mostviewed\Block\Adminhtml\System\Config\General</frontend_model>
+
+                <field id="period" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Data Gathered Period (days)</label>
+                    <comment>Please specify the time period basing on which the module will gather statistical data and display related, up-selling and cross-selling products for 'Bought together' and 'Viewed together' condition.</comment>
+                </field>
+                <field id="order_status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Status</label>
+                    <comment>Please specify the order status that needs to be considered when the system selects matching products for 'Bought together' condition.</comment>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                </field>
+            </group>
+
+            <group id="bundle_packs" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Bundle Packs</label>
+
+                <field id="position" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Position</label>
+                    <comment>Select the position to display the Bundle Packs Promo at the Product Page.</comment>
+                    <source_model>Amasty\Mostviewed\Model\OptionSource\PackPosition</source_model>
+                </field>
+
+                <field id="tab_title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tab Title</label>
+                    <depends>
+                        <field id="position">tab</field>
+                    </depends>
+                </field>
+
+                <field id="cms_page" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>Choose CMS Page</label>
+                    <comment>Please make sure the CMS page is enabled (Content -> Elements -> Pages)</comment>
+                    <source_model>Amasty\Mostviewed\Model\OptionSource\Page</source_model>
+                </field>
+
+                <field id="top_menu_enabled" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>Add Bundle Packs Link to Top Menu</label>
+                    <source_model>Amasty\Mostviewed\Model\OptionSource\TopMenuLink</source_model>
+                    <comment>Display Link to All Bundle Packs in Top Menu</comment>
+                </field>
+
+                <field id="menu_item_label" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Bundle Packs Item Label</label>
+                    <comment>Used in top menu</comment>
+                    <depends>
+                        <field id="top_menu_enabled" separator=",">1,2</field>
+                    </depends>
+                </field>
+
+                <field id="display_cart_message" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Upsell Message in Cart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Display one random hint message in cart, telling the customer which product to add in order to get the Bundle Pack discount.</comment>
+                </field>
+
+                <field id="display_cart_block" translate="label comment" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Bundle Pack in Cart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Display one random Bundle Pack in cart, telling the customer which Bundle Pack to add in order to get the discount.</comment>
+                </field>
+            </group>
+
+            <group id="elastic" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Elastic Search</label>
+                <field id="status" translate="label comment" type="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Status</label>
+                    <comment><![CDATA[Speed up the search, catalog and related products with improved indexing. See more details <a target="_blank" href="https://amasty.com/elasticsearch-for-magento-2.html?utm_source=extension&utm_medium=backend&utm_campaign=relatedproducts__elastic_m2">here</a>.]]></comment>
+                    <frontend_model>Amasty\Mostviewed\Block\Adminhtml\System\Config\Form\Field\Elastic</frontend_model>
+                </field>
+            </group>
+
+        </section>
+    </system>
+</config>

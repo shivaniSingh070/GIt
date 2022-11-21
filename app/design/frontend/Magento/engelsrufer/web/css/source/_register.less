@@ -1,0 +1,111 @@
+/* Register Page CSS Starts Here */
+.register-container {
+	margin-bottom: 90px;
+	.fieldset.create{
+		&:extend(.block-customer-login);
+	}
+	.create.info{
+		margin-bottom: 90px;
+	}
+	.create.account{
+		margin-bottom: @marginNone;
+		.required-field{
+			margin: 35px 0 15px;
+			font-size: @parimary-font;
+			color: #E02B27;
+		}
+	}
+	.form-create-account {
+		width: @width70 !important;
+	}
+	.fieldset>.field {
+		&:not(.choice)>.label {
+			box-sizing: border-box;
+			float: left;
+			padding: 6px 15px 5px 0;
+			text-align: left;
+			width: 19.8%;
+			color: #000;
+		}
+	}
+	.field.choice.newsletter {
+		text-align: left;
+		width: 100%;
+	}
+
+	.password-strength-meter {
+		margin-top: 25px;
+		background: @gray-light-bg03;
+		padding: 15px 20px;	
+		color: @secondary-text-color;
+		height: auto;
+	}
+	fieldset>.field {
+		&:not(.choice)>.control {
+			float: left;
+			margin-left: 0%;
+			width: @width100;
+		}
+	}
+	.fieldset > .field.tc-check{
+		margin: @marginNone;
+		.control{
+			position: @pos_r;
+			padding-left: 30px;
+			input[type="checkbox"]{
+				position: @pos_a;
+				left: 0;
+			}
+		}
+	}
+}
+.register-container {
+	.fieldset>.legend {
+		box-sizing: border-box;
+		color: #000000;
+		float: left;
+		font-size: @heading-font02;
+		line-height: 1.2;
+		margin: 0 0 25px;
+		padding: @paddingNone;
+		text-transform: @uppercase-text;
+	}
+	input[type="text"] {
+		height: @height50;
+	}
+	input[type="email"] {
+		height: @height50;
+	}
+	input[type="password"] {
+		height: @height50;
+		height: @height50;
+	}
+	fieldset>.field.choice {
+		&:before {
+			box-sizing: border-box;
+			content: ' ';
+			float: left;
+			height: @height1;
+			padding: 6px 0px 0 0;
+			width: auto !important;
+		}
+	}
+}
+.fieldset>.field.no-label {
+	&:before {
+		box-sizing: border-box;
+		content: ' ';
+		float: left;
+		height: @height1;
+		padding: 6px 0px 0 0;
+		width: auto !important;
+	}
+}
+.register-container .fieldset > .field > .label, 
+.fieldset > .fields > .field > .label {
+	font-weight: normal;
+}
+.register-container .fieldset > .field:not(.choice) > .label{
+	font-size: @parimary-font;
+}
+/* Register Page CSS Ends Here */

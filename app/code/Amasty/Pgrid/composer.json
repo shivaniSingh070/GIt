@@ -1,0 +1,24 @@
+{
+    "name": "amasty\/pgrid",
+    "description": "Extended Product Grid with Editor by Amasty",
+    "require": {
+        "php": "^7.3.0",
+        "amasty\/base": ">=1.12.14"
+    },
+    "suggest": {
+        "amasty\/module-pgrid-mftf-3": "Install module-pgrid-mftf-3 module to be able to run Extended Product Grid with Editor MFTF tests for Magento ee2.4.1+ version."
+    },
+    "type": "magento2-module",
+    "version": "1.10.9",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Amasty\\Pgrid\\": ""
+        }
+    }
+}

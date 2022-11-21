@@ -1,0 +1,62 @@
+<?php
+/**
+ * Extended by PM N.A 13.10.2020
+ * @link: https://trello.com/c/HDip5KHU/172-2020-10-cookie-hinweis-mobile-seitennutzer
+ * Added the script before the google analytic code
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var $block \Magento\GoogleAnalytics\Block\Ga */ ?>
+<?php $accountId = $block->getConfig(\Magento\GoogleAnalytics\Helper\Data::XML_PATH_ACCOUNT) ?>
+<?php $helper = $this->helper('\Pixelmechanics\Engelsrufer\Helper\Data'); ?>
+<?php $themeHeadCssScripts = $helper->getStoreConfig('design/head/includes'); ?>
+<?php $currentStoreCode = $helper->getStoreCode(); ?>
+
+<!--  Added the script before the google analytic code -->
+<script> 
+    var gaProperty = '<?=$accountId?>';
+    var disableStr = 'ga-disable-' + gaProperty;
+    if (document.cookie.indexOf (disableStr + '= true')> -1) {window [disableStr] = true;}
+    function gaOptout () {
+        document.cookie = disableStr + '= true; expires = Thu, 31 Dec 2099 23:59:59 UTC; path = / ';
+        window [disableStr] = true;
+    }
+</script>
+
+<?php
+/**  Added the script before the google analytic code by A.A
+  * https://trello.com/c/MrcMayU9/187-header-not-loaded-bug
+  *
+  * Added the google tag script for different stores by PM AJ on 18.01.2022
+  * https://trello.com/c/ru0RnDCQ/246-google-tag-manager-installation 
+  */
+?>
+    <?php echo $themeHeadCssScripts; ?>
+
+<!-- Global site tag (gtag.js) - Google Ads: 780521809 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-780521809"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-780521809');
+</script>
+
+<!-- BEGIN GOOGLE ANALYTICS CODE -->
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_GoogleAnalytics/js/google-analytics": {
+            "isCookieRestrictionModeEnabled": <?= (int)$block->isCookieRestrictionModeEnabled() ?>,
+            "currentWebsite": <?= (int)$block->getCurrentWebsiteId() ?>,
+            "cookieName": "<?= /* @escapeNotVerified */ \Magento\Cookie\Helper\Cookie::IS_USER_ALLOWED_SAVE_COOKIE ?>",
+            "ordersTrackingData": <?= /* @escapeNotVerified */ json_encode($block->getOrdersTrackingData()) ?>,
+            "pageTrackingData": <?= /* @escapeNotVerified */ json_encode($block->getPageTrackingData($accountId)) ?>
+        }
+    }
+}
+</script>
+<!-- END GOOGLE ANALYTICS CODE -->

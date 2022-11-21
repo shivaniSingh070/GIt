@@ -1,0 +1,22 @@
+{
+    "name": "amasty\/gdpr-cookie",
+    "description": "Cookie Consent by Amasty",
+    "require": {
+        "php": ">=7.3",
+        "amasty\/base": ">=1.13.2",
+        "amasty\/geoip": ">=1.5.7"
+    },
+    "type": "magento2-module",
+    "version": "2.8.1",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Amasty\\GdprCookie\\": ""
+        }
+    }
+}

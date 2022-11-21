@@ -1,0 +1,201 @@
+//
+//  Amasty Pgrid Ui Select Styles
+//  ____________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+
+@ampgrid-select__border: 1px solid #adadad;
+@ampgrid-toggle__length: 3.2rem;
+@ampgrid-select-element__length: 14px;
+@ampgrid-select-scrollbar__width: 2px;
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .ampgrid-search-container {
+        & {
+            margin: 0;
+            padding: 0;
+            border: none;
+            border-right: @ampgrid-select-border;
+        }
+
+        .admin__action-multiselect-search {
+            border: none;
+        }
+    }
+
+    .ampgrid-toggle-visible {
+        & {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            display: block;
+            width: @ampgrid-toggle__length;
+            height: @ampgrid-toggle__length;
+            border: none;
+            border-top: @ampgrid-select__border;
+            border-left: @ampgrid-select__border;
+            background-color: #e3e3e3;
+        }
+
+        &:after {
+            position: absolute;
+            top: ~'calc(50% - 2px)';
+            right: 1.2rem;
+            width: 0;
+            height: 0;
+            border-width: .5rem .4rem 0 .4rem;
+            border-style: solid;
+            border-color: #000 transparent transparent transparent;
+            content: '';
+            transition: all .2s linear;
+        }
+
+        .admin__action-multiselect._active &:after {
+            transform: rotate(180deg);
+        }
+    }
+
+    .catalog-product-index .ampgrid-multiselect-container .admin__action-multiselect:before {
+        content: none;
+    }
+
+    .catalog-product-index .ampgrid-multiselect-container {
+        & {
+            min-width: 200px;
+        }
+
+        .admin__action-multiselect-wrap {
+            position: relative;
+            z-index: 280;
+        }
+
+        .admin__action-multiselect-wrap._active {
+            z-index: 350;
+        }
+
+        .action-menu {
+            width: 100%;
+        }
+
+        .admin__action-multiselect-text {
+            color: #adadad;
+        }
+
+        .admin__action-multiselect:hover,
+        .admin__action-multiselect {
+            border: @ampgrid-select__border;
+            color: inherit;
+        }
+
+        .action-select:hover:after,
+        .action-select:after {
+            content: none;
+        }
+
+        .action-menu .action-menu-item {
+            padding: 2px 10px;
+        }
+    }
+
+    .ampgrid-multiselect-container .admin__action-multiselect-menu-inner-item {
+        &:after,
+        &:before {
+            content: none;
+        }
+
+        &._root {
+            margin: 0;
+        }
+    }
+
+    .ampgrid-multiselect-container .admin__action-multiselect-tree {
+        .action-menu .action-menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0 0 0 5px;
+        }
+
+        .admin__action-multiselect-label {
+            line-height: 24px;
+        }
+
+        .admin__action-multiselect-menu-inner .admin__action-multiselect-menu-inner {
+            padding-left: 22px;
+        }
+
+        .admin__action-multiselect-label {
+            & {
+                word-break: break-word;
+            }
+
+            .ie11 & {
+                word-break: break-all;
+            }
+        }
+    }
+
+    .ampgrid-multiselect-container {
+        .admin__action-multiselect-search-count {
+            margin: 8px 10px 0;
+        }
+
+        .action-menu-item._expended:before {
+            content: none;
+        }
+
+        .admin__action-multiselect-dropdown {
+            position: relative;
+            top: 0;
+            left: inherit;
+            margin: 5px;
+            width: @ampgrid-select-element__length;
+            height: @ampgrid-select-element__length;
+        }
+
+        .admin__action-multiselect-dropdown:before {
+            border-radius: 50%;
+            font-size: @ampgrid-select-element__length;
+        }
+
+        .admin__control-checkbox + label:before {
+            width: @ampgrid-select-element__length;
+            height: @ampgrid-select-element__length;
+        }
+
+        .admin__control-checkbox:checked + label:before {
+            font-size: 1rem;
+        }
+
+        .admin__action-multiselect-wrap .admin__action-multiselect-item-path {
+            display: block;
+            padding: 0;
+        }
+    }
+
+    .ampgrid-multiselect-container .action-menu._active > .admin__action-multiselect-menu-inner {
+        & {
+            margin-right: 3px;
+        }
+
+        &::-webkit-scrollbar {
+            width: @ampgrid-select-scrollbar__width;
+        }
+
+        &::-webkit-scrollbar-track {
+            width: @ampgrid-select-scrollbar__width;
+            background: #fff;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: @ampgrid-select-scrollbar__width;
+            background: rgba(48, 48, 48, .6);
+        }
+    }
+}

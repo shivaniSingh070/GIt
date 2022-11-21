@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<!--/**
+* DI to extend the Paypal Model NVP class via plugin
+* PM PS, 16.05.20, @link - https://trello.com/c/n4Ew46vE/122-2020-05-2-bestellungen-nicht-in-nav-%C3%BCbergeben-paypal-express
+*/-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Paypal\Model\Api\Nvp">
+        <plugin sortOrder="1" name="pixelmechanicsPaypalNvp" type="Pixelmechanics\Paypal\Plugin\Model\Api\NvpPlugin"/>
+    </type>
+</config>

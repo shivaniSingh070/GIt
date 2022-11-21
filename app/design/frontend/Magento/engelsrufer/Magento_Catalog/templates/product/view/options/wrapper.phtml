@@ -1,0 +1,44 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+/*
+ * Override by AA on 09.05.2019
+ * Called qty box and delivery_time attribute value for configurable product
+ */
+?>
+<?php
+$_product = $block->getProduct();
+$required = '';
+if ($block->hasRequiredOptions()) {
+    $required = ' data-hasrequired="' . __('* Required Fields') . '"';
+}
+?>
+<div class="product-options-wrapper" id="product-options-wrapper"<?= /* @escapeNotVerified */ $required ?>>
+    <div class="fieldset" tabindex="0">
+    <?= $block->getChildHtml('', true) ?>
+    </div>
+    <?php /* show qty box */ ?>   
+<?php if ($block->shouldRenderQuantity()): ?>
+        <div class="field qty">
+            <label class="label" for="qty"><span><?= /* @escapeNotVerified */ __('Qty') ?></span></label>
+            <div class="control">
+                <input type="number"
+                       name="qty"
+                       id="qty"
+                       value="<?= /* @escapeNotVerified */ $block->getProductDefaultQty() * 1 ?>"
+                       title="<?= /* @escapeNotVerified */ __('Qty') ?>"
+                       class="input-text qty"
+                       data-validate="<?= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                       />
+            </div>
+        </div>
+    <?php endif; ?>
+    <?php /* show delivery time attribute value */ ?>
+        <?php if ($_product->getDeliveryTime()): ?>
+        <div class="delivery_time">
+        <?php echo $_product->getResource()->getAttribute('delivery_time')->getStoreLabel() . ": " . __($_product->getDeliveryTime()); ?>
+        </div>
+<?php endif; ?>
+</div>

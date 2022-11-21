@@ -1,0 +1,55 @@
+/* Cookies CSS Start Here */
+.message.global.cookie{
+	z-index: 99;
+	padding: @paddingNone;
+	&:before{
+		content:"";
+		background: rgba(0,0,0,0.7);
+		width: @width100;
+		height: @height100;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+	.content{		
+    	background: @white-btn;
+		padding: 25px 20px ;
+		text-align: @text-center;
+		z-index: 99;
+		border-top: 1px solid @gray-light-bg03;
+		position: @pos_r;
+		p{
+			max-width: 70%;
+    		margin: 0 auto;
+			font-size: @parimary-font;
+			line-height: 28px;
+			a{
+				color: @btn-text-link-color;
+				&:hover{
+					text-decoration: underline;
+				}
+			}
+		}
+		.actions{
+			margin-top: 15px;
+		}
+		.action{
+			min-width: 246px;
+			color: @white-btn;
+			padding: 0 37px;
+			min-height: 51px;
+			line-height: 53px;
+			vertical-align: top;
+			&:hover{
+				color: @btn-text-link-color;				
+			}
+			span{
+				padding: @paddingNone;
+			}
+		}
+		#btn-cookie-allow{
+			margin-left: 25px;			
+		}
+	}
+}
+/* Cookies CSS End Here */

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Amasty_GiftCard::giftcard_account"
+             title="Accounts"
+             sortOrder="20"
+             module="Amasty_GiftCard"
+             parent="Amasty_GiftCard::giftcard"
+             action="amgcard/account/"
+             resource="Amasty_GiftCard::giftcard_account"
+        />
+    </menu>
+</config>

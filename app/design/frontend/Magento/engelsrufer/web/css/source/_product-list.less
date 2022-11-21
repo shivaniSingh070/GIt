@@ -1,0 +1,268 @@
+/* Product Listing Page CSS Start Here */
+body .category-image{
+	margin: @marginNone;
+	>img{
+		margin: 0 auto;
+	}
+}
+.catalog-category-view .column.main{
+	padding-left: 212px;
+	.page-title-wrapper{
+		padding: 0 15px;
+	}
+}
+.page-title-wrapper {
+	h1.page-title {
+		font-size: 45px;
+		font-weight: @fontB02;
+		margin-bottom: 60px;
+	}
+	.modes-mode.mode-list {
+		background: @text-color04;
+	}
+}
+.category-container{
+	.toolbar-products{
+		width: @width100;
+		float: @floatL;		
+		padding: 0 15px;
+		margin: @marginNone;
+		.modes{
+			.modes-mode{
+				background: @primary-text-color;
+				border: @bdrNone;
+				margin-right: 10px;
+				&:before{
+					color: @white-btn;
+				}
+			}
+			.active{
+				background: @btn-text-link-color;
+			}
+		}
+		.toolbar-sorter{
+			.sorter-label{
+				color: @text-color06;
+			}
+			.sorter-options{
+				padding: @paddingNone;
+			    height: auto;
+			    border: @bdrNone;
+				color: @text-color06;
+				margin: @marginNone;
+				font-weight: @fontB;
+				font-family: @primary-fontFamily;
+			}
+			.sort-asc{
+				display: @displayN;
+			}
+		}		
+	}
+	.products{
+		width: @width100;
+		float: @floatL;	
+		padding: @paddingNone;
+		margin: 30px 0 0;
+		.product-item,
+		.product-item-info{
+			.minimal-price{
+				.price-container{
+					display: inline-block;
+				}
+			}
+		}		
+	}
+	.products + .products{
+		margin: @marginNone;
+	}
+	.products-list{
+		.products.list{
+			margin-top: 46px;
+		}
+	}
+	.product-item-details{
+		padding: 28px 12px 22px;
+		min-height: 173px;
+	}
+	.products.wrapper ~ .toolbar-products .pages{
+		display: @displayN;
+	}
+}
+body .ias-noneleft{
+	display: @displayN !important;
+}
+body .ias-trigger-next{
+	width: @width100;
+	float: @floatL;
+	margin: 60px 0;
+	a{
+		background: @btn-text-link-color;
+		min-width: 313px;
+		display: inline-block;;
+		padding: 20px;
+		color: @white-btn;
+		font-size: @secondary-font;
+		border: 1px solid transparent;
+		&:hover{
+			background: @bgNone;
+			color: @btn-text-link-color;
+			border-color: @btn-text-link-color;
+		}
+	}
+}
+.page-products .product-item{
+	.product-item-info{
+		width: @width100;
+		position: @pos_r;
+		.product-image-container{
+			width: @width100 !important;
+		}
+	}	
+}
+.page-products {
+	.products-grid{
+		.product-item{
+			margin: @marginNone;
+			border: @bdrNone;
+			padding: 0 15px 30px;
+			width: 25%;
+			&:nth-child(3n+1){
+				margin: @marginNone;
+			}
+			.product-item-info{
+				border: 1px solid @primary-bg-color;
+			}
+		}
+		.category-image{
+			width: 50%;
+		    border: @bdrNone;
+		    height: 789px;
+		    float: @floatR;
+		    margin: @marginNone;
+		    img{
+		    	height: 100%;
+		    	.object-fit(cover);
+		    }
+		}
+	}
+}
+body .category-description{
+	width: @width100;
+	float: @floatL;
+	margin: 30px 0 60px;
+	h4{
+		text-transform: @uppercase-text;
+		font-size: @parimary-font;
+		font-weight: @fontB;
+		margin: 0 0 15px;
+	}
+	p.title{
+		margin: 7px 0 0;
+	}
+	p{
+		color: @secondary-text-color;
+		margin-bottom: 30px;
+	}
+}
+.label-row{
+	position: @pos_a;
+	top: 5px;
+	right: 3px;
+	z-index: 9;
+	.new-label {
+	    background: @btn-text-link-color;
+	    width: 50px;
+	    height: 50px;
+	    line-height: 53px;
+	    color: @white-btn;
+	    text-align: @text-center;
+	    font-size: @small-font;
+	    display: inline-block;
+	    .border-radius(100%);
+	    text-transform: @uppercase-text;	    
+	}
+	.sale-label{
+		font-size: @secondary-font;
+		background: @badge-bg-color;
+	}
+}
+.category-top-description {
+    padding: 0 15px 25px;
+}
+/* Product List View CSS Start Here */
+.category-container{
+	.products{
+		.product-item{
+			/*&:nth-last-child(-n+4) {
+			    margin-bottom: 46px;
+			}*/
+			&:last-child{
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+.products-list{
+	.product-item{
+		margin-bottom: 46px;		
+	}
+	.category-image{
+		display: @displayN;
+	}
+	.product-item-info{
+		.flex-display();
+		.flex-wrap(wrap);
+		.justify-content(space-between);
+		.product-item-photo{
+			width: 22%;
+			padding: @paddingNone;
+			background: none;
+			.product-image-photo{
+				width: @width100;
+			}
+		}
+		.product-item-details{
+			width: 78%;
+			padding: 25px;
+			text-align: left;
+			.product-item-name{
+				height: auto;
+				overflow: inherit;
+				font-weight: normal;
+				a{
+					font-size: @fontS20;
+				}
+			}
+			.price-box{
+				margin-bottom: 30px;
+				.price{
+					font-size: @secondary-font;
+				}
+			}
+		}
+	}
+}
+.ias-spinner{
+	width: @width100;
+	float: @floatL;
+	margin: 60px 0;
+}
+
+/* updated by NA */
+
+.amgiftcard .price {
+    position: relative;
+    left: -99999px;
+}
+
+.amgiftcard .price .price{
+    position: relative;
+    left: 99988px;
+}
+.product-item .price-box .price-label{
+	text-transform: lowercase;
+	color: @primary-text-color;
+}
+
+/* Product List View CSS End Here */
+/* Product Listing Page CSS Start Here */

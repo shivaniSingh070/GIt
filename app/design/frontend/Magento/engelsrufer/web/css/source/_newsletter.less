@@ -1,0 +1,87 @@
+/* Newsletter Page CSS Start Here */
+body .block.newsletter-wrapper{
+    width: 100%;
+    max-width: unset;
+
+    .login-left-container{
+        img{
+            height: auto;
+        }
+    }
+}
+.advantage-col{
+    background: @gray-light-bg;
+    padding: 50px;
+    margin-bottom: 30px;
+    .block-title h2{
+        &:extend(.login-right-container .block-customer-login .block-title);
+        margin: 0 0 45px;
+        text-align: @text-center;
+    }
+    ul{
+        .flex-display();
+        .flex-wrap(wrap);
+        .justify-content(space-between);
+        li{
+            position: @pos_r;
+            padding: 10px 0 10px 30px;
+            margin: @marginNone;
+            .flex-basis(50%);
+            color: @secondary-text-color;
+            &:before{
+                content: "\f00c";
+                font-family: 'Font Awesome 5 Free';
+                font-weight: 900;
+                color: @btn-text-link-color;
+                position: @pos_a;
+                left: 0;
+            }
+        }
+    }
+}
+body .block.newsletter-wrapper{
+    .action.subscribe{
+        border-radius: 0;
+    }
+}
+.newsletter-wrapper{
+    .block-customer-login{
+        .block-content{
+            .form-login{
+                .mc-field-group{
+                    .label+ul{
+                        margin-top: 10px;
+                    }
+                }
+                .field.newsletter{
+                    max-width: 100%;
+                    .label{
+                        &:after{
+                            &:extend(.fieldset > .field.required > .label:after);
+                        }
+                    }
+                }
+                .field{
+                    .control{
+                        input{
+                            padding-left: 9px;
+                        }
+                        &:before{
+                            display: @displayN;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+figure.newsletter-image{
+    img{
+        height: 457px;
+        width: @width100;
+        display: @displayB;
+        .object-fit(cover);
+    }
+}
+/* Newsletter Page CSS End Here */

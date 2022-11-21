@@ -1,0 +1,65 @@
+/* Address Page CSS Start Here */
+.account-container{
+	.column.main{
+		.form-address-edit{
+			.fieldset{
+				margin-bottom: 69px;
+				+ .fieldset{
+					margin-bottom: 0;
+				}
+				select{
+					color: @primary-text-color;
+					option{
+						color: @secondary-text-color;
+					}
+				}
+			}
+			.actions-toolbar{
+				.required-field{
+					margin-bottom: 15px;
+				}
+			}			
+		}
+		.fieldset{
+			.choice{
+				&:before{
+					display: @displayN;
+				}
+				input[type="checkbox"]{
+					margin-right: 9px;
+				}
+			}
+		}
+		.form-edit-account{
+			.password-info{
+				margin: 30px 0;
+				a{
+					color: @btn-text-link-color;
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+		.block-addresses-list{
+			margin-bottom: 30px;
+		}
+		.block-addresses-list .block-content{
+			.additional-addresses{
+				address{
+					&:extend(.account-container .column.main .block-content .box-content address);
+				}
+				&:extend(.account-container .column.main .block-content .box);
+				.box-actions{
+					margin: 25px 0 0;
+					a{
+						&:hover{
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+/* Address Page CSS End Here */

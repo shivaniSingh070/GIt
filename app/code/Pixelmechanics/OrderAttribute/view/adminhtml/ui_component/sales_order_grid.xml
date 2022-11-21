@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ * Showed order attribute "erp_id" and "navision_data"
+ * Created by AA 18.11.2019
+ * https://trello.com/c/1FNqLT6A/47-export-order-only-when-payment-is-done-order-status-processing#comment-5dd244680f55406f9c884c70
+*/
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <columns name="sales_order_columns">
+        <column name="erp_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="fieldClass" xsi:type="string">erp_id</item>
+                    <item name="label" xsi:type="string" translate="true">Nav Auftrags-No</item>
+                </item>
+            </argument>
+        </column>
+        
+        <!-- add tbe BC-Field too, becuase it can no longer be part of the mage-customer :-( -->
+        <column name="debitor_no">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="fieldClass" xsi:type="string">debitor_no</item>
+                    <item name="label" xsi:type="string" translate="true">Nav Debitor-No</item>
+                </item>
+            </argument>
+        </column>
+        
+        <!-- should only be visible when mage-mode is development
+        <column name="navision_data">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="fieldClass" xsi:type="string">navisiondata</item>
+                    <item name="label" xsi:type="string" translate="true">Navision Data</item>
+                </item>
+            </argument>
+        </column>
+        -->
+         
+    </columns>
+</listing>

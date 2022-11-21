@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * Managed my account link in header
+ * Created by AA 24.04.2019 https://trello.com/c/bSwKXAjl/
+ */
+
+?>
+<?php // get customer session from Helper. Updated by AA 25.04.2019 ?>
+<?php $customerSession = $this->helper('Pixelmechanics\Engelsrufer\Helper\Data')->getCustomerSession();?>
+<div class="my-account">
+   <?php // Added My account link in header, Updated by AA 24.04.2019 https://trello.com/c/bSwKXAjl/ ?>
+	<span class="myaccout-icon"><?php echo __('My account');?></span>
+    <?php // Manage my account dropdown and add links on the basis of customer session. Updated by AA 25.04.2019 ?>
+        <div class="myaccount-dropdown" style="display:none">
+           <ul>
+               <li><a href="<?php echo  $this->getUrl('customer/account');?>"><?php echo __("My account");?></a></li>
+               <li><a href="<?php echo  $this->getUrl('wishlist');?>"><?php echo __("My Wishlist");?></a></li>
+             <?php if(!$customerSession): ?>
+               <li><a href="<?php echo  $this->getUrl('customer/account/create/');?>"><?php echo __("Register");?></a></li>
+               <li><a href="<?php echo  $this->getUrl('customer/account/login');?>"><?php echo __("Login");?></a></li>
+             <?php else: ?>
+                 <li><a href="<?php echo  $this->getUrl('customer/account/logout');?>"><?php echo __("Sign out");?></a></li>
+             <?php endif; ?>
+           </ul>
+        </div> 
+</div>
+

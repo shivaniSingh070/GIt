@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<!--/**
+* @author : AA
+* @description : Define Module Name and Version
+* @date : 19.11.2019
+* @Trello: https://trello.com/c/dEw7KpFf/28-rechnungsdruck-senden-der-rechnungen#comment-5dd3d76bd22de67129b59560
+*/-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+	<module name="Pixelmechanics_AutoInvoiceMail" setup_version="1.0.0">
+	</module>
+</config>

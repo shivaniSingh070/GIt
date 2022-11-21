@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!--/**
+* @author : HA 
+* @description : DefaultModel of recaptcha Declaration to override the model
+* @date : 26.04.2022
+* @Trello: https://trello.com/c/HGYOiGuG/284-recaptcha-%C3%A4nderungsm%C3%B6glichkeit-captcha-art
+*/-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Captcha\Model\DefaultModel" type="Pixelmechanics\Recaptcha\Model\DefaultModel"/> 
+</config>

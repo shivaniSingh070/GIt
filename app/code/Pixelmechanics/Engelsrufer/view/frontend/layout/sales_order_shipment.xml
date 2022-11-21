@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * updated by AA on 18.05.2019
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+     <move element="page.main.title" destination="content" before="-"/>
+    <referenceBlock name="order.date" remove="true"/>
+    <referenceContainer name="customer.account.banner">
+        <container name="account.order.top" label="account top Container" htmlTag="div" htmlClass="page-title-wrapper container text-center">
+            <block class="Magento\Framework\View\Element\Template" name="order_title" template="Pixelmechanics_Engelsrufer::account/sale/orderTitle.phtml" after="-"/>
+        </container>
+    </referenceContainer>
+    <referenceContainer name="page.main.title">
+                <block class="Magento\Sales\Block\Order\Info" name="order.status" template="Magento_Sales::order/order_status.phtml"/>
+                <block class="Magento\Sales\Block\Order\Info\Buttons" as="buttons" name="sales.order.info.buttons" cacheable="false"/>
+    </referenceContainer>
+</page>

@@ -1,0 +1,23 @@
+<?php
+/*
+ * @author NA by 29.07.19
+ * Add the Bread Crumb on the Product Page.
+ * Trello: https://trello.com/c/XeGnBIAN/94-021-mobile-menue-mobile-anpassung-mobiles-men%C3%BC 
+*/
+?>
+<?php $crumbs = $block->getCrumbs(); ?>
+<?php if ($crumbs && is_array($crumbs)) : ?>
+<div class="breadcrumbs">
+    <ul class="items">
+        <?php foreach ($crumbs as $crumbName => $crumbInfo) : ?>
+            <li class="item <?= /* @escapeNotVerified */ $crumbName ?>">
+            <?php if ($crumbInfo['link']) : ?>
+                <a href="<?= /* @escapeNotVerified */ $crumbInfo['link'] ?>" title="<?= $block->escapeHtml($crumbInfo['title']) ?>"><?= $block->escapeHtml($crumbInfo['label']) ?></a>
+            <?php else: ?>
+                <?= $block->escapeHtml($crumbInfo['label']) ?>
+            <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>

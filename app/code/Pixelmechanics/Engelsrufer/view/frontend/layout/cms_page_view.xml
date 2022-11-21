@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * Updated by AA on 23.05.2019
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+    <attribute name="prefix" value="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# product: http://ogp.me/ns/product#" />
+    </head>
+    <!-- Removed breadcrumbs from cms page -->
+    <body>
+    <referenceBlock name="breadcrumbs" remove="true" />
+
+    <!--Added Opengraph phtml to cms page by NA on 8th July 19 --> 
+    <referenceBlock name="head.additional">
+      <block class="Pixelmechanics\Engelsrufer\Block\Cms\Opengraph" name="opengraph.home" template="Pixelmechanics_Engelsrufer::opengraph.phtml"/>
+    </referenceBlock>
+</body>
+</page>

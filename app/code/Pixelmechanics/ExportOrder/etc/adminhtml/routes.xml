@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/**
+* @author : AA
+* @date : 19.06.2019
+* @description : Add the admin routes to export the order
+* @Trello: https://trello.com/c/7yfEDXmg
+*/-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">  
+   <router id="admin">        
+      <route id="exportorder" frontName="exportorder">            
+         <module name="Pixelmechanics_ExportOrder" before="Magento_Backend" />        
+      </route>  
+   </router>
+</config>

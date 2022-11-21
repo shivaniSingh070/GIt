@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+    Added captcha option for newsletter form in admin
+    Goto Admin -> Stores -> Configuration -> Customer -> Customer Configuration -> Captcha
+    by AA on 8.10.2020
+    https://trello.com/c/lXc1y0rq/166-captcha-f%C3%BCr-registrierung-und-newsletter-registrierung
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <customer>
+            <captcha>
+                <shown_to_logged_in_user>
+                    <newsletter_form>1</newsletter_form>
+                </shown_to_logged_in_user>
+                <always_for>
+                    <newsletter_form>1</newsletter_form>
+                </always_for>
+            </captcha>
+        </customer>
+        <captcha translate="label">
+            <frontend>
+                <areas>
+                    <newsletter_form>
+                        <label>Newsletter Form</label>
+                    </newsletter_form>
+                </areas>
+            </frontend>
+        </captcha>
+    <!--
+    Added Group for newsletter form 
+    Goto Admin -> Stores -> Configuration -> Pixelmechanics -> Newsletter interest Configuration-> interest
+    by HA on 03.05.2022
+    https://trello.com/c/E2mdqBZL/244-newsletter-formular-%C3%A4nderung
+    -->
+        <MailChimpConfiguration>
+            <general>
+                <display_text> Damen,Herrn,Kindern</display_text>
+            </general>
+        </MailChimpConfiguration>
+    </default>
+</config>

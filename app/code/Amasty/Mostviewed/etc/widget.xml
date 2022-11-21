@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Mostviewed
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="amrelated_bundle_list" class="Amasty\Mostviewed\Block\Widget\PackList" is_email_compatible="true"
+            placeholder_image="Magento_Cms::images/widget_block.png">
+        <label translate="true">Bundle Packs List</label>
+        <description translate="true">List of your bundle packs containers.</description>
+        <parameters>
+            <parameter name="columns" xsi:type="text" visible="true">
+                <label translate="true">Number of Columns</label>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="bundle/list.phtml" selected="true">
+                        <label translate="true">Index</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="amrelated_group_block" class="Amasty\Mostviewed\Block\Widget\Related" is_email_compatible="true"
+            placeholder_image="Magento_Cms::images/widget_block.png">
+        <label translate="true">Amasty Related Product Block</label>
+        <description translate="true">List of products by conditions.</description>
+        <parameters>
+            <parameter name="group_id" xsi:type="text" visible="true">
+                <label translate="true">Product Rule Id</label>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="content/grid.phtml" selected="true">
+                        <label translate="true">Index</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

@@ -1,0 +1,262 @@
+/* Order History CSS Start Here */
+.text-center{
+	text-align: @text-center;
+}
+.sales-order-view{
+	.accountBanner{
+		.page-title-wrapper.text-center{
+			.page-title{
+				&:extend(.banner-container .page-title-wrapper .page-title);
+				color: @secondary-text-color;
+			}
+		}
+	}
+}
+.orders-history{
+	margin-bottom: 61px;
+	table{
+		tr{
+			th{
+				font-weight: @fontB;
+				font-size: @secondary-font;
+				color: @secondary-text-color;
+				padding: 7px 10px;
+				border-bottom: 1px solid #707070;
+			}
+			td{
+				font-size: @parimary-font;
+				padding: 14px 10px;
+				a{
+					color: @btn-text-link-color;
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}	
+}
+.sales-order-history{
+	.toolbar{
+		.pager{
+			text-align: right;
+			.limiter{
+				.limiter-label{
+					color: @secondary-text-color;
+					font-weight: @fontB;
+				}
+			}
+		}
+	}
+	.actions-toolbar{
+		.secondary{
+			.back{
+				display: @displayN;
+			}
+		}
+	}
+}
+.limiter-text{
+	display: @displayN;
+}
+/* Order History CSS End Here */
+/* View Order Page CSS Start Here */
+.sales-order-view,
+.sales-order-invoice,
+.sales-order-creditmemo,
+.sales-order-shipment{
+	.column.main{
+		.page-title-wrapper{
+			.page-title{
+				font-size: @heading-font02;
+				color: @text-color03;
+				margin: @marginNone;
+				display: inline-block;
+				vertical-align: @valignM;
+			}
+			.order-status{
+				margin-left: 15px;
+			}
+			.action.order{
+				float: @floatR;
+				color: @btn-text-link-color;
+				&:hover{
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+	.order-date-row{
+		width: @width100;
+		float: @floatL;
+		margin: 60px 0 30px;
+		.order-date{
+			margin: @marginNone;
+			float: @floatL;
+		}
+		.action.print{
+			float: @floatR;
+			&:hover{
+				text-decoration: underline;
+			}
+		}		
+	}
+	.order-links{
+		li{
+			position: @pos_r;
+			margin: @marginNone;
+			padding: 0 35px 12px;
+			&:first-child{
+				padding-left:0;
+			}
+			a{
+				color: @btn-text-link-color;
+			}
+		}
+		.current{
+			&:after{
+				content:"";
+				background: @btn-text-link-color;
+				width: 100%;
+				height: 5px;
+				position: @pos_a;
+				left: 0;
+				bottom: 0;
+			}
+		}
+	}
+}
+.sales-order-view{
+	.page-title-wrapper{
+		.order-date-row{
+			float: none;
+			.order-date{
+				float: none;
+			}
+		}
+	}
+}
+.order-details-items{
+	border: @bdrNone;
+	padding: @paddingNone;
+	margin: 0 0 90px;	
+	.order-title{
+		strong{
+			font-weight: normal;
+		}
+		.action{
+			float: @floatR;
+			padding-left: 10px;
+			color: @btn-text-link-color;
+			&:hover{
+				text-decoration: underline;
+			}			
+		}
+	}
+	.actions-toolbar{
+		a{
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+		.action.back{
+			text-transform: inherit;
+		}
+	}
+
+	.table-wrapper{
+		table{
+			thead{
+				tr{
+					th{
+						font-size: @secondary-font;
+						color: @secondary-text-color;
+						font-weight: @fontB;
+						border-bottom: 1px solid #707070 !important;
+					}
+				}
+			}
+			tr{
+				.col.price{
+					text-align: left;
+				}
+				td{
+					border-bottom: 1px solid @text-color06!important;
+					padding: 10px;
+					font-weight: normal;
+					strong{
+						font-weight: normal;						
+					}
+				}
+				.col{
+					.price{
+						font-weight: normal;
+						font-size: @parimary-font;
+					}
+				}
+			}
+			tfoot{
+				tr{
+					th{
+						padding: 5px 10px;
+					}
+					td{
+						border: @bdrNone!important;
+					}
+				}
+				.grand_total{
+					th,td{
+						border-top: 1px solid @text-color06!important;
+						border-bottom: none!important;
+						color: @secondary-text-color;
+						padding-top: 10px;
+						strong{
+							font-weight: @fontB;							
+						}
+					}
+				}
+			}
+		}
+	}
+	.actions-toolbar{
+		.secondary{
+			a.back{
+				margin: 5px 0 0;
+			}
+		}
+	}
+}
+.block-order-details-view{
+	.block-content{
+		.box-order-shipping-address,
+		.box-order-shipping-method{
+			margin-bottom: 60px;
+		}
+	}
+}
+.toolbar.bottom{
+	.pages{
+		margin-bottom: 15px;
+	}
+}
+.sales-order-print{
+	.account-container{
+		.logo{
+			display: @displayN;
+		}
+		.page-title-wrapper{
+			.page-title{
+				&:extend(.sales-order-view .column.main .page-title-wrapper .page-title);
+			}
+			.order-status{
+				&:extend(.sales-order-view .column.main .page-title-wrapper .order-status);
+			}
+			.order-date{
+				&:extend(.sales-order-view .order-date-row);
+				float: none;				
+			}
+		}
+	}
+}
+/* View Order Page CSS End Here */

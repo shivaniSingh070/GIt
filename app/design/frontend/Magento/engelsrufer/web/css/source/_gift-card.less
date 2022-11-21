@@ -1,0 +1,158 @@
+/* Gift Card CSS Start Here */
+.amgiftcard{
+	.fieldset{
+		width: @width100;
+	}
+	.amgiftcard-info{
+		.current_balnce{
+			.price{
+				left: inherit;
+			}
+		}
+	}
+}
+.gift_card_hint{
+	.gift_time {
+	    color: #378d15;
+	    font-size: 18px;
+	    font-weight: 400;
+	    margin-top: 0;
+	}
+	
+}
+
+.amcard-field-container{
+	.amcard-field-block{
+		.amcard-button{
+			background: #f5a079;
+			display: inline-block;
+			padding: 7px 15px;
+			font-size: 18px;
+			color: #ffffff;
+			font-weight: normal;
+			border-radius: 0px;
+			border: 1px solid transparent;
+			-webkit-transition: all 0.5s ease 0s;
+		}
+		.amcard-button:hover{
+			background: none;
+			color: #f5a079;
+			border-color: #f5a079;
+			text-decoration:none;
+		}
+	}
+
+	.amcard-check{
+		background: #f5a079;
+		display: inline-block;
+		padding: 15px 40px;
+		font-size: 18px;
+		color: #ffffff;
+		font-weight: normal;
+		border-radius: 0px;
+		border: 1px solid transparent;
+		-webkit-transition: all 0.5s ease 0s;
+	}
+	.amcard-check:hover{
+		background: none;
+		color: #f5a079;
+		border-color: #f5a079;
+		text-decoration:none;
+	}
+}
+
+/* Hide static block on gift cards product page */
+body.amcard-page-product {
+	.product-info-main {
+		.product-info-price {
+			.tax-info {
+				display: none;
+			}
+		}
+	}
+}
+
+/* Gift Card CSS End Here */
+
+
+
+//gift card in account section/
+body.amgcard-account-index{
+	.amcard-field-container{
+		max-width: 100%;
+
+		.amcard-title{
+			font-size: 30px;
+			color: #191919;
+			font-weight: 600;
+			text-transform: uppercase;
+			line-height: normal
+		}
+
+		.amcard-title+input{
+			margin-top:50
+		}
+
+		.actions-toolbar{
+			margin-top: 70px;
+			text-align: left;
+		}
+	}
+}
+
+
+/*giftcard in checkout*/
+body.checkout-index-index{
+	.amcard-field-container{
+		max-width: 625px;
+		margin-top: 30px;
+
+		.amcard-field-block{
+			display: @displayB;
+			.amgcard-datalist-container{
+				margin-bottom: 20px;
+				input.amcard-field{
+					border: 1px solid #191919;
+					height: 50px;
+					background: #fff;
+					padding-left: 9px;
+					padding-right: 9px;
+				}
+				.amcard-input-arrow::after{
+					display: none;
+				}
+			}
+		}
+		.amcard-title{
+			color:#000;
+		}
+		.amcard-field-block.-code{
+			margin-top: 5px;
+		}
+		.amcard-datalist-message{
+			margin-top: 10px;
+		}
+		.amcard-button,
+		.amcard-check{
+			width: 225px;
+			padding: 15px 40px !important ;
+			font-family: 'Josefin Sans', sans-serif;
+
+			@media screen and (max-width:991px){
+				width: 205px; 
+			}
+			@media screen and (max-width:767px){
+				width: 100%; 
+			}
+		}
+	
+		@media screen and (max-width:767px){
+			.amcard-field-container.-cart{
+				max-width: 100%;
+			} 
+		}
+	}
+		
+}
+
+

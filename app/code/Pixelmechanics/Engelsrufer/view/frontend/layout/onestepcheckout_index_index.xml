@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Register page xml, set elements as per design
+ * Updated by AA 11.06.2019.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <move element="page.main.title" destination="customer.account.banner" after="-"/>
+<!--    <move element="page.main.description" destination="checkout.root" before="-" />-->
+       <!-- Added page banner above breadcrumbs -->
+        <referenceContainer name="page.top">
+            <container name="customer.account.banner" label="Customer account banner Container" htmlTag="div" htmlClass="accountBanner banner-container" before="breadcrumbs">
+                    <block class="Magento\Cms\Block\Block" name="login-banner">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">account-banner</argument>
+                        </arguments>
+                    </block>
+            </container>
+        </referenceContainer>
+        <referenceBlock name="content">
+             <block class="Mageplaza\Osc\Block\Container" name="page.main.description" template="description.phtml" before="-"/>
+        </referenceBlock>
+        <referenceContainer name="content" htmlTag="div" htmlClass="container" />
+</page>

@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Mostviewed
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Amasty\Mostviewed\Model\Group">
+        <arguments>
+            <argument name="resource" xsi:type="object">Amasty\Mostviewed\Model\ResourceModel\Group</argument>
+            <argument name="data" xsi:type="array">
+                <item name="combineFactory" xsi:type="object">Magento\CatalogRule\Model\Rule\Condition\CombineFactory</item>
+                <item name="whereCombineFactory" xsi:type="object">Amasty\Mostviewed\Model\Rule\Condition\CombineFactory</item>
+                <item name="sameAsCombineFactory" xsi:type="object">Amasty\Mostviewed\Model\Rule\Condition\SameAsCombineFactory</item>
+                <item name="amastySerializer" xsi:type="object">Amasty\Base\Model\Serializer</item>
+                <item name="actionFactory" xsi:type="object">Magento\CatalogRule\Model\Rule\Condition\CombineFactory</item>
+                <item name="ruleProcessor" xsi:type="object">Amasty\Mostviewed\Model\Indexer\RuleProcessor</item>
+                <item name="layoutUpdater" xsi:type="object">Amasty\Mostviewed\Model\Layout\Updater</item>
+                <item name="stockResource" xsi:type="object">Magento\CatalogInventory\Model\ResourceModel\Stock\Status</item>
+                <item name="moduleManager" xsi:type="object">Magento\Framework\Module\Manager</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="amasty_mostviewed_product_group_listing_data_source" xsi:type="string">Amasty\Mostviewed\Model\ResourceModel\Group\Grid\Collection</item>
+                <item name="amasty_mostviewed_pack_listing_data_source" xsi:type="string">Amasty\Mostviewed\Model\ResourceModel\Pack\Grid\Collection</item>
+                <item name="amasty_mostviewed_product_group_form_data_source" xsi:type="string">amastyMostviewedGroupSearchResult</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Amasty\Mostviewed\Model\ResourceModel\Group\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">amasty_mostviewed_group</argument>
+            <argument name="eventPrefix" xsi:type="string">amasty_mostviewed_group_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">group_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Amasty\Mostviewed\Model\ResourceModel\Group</argument>
+        </arguments>
+    </type>
+    <type name="Amasty\Mostviewed\Model\ResourceModel\Pack\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">amasty_mostviewed_pack</argument>
+            <argument name="eventPrefix" xsi:type="string">amasty_mostviewed_pack_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">pack_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Amasty\Mostviewed\Model\ResourceModel\Pack</argument>
+        </arguments>
+    </type>
+    <virtualType name="amastyMostviewedGroupSearchResult" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">amasty_mostviewed_group</argument>
+            <argument name="resourceModel" xsi:type="string">Amasty\Mostviewed\Model\ResourceModel\Group</argument>
+        </arguments>
+    </virtualType>
+    <preference for="Amasty\Mostviewed\Api\Data\GroupInterface" type="Amasty\Mostviewed\Model\Group"/>
+    <preference for="Amasty\Mostviewed\Api\GroupRepositoryInterface" type="Amasty\Mostviewed\Model\Repository\GroupRepository"/>
+
+    <virtualType name="Amasty\Mostviewed\Model\Store\Ui\Component\Listing\Column\Store" type="Magento\Store\Ui\Component\Listing\Column\Store">
+        <arguments>
+            <argument name="storeKey" xsi:type="string">store</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\Mostviewed\Model\Store\Ui\Component\Listing\Column\Pack\Store" type="Magento\Store\Ui\Component\Listing\Column\Store">
+        <arguments>
+            <argument name="storeKey" xsi:type="string">store_id</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Amasty\Mostviewed\Block\Adminhtml\System\Config\Form\Field\Elastic">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="module_manager" xsi:type="object">Magento\Framework\Module\Manager</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Amasty\Mostviewed\Model\Analytics\ViewCollector" type="Amasty\Mostviewed\Model\Analytics\Collector">
+        <arguments>
+            <argument name="type" xsi:type="string">view</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\Mostviewed\Model\Analytics\ClickCollector" type="Amasty\Mostviewed\Model\Analytics\Collector">
+        <arguments>
+            <argument name="type" xsi:type="string">click</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Sales\Model\Service\OrderService">
+        <plugin name="Amasty_Mostviewed::after-place-order" type="Amasty\Mostviewed\Plugin\Sales\Model\Service\OrderService" />
+    </type>
+
+    <type name="Magento\SalesRule\Model\RulesApplier">
+        <plugin name="Amasty_Mostviewed::bundle-pack-discount" type="Amasty\Mostviewed\Plugin\SalesRule\Model\RulesApplier"/>
+    </type>
+
+    <type name="Magento\Catalog\Cron\RefreshSpecialPrices">
+        <plugin name="Amasty_Mostviewed::refresh-bundle-pack" type="Amasty\Mostviewed\Plugin\Catalog\Cron\Refresh"/>
+    </type>
+
+    <preference for="Amasty\Mostviewed\Api\Data\ViewInterface" type="Amasty\Mostviewed\Model\Analytics\View" />
+    <preference for="Amasty\Mostviewed\Api\ViewRepositoryInterface" type="Amasty\Mostviewed\Model\Repository\ViewRepository" />
+    <preference for="Amasty\Mostviewed\Api\Data\ClickInterface" type="Amasty\Mostviewed\Model\Analytics\Click" />
+    <preference for="Amasty\Mostviewed\Api\ClickRepositoryInterface" type="Amasty\Mostviewed\Model\Repository\ClickRepository" />
+    <preference for="Amasty\Mostviewed\Api\Data\AnalyticInterface" type="Amasty\Mostviewed\Model\Analytics\Analytic" />
+    <preference for="Amasty\Mostviewed\Api\AnalyticRepositoryInterface" type="Amasty\Mostviewed\Model\Repository\AnalyticRepository" />
+
+    <preference for="Amasty\Mostviewed\Api\Data\PackInterface" type="Amasty\Mostviewed\Model\Pack" />
+    <preference for="Amasty\Mostviewed\Api\PackRepositoryInterface" type="Amasty\Mostviewed\Model\Repository\PackRepository" />
+</config>

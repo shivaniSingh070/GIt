@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--/*
+* @author : Ha
+* @Date :  1.05.2022
+* @Description : add Newsletter interest Configuration fields in Backend
+* @trello : https://trello.com/c/E2mdqBZL/244-newsletter-formular-%C3%A4nderung#comment-62834c0d0bdf1b3fe81d6106
+*/ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+       <tab id="pixelmechanics" translate="label" sortOrder="10">
+            <label>PixelMechanics</label>
+        </tab>
+        <section id="MailChimpConfiguration" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Newsletter interest Configuration</label>
+            <tab>pixelmechanics</tab>
+            <resource>Hm_Newsletters::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Group Configuration</label>
+                <field id="display_text_label" translate="label" type="text"  sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label> label</label>
+                    <comment> please give the label name of groups </comment>
+                </field>
+                <field id="display_text" translate="label" type="text"  sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label> interest </label>
+                    <comment> please give the group Name with comma separated. for example: test1,test2,test3</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

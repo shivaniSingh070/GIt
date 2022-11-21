@@ -1,0 +1,56 @@
+/* Buttons CSS Start Here */
+body .btn,
+body .action.primary,
+body .primary .action,
+body .cart.actions .action,
+body .action.secondary{ 
+	background: @btn-text-link-color;
+	display: inline-block;
+	padding: 15px 40px;
+	font-family: @primary-fontFamily;
+	font-size: @secondary-font;
+	font-weight: normal;
+	color: @white-btn;
+	border: 1px solid transparent;
+	.border-radius(0px);
+	.transition(all 0.5s ease 0s);
+	box-shadow: inherit;
+	&:hover,
+	&:focus,
+	.active{
+		background: @bgNone;
+		color: @btn-text-link-color;
+		border-color: @btn-text-link-color;
+	}
+	
+}
+body .white-color{
+	background: @white-btn;
+	text-align: @text-center;
+	font-size: @secondary-font;
+	color: @secondary-text-color;
+	border: 1px solid transparent;
+	padding: 15px;
+	display: inline-block;
+	.transition (all 0.5s ease 0s);
+	&:hover{
+		background: @bgNone;
+		color: @secondary-text-color;
+		border-color: @white-btn;
+	}
+}
+button,
+.cart.table-wrapper .actions-toolbar > .action,
+.action-gift{
+	font-family: @primary-fontFamily;
+}
+body .modal-footer .action-accept{
+	background: @btn-text-link-color !important;
+	color: @white-btn !important;
+	&:hover{
+		background: @bgNone !important;
+		color: @btn-text-link-color !important;
+		border-color: @btn-text-link-color !important;
+	}
+}
+/* Buttons CSS End Here */

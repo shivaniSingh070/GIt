@@ -1,0 +1,171 @@
+<?php
+/*
+ * Added product attributes in product detail page
+ * Created by AA 26.04.2019
+ */
+?>
+
+<?php
+
+
+/* get object of engelsrufer catalog helper */
+$helper = $this->helper('Pixelmechanics\Engelsrufer\Helper\Catalog');
+/* get current product object */
+$_product = $helper->getCurrentProduct();
+/* get current product attribute ID */
+$productAttributeId = $helper->getAttributeSetId();
+/* get attribute group ID of "Descriptive attributes" */
+//$descAttributeGroupId = $helper->getProductAttributeGroupId('Beschreibungstexte');
+/* get attribute group ID of "Multi attributes" */
+$multiAttributeGroupId = $helper->getProductAttributeGroupId('Multi attributes');
+?>
+<?php
+/* get current product attributes */
+$productAttributes = $_product->getAttributes(); ?>
+<?php // get current product categories
+$productCategories = $_product->getCategoryIds();
+// get categories in which concept button and image need to be removed
+$conceptCateg = array(81,238,76,18,82,116);
+?>
+
+<h3><?php echo __("Product details");?></h3>
+<div class="productDetail-left-section">
+  <?php /* show long description if exist */ ?>
+    <?php $description = $_product->getDescription();?>
+        <div class="product-desc">
+            <?php /* call helper in order to show wysiwyg image (issue in Magento ) */ ?>        
+            <?php //if ($description):?> 
+            <div class="prod-description <?php if($description): echo 'show-attribute';  else: echo 'hide-attribute'; endif;?>">
+                <h4 class="gray-title"><?php echo __("Details");?></h4>               
+                <div class="product-desc-value"><?php echo $helper->getWysiwygAttributeValue($description); ?></div>
+            </div> 
+            <?php /*Remove Product details from the giftcart products by NA, 22.08.19*/?>
+              <?php if($_product->getTypeId() != 'amgiftcard'): ?>
+           <?php /* show other attributes if exist */ ?>
+            <ul>
+                <?php //foreach ($productAttributes as $attribute):
+                    /* check attribute is in group "Multi attributes */
+                    //if ($attribute->isInGroup($productAttributeId, $multiAttributeGroupId)):  ?>
+                        <?php //$attributeValue = $attribute->getFrontend()->getValue($_product) ?>
+                            <?php //if ($attributeValue): ?>
+            <?php /*remove the size from the configurable product by NA.20.08.19*/?>
+                             <?php //if ($_product->getTypeId() == 'configurable' && $attribute->getFrontendLabel() == 'Size'){
+                                    //continue;
+                             //} ?> 
+<!--                                        <li>
+                                            <span class="attribute-label"> 
+                                               <?php //echo $attribute->getStoreLabel() . ':' ;?>  
+                                            </span><?php //echo $attributeValue; ?> 
+                                        </li>                                        -->
+                                
+
+                        <?php //endif; ?>
+                    <?php //endif; ?>
+                <?php //endforeach; ?>
+                <?php /* called product attributes manually, updated by AA on 22.08.2019 
+                * rearrange the attribute by N.A on 31.10.19
+                * trello:https://trello.com/c/lzbBxhn7/123-044funktionen-produktdetailseiten-product-detail-page-cross-upselling#comment-5db859ebfd75da8bb82a65d3
+                */ ?>
+                     <li class="materialLegierung <?php if($_product->getMaterialLegierung()): echo 'show-attribute';  else: echo 'hide-attribute'; endif;?>">
+                         <span class="attribute-label"> <?php echo __("material") . ':' ;?></span><span class="materialLegierung-value"><?php echo $_product->getMaterialLegierung(); ?></span>
+                     </li>
+                     <!-- change gold legierung to gold alloy and change to lower case by N.A on 15.10.19
+                        * trello:https://trello.com/c/FUegOmvv/143-convert-csv-file-and-import-products-from-csv-file-into-relaunch-shop#comment-5da465c3f54ecf64b34c6ab9
+                     -->
+                     <li class="goldlegierung <?php if($_product->getAttributeText('gold_legierung')): echo 'show-attribute';  else: echo 'hide-attribute'; endif;?>">
+                         <span class="attribute-label"> <?php echo __("gold alloy") . ':' ;?></span><span class="goldlegierung-value"><?php echo $_product->getAttributeText('gold_legierung'); ?></span>
+                     </li>
+                    <li class="prod-color <?php if($_product->getAttributeText('color')): echo 'show-attribute';  else: echo 'hide-attribute'; endif;?>">
+                         <span class="attribute-label"> <?php echo __("color") . ':' ;?></span><span class="color-value"><?php echo $_product->getAttributeText('color'); ?></span>
+                    </li>
+                    <li class="funktion <?php if($_product->getFunktion()): echo 'show-attribute'; else: echo 'hide-attribute'; endif; ?>">
+                        <span class="attribute-label"><?php echo __('function'). ':'?></span><span class="function-value"><?php echo $_product->getFunktion(); ?></span>
+                    </li>
+                    <!-- Stone type changed to the lower case by N.A on 15.10.19
+                     * trello: https://trello.com/c/FUegOmvv/143-convert-csv-file-and-import-products-from-csv-file-into-relaunch-shop#comment-5da465c3f54ecf64b34c6ab9  -->
+                     <li class="stonetype <?php if($_product->getSteinart()): echo 'show-attribute';  else: echo 'hide-attribute'; endif;?>">
+                         <span class="attribute-label"> <?php echo __("stone type") . ':' ;?></span><span class="stonetype-value"><?php echo $_product->getSteinart(); ?></span>
+                     </li>
+                     <!--
+                        * added more li field to show more extra attributes on the PDP by NA 30.09.19
+                        * trello:https://trello.com/c/FUegOmvv/143-convert-csv-file-and-import-products-from-csv-file-into-relaunch-shop#comment-5d8c7cc8bf20101bda04929c
+                        */
+                    -->                  
+                    <li class="durchmesser_hoehe <?php if($_product->getDurchmesserHoehe()): echo 'show-attribute'; else: echo 'hide-attribute'; endif; ?>">
+                        <span class="attribute-label"><?php echo __('dimension'). ':'?></span><span class="durchmesser_hoehe-value"><?php echo $_product->getDurchmesserHoehe(); ?></span>
+                    </li>    
+                    <li class="prod-size <?php if($_product->getAttributeText('size')): echo 'show-attribute';  else: echo 'hide-attribute'; endif;?>">
+                         <span class="attribute-label"> <?php echo __("size") . ':' ;?></span><span class="size-value"><?php echo $_product->getAttributeText('size'); ?></span>
+                    </li>
+                    <li class="thickness <?php if($_product->getThickness()): echo 'show-attribute'; else: echo 'hide-attribute'; endif; ?>">
+                        <span class="attribute-label"><?php echo __('thickness'). ':'?></span><span class="thickness-value"><?php echo $_product->getThickness(); ?></span>
+                    </li>
+                    <li class="lange_cm <?php if($_product->getLangeCm()): echo 'show-attribute'; else: echo 'hide-attribute'; endif; ?>">
+                        <span class="attribute-label"><?php echo __('length'). ':'?></span><span class="lange_cm-value"><?php echo $_product->getLangeCm(); ?></span>
+                    </li>
+                    <li class="verschlusstypen <?php if($_product->getVerschlusstypen()): echo 'show-attribute'; else: echo 'hide-attribute'; endif; ?>">
+                        <span class="attribute-label"><?php echo __('closure types'). ':'?></span><span class="verschlusstypen-value"><?php echo $_product->getVerschlusstypen(); ?></span>
+                    </li>
+                    <li class="producttype <?php if($_product->getAttributeText('produktuntertyp')): echo 'show-attribute';  else: echo 'hide-attribute'; endif;?>">
+                         <span class="attribute-label"> <?php echo __("product type") . ':' ;?></span><span class="producttype-value"><?php echo $_product->getAttributeText('produktuntertyp'); ?></span>
+                     </li>
+                    <!-- Sku changed to the lower case by N.A on 15.10.19
+                     *  trello: https://trello.com/c/FUegOmvv/143-convert-csv-file-and-import-products-from-csv-file-into-relaunch-shop#comment-5da465c3f54ecf64b34c6ab9
+                     * sku attribute label changed by the 'article no.' by N.A on 18.10.19
+                     * trello: https://trello.com/c/lzbBxhn7/123-044funktionen-produktdetailseiten-product-detail-page-cross-upselling#comment-5da95adac017c87dd3588a55   
+                     -->
+                     <li class="sku">
+                         <span class="attribute-label"> <?php echo __("article no.") . ':' ;?></span><span class="sku-value"><?php echo $_product->getSku(); ?></span>
+                     </li>                             
+               </ul>
+            <?php endif; ?>
+        </div>    
+</div>
+
+<?php
+    $VerpackungImage = $helper->getPubMediaUrl().'catalog/product'.$_product->getVerpackungImage();
+    $EngelsruferKonzeptImage = $helper->getPubMediaUrl().'catalog/product'.$_product->getEngelsruferKonzeptImage();
+    /** get the absolute path of the Konzept image to resolve the brocken images shown on the pdp page
+     * By N.A on 11.11.19
+     * trello: https://trello.com/c/lzbBxhn7/123-prio-2-funktionen-produktdetailseiten-product-detail-page-cross-upselling
+     */
+    $absolute_path = BP.'/pub/media/catalog/product/'.$_product->getEngelsruferKonzeptImage();
+
+?>
+<div class="productDetail-right-section">
+    <?php $attributeQualityValue = $_product->getQualityDetails(); ?>
+        <div class="attributes-container qualityDetails-cont  <?php if($attributeQualityValue): echo 'show-attribute';  else: echo 'hide-attribute'; endif;?>">  
+            <h4 class="gray-title qualityDetailsLabel"><?php echo $_product->getQualityDetailsLabel(); ?> </h4> 
+            <div class="qualityDetails"><?php echo $helper->getWysiwygAttributeValue($attributeQualityValue); ?></div>
+        </div>
+    <?php $attributeKlangfarbeValue = $_product->getKlangfarbe(); ?>
+        <div class="attributes-container klangfarbe-cont <?php if($attributeKlangfarbeValue): echo 'show-attribute';  else: echo 'hide-attribute'; endif;?>">
+            <h4 class="gray-title klangfarbeLabel"><?php echo $_product->getKlangfarbeLabel(); ?> </h4> 
+            <div class="klangfarbe"><?php echo $helper->getWysiwygAttributeValue($attributeKlangfarbeValue); ?></div>
+        </div>
+    <?php $attributeVerpackungValue = $_product->getVerpackung();?>
+        <div class="attributes-container verpackung-cont <?php if($attributeVerpackungValue): echo 'show-attribute';  else: echo 'hide-attribute'; endif;?>">
+            <h4 class="gray-title verpackungLabel"><?php echo $_product->getVerpackungLabel(); ?> </h4> 
+            <div class="left-section verpackung"><?php  echo $helper->getWysiwygAttributeValue($attributeVerpackungValue); ?></div>
+            <div class="right-section verpackungImg"><img src="<?php echo $VerpackungImage;?>" alt="" /></div>
+        </div>
+    <?php $attributeEngelsruferKonzeptValue =  $_product->getEngelsruferKonzept(); ?>
+        <div class="attributes-container engelsruferKonzept-cont <?php if($attributeEngelsruferKonzeptValue): echo 'show-attribute';  else: echo 'hide-attribute'; endif;?>">
+            <h4 class="gray-title engelsruferKonzeptLabel"><?php echo $_product->getEngelsruferKonzeptLabel(); ?> </h4>
+            <?php  if(count(array_intersect($productCategories, $conceptCateg)) > 0):?>
+                <div class="engelsruferKonzeptValue"><?php echo $helper->getWysiwygAttributeValue($attributeEngelsruferKonzeptValue);?></div>   
+        <?php else:?>
+                <div class="left-section engelsruferKonzeptValue"><?php echo $helper->getWysiwygAttributeValue($attributeEngelsruferKonzeptValue);?></div>
+              <?php  /** check if the file exist by N.A 11.11.19 */ ?>
+            <?php  if(file_exists($absolute_path)){ ?>
+                <div class="right-section engelsruferKonzeptImage">
+                    <img src="<?php echo $EngelsruferKonzeptImage;?>" alt="" />
+                </div>
+            <?php } ?>    
+                <input type="button" name="show-concept" value="<?php echo __('learn more');?>" class="action primary show-concept" />
+            <?php endif; ?>
+        </div>
+</div>
+<div id="engelsrufer-concept-popup"  style="display:none;" class="engelsrufer-concept-popup"> 
+    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('engelsrufer-concept')->toHtml();?>
+</div>

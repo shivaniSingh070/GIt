@@ -1,0 +1,22 @@
+<!-- ko foreach: getRegion('messages') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+<div class="amcard-field-container -code">
+    <span class="amcard-title" data-bind="i18n: 'Apply Gift Card Code'"></span>
+    <div class="amcard-field-block -code">
+        <fieldset class="fieldset">
+            <input type="text" class="amcard-field" data-bind="attr: {placeholder: $t('Enter your Code')}, value: cardCode"/>
+        </fieldset>
+    </div>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="button" class="action primary"
+                    data-bind="click: addGiftCode.bind($data, event)">
+                <span translate="'Add'"></span>
+            </button>
+        </div>
+        <!-- ko foreach: getRegion('after-action-button') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+    </div>
+</div>

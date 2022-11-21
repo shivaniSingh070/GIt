@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * To fix the design issue on the wishlist shared page
+ * updated by NA 10.09.2019
+ * trello: https://trello.com/c/ZD6MM4v0/265-wunschzettel-wishlist
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+    	<referenceContainer name="main.content" htmlTag="div" htmlClass="account-container container" />
+        <move element="page.main.title" destination="customer.account.banner" after="-"/>
+        <!-- added static block in top -->
+    	<referenceContainer name="page.top">
+            <container name="customer.account.banner" label="Customer account banner Container" htmlTag="div" htmlClass="accountBanner banner-container" after="-">
+                    <block class="Magento\Cms\Block\Block" name="login-banner">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">account-banner</argument>
+                        </arguments>
+                    </block>
+            </container>
+    	</referenceContainer>
+        <referenceContainer name="content">
+            <block class="Magento\Wishlist\Block\Share\Wishlist" name="customer.wishlist" template="Magento_Wishlist::shared.phtml" cacheable="false"/>
+        </referenceContainer>
+        <referenceContainer name="footer-container">
+     	<!-- added static block in footer -->
+	        <container name="account.bottom" label="account bottom Container" htmlTag="div" htmlClass="statics-block-wrap bot-wrap" before="-">
+	            <block class="Magento\Cms\Block\Block" name="account-static-info">
+	                <arguments>
+	                    <argument name="block_id" xsi:type="string">bottom-static-banners</argument>
+	                </arguments>
+	            </block> 
+	        </container>
+    	</referenceContainer>
+    </body>
+</page>

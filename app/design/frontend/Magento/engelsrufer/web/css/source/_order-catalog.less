@@ -1,0 +1,28 @@
+/* Order Catalog Pages CSS Start Here */
+.order-catalog-form{
+	&:extend(.block-customer-login);
+	max-width: 1041px;
+	margin-bottom: 120px;
+	.fieldset{
+		margin: @marginNone;
+	}
+	.block-title{
+		&:extend(.login-right-container .block-customer-login .block-title);
+		margin-bottom: 45px;
+		strong{
+			font-weight: 600;
+		}
+	}
+	.control{
+		&:extend(.block-customer-login .block-content .form-login .field .control);		
+		.input-checkbox{
+			&:extend(.block-customer-login .block-content .form-login .field .input-checkbox);		
+		}
+		.label{
+			&:extend(.block-customer-login .block-content .form-login .field .control .tc_check);					
+			padding-right: @paddingNone;
+			display: @displayB;
+		}
+	}
+}
+/* Order Catalog Pages CSS End Here */

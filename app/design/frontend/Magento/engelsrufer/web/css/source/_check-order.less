@@ -1,0 +1,165 @@
+/* Check Order CSS Start Here */
+.paypal-review.view{
+	margin: 90px 0;
+	.box{
+		.box-title{
+			font-weight: normal;
+			line-height: 26px;
+			color: #000;
+		}
+		a{
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+	.paypal-review-discount{
+		&:extend(.block-customer-login);
+		margin: 30px 0;
+		.title{
+			color: @secondary-text-color;
+    		margin: 0 0 45px;
+    		strong{
+    			font-size: @heading-font02;
+    			font-weight: @fontB;
+    		}
+		}
+		.fieldset.coupon{
+			padding: @paddingNone;
+		}
+	}
+	.paypal-review-items{
+		&:extend(.block-customer-login);
+		.order-review-title{
+			&:extend(.paypal-review.view .paypal-review-discount .title, .paypal-review.view .paypal-review-discount .title strong);
+			display: @displayB;
+			line-height: normal;
+		}
+		.actions-toolbar{
+			.flex-display();
+			.flex-wrap(wrap);
+			.justify-content(flex-end);
+		}
+	}
+	.cart.table-wrapper{
+		.col{
+			padding: 20px 8px;
+		    font-size: @parimary-font;
+		    font-weight: @fontB;		    
+		    .cart-price{
+		    	.price{
+		    		font-weight: normal;
+		    		font-size: @parimary-font;
+    				color: @primary-text-color;
+		    	}
+		    }
+		}
+		th.col{
+			color: @secondary-text-color;
+		}
+		.product-item-details{
+			background: none;
+			padding: 11px 0 0;
+			text-align: left;
+			.product-item-name{
+				height: auto;
+				margin: @marginNone;
+				text-transform: inherit;
+			    font-size: @secondary-font;
+			    color: @btn-text-link-color;
+			    text-align: left;
+			}
+			.product-bullet-points{
+				.osc-product-bullet{
+					&:extend(.product-item-detail .product-item-name-block .osc-product-bullet);
+					font-weight: normal;
+					p{
+						margin: @marginNone;
+					}
+				}
+			}
+			.item-options{
+				text-align: left;
+    			font-size: @secondary-font;
+    			margin: 10px 0 0;
+    			dt{
+    				display: inline-block;
+				    font-weight: normal;
+				    color: @secondary-text-color;
+    			}
+    			dd{
+    				display: inline-block;
+    				color: @primary-text-color;
+    			}
+			}
+		}
+	}
+	.product-image-container{
+		.product-image-photo{
+			height: auto;
+			object-fit: inherit;
+		}
+	}
+	.opc-block-summary{
+		background: @gray-light-bg02;
+		tr{
+			th,td{
+				font-weight: normal;
+				color: @secondary-text-color;
+				padding: 15px 10px;
+			}
+		}
+	}
+	.checkout-agreement{
+		position: @pos_r;
+		[type=checkbox]{
+			position: absolute;
+		    opacity: 0;
+		    z-index: 999;
+			+ label{
+			    position: relative;
+			    padding-left: 35px;
+			    cursor: pointer;
+			    display: inline-block;
+			    line-height: 25px;
+			    &:before{
+			    	content: '';
+				    position: absolute;
+				    top: 0;
+				    left: 0;
+				    width: 14px;
+				    height: 14px;
+				    z-index: 0;
+				    border-radius: 1px;
+				    margin-top: 2px;
+				    transition: .2s;
+			    	border: 1px solid @secondary-text-color;
+				    width: 18px;
+				    height: 18px;
+			    }
+			    .action{
+			    	padding: @paddingNone;
+			    }
+			}
+			&:checked + label{
+				&:before{
+	    			top: -4px;
+				    left: -5px;
+				    width: 10px;
+				    height: 20px;
+					border-right-color: #f5a079;
+	    			border-bottom-color: #f5a079;
+				    border-top: 2px solid transparent;
+				    border-left: 2px solid transparent;
+				    transform: rotate(40deg);
+				    -webkit-backface-visibility: hidden;
+				    backface-visibility: hidden;
+				    -webkit-transform-origin: 100% 100%;
+				    transform-origin: 100% 100%;
+				}
+			}
+		}
+	}
+
+}
+/* Check Order CSS End Here */

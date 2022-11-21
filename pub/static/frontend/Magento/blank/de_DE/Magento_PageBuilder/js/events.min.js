@@ -1,0 +1,1 @@
+define(['uiEvents'],function(uiEvents){'use strict';return{on:function(events,callback,ns){uiEvents.on('pagebuilder:'+events,callback,'pagebuilder:'+ns);return this;},off:function(ns){uiEvents.off('pagebuilder:'+ns);return this;},trigger:function(name,args){return uiEvents.trigger('pagebuilder:'+name,args);}};});

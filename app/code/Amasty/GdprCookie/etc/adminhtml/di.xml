@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Ui\Model\Export\MetadataProvider">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="amasty_gdprcookie_cookie_consent_listing" xsi:type="array">
+                    <item name="date_recieved" xsi:type="string">date_recieved</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

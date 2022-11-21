@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author: Noshad Ali
+ * @package: Pixelmechanics_CatalogOrder
+ * @date: 1Aug2019
+ * trello: https://trello.com/c/UyuL2qfu/
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="catalogorder" frontName="catalogorder">
+            <module name="Pixelmechanics_CatalogOrder" />
+        </route>
+    </router>
+</config>

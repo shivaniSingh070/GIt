@@ -1,0 +1,87 @@
+<?php
+/**
+ * phpcs:ignoreFile
+ */
+/**
+ * @var \Amasty\GiftCard\Pricing\Render\FinalPriceBox $block
+ * @var \Magento\Framework\Escaper $escaper
+ */ ?>
+<?php $productId = $block->getSaleableItem()->getId() ?>
+
+<?php if ($block->getCanShowPrice() !== false && !$block->isProductForm()): ?>
+    <div class="price-box">
+        <?php if (!$block->isSinglePrice()): ?>
+            <span class="price-label"><?= $escaper->escapeHtml(__('From')) ?></span>
+        <?php endif; ?>
+            <span class="price"
+                  id="product-price-<?= $escaper->escapeHtmlAttr($productId . $block->getIdSuffix()) ?>">
+            <?= $escaper->escapeHtml($block->convertAndFormatCurrency($block->getMinPrice(), false)) ?>
+        </span>
+    </div>
+<?php endif; ?>
+<?php if ($block->isProductForm()): ?>
+    <?php $currency = $block->getCurrencyShortName();
+    $product = $block->getSaleableItem(); ?>
+<div class="amgiftcard-price-container" data-bind="scope: 'price'">
+    <div class="amgiftcard-price-multiple -hide"
+         data-bind="visible: $data.showCustomPrice, css: {'-hide': !$data.isLoaded()}">
+        <p class="price-from">
+            <span class="price-container price-final_price">
+                <span class="price-label"><?= $escaper->escapeHtml(__('From')) ?></span>
+                <span data-price-amount="<?= $block->convertCurrency($block->getMinPrice()) ?>" data-price-type="minPrice" class="price-wrapper">
+                    <span class="price"><?= $escaper->escapeHtml($block->convertAndFormatCurrency($block->getMinPrice(), false)) ?></span>
+                </span>
+            </span>
+        </p>
+        <p class="price-to">
+            <span class="price-container price-final_price tax weee">
+                <span class="price-label"><?= $escaper->escapeHtml(__('To')) ?></span>
+                <span data-price-amount="<?= $block->convertCurrency($block->getMaxPrice()) ?>" data-price-type="maxPrice" class="price-wrapper">
+                    <span class="price"><?= $escaper->escapeHtml($block->convertAndFormatCurrency($block->getMaxPrice(), false)) ?></span>
+                </span>
+            </span>
+        </p>
+    </div>
+    <span class="price-final_price -hide"
+          data-bind="visible: !$data.showCustomPrice(), css: {'-hide': !$data.isLoaded()}">
+        <span class="price-wrapper"
+              data-price-amount="<?= $block->isSinglePrice()
+                  ? $escaper->escapeHtmlAttr($block->convertCurrency($block->getFinalPrice($product)))
+                  : '0'; ?>"
+              data-price-type="finalPrice"
+              id="product-price-<?= $escaper->escapeHtmlAttr($productId . $block->getIdSuffix()) ?>"
+        >
+            <span class="price">
+                <?= $escaper->escapeHtml($block->convertAndFormatCurrency($block->getMinPrice(), false)) ?>
+            </span>
+        </span>
+    </span>
+</div>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "price": {
+                    "component": "Amasty_GiftCard/js/price",
+                    "template": "Amasty_GiftCard/price",
+                    "prices": <?= /** @noEscape */ $block->getPredefinedAmounts() ?>,
+                    "currencyCode": "<?= $escaper->escapeHtmlAttr($block->getCurrencyCode()) ?>",
+                    "feeType": "<?= $escaper->escapeHtmlAttr($product->getAmGiftcardFeeType()) ?>",
+                    "feeValue": "<?= $escaper->escapeHtmlAttr($product->getAmGiftcardFeeValue()) ?>",
+                    "feeStatus": "<?= $escaper->escapeHtmlAttr($product->getAmGiftcardFeeEnable()) ?>",
+                    "feeValueConverted": "<?= $escaper->escapeHtmlAttr($this->convertCurrency($product->getAmGiftcardFeeValue())) ?>",
+                    "productId": "<?= $escaper->escapeHtmlAttr($product->getId()) ?>",
+                    "customMinAmountCurrency": "<?= /** @noEscape */ $block->convertAndFormatCurrency($block->getOpenAmountMin(), false) ?>",
+                    "customMaxAmountCurrency": "<?= /** @noEscape */ $block->convertAndFormatCurrency($block->getOpenAmountMax(), false) ?>",
+                    "customMinAmount": "<?= $escaper->escapeHtmlAttr($this->convertAndRoundCurrency($block->getOpenAmountMin())) ?>",
+                    "customMaxAmount": "<?= $escaper->escapeHtmlAttr($this->convertAndRoundCurrency($block->getOpenAmountMax())) ?>",
+                    "isOpenAmount": "<?= $escaper->escapeHtmlAttr($block->isOpenAmount()) ?>",
+                    "isSinglePrice": "<?= $escaper->escapeHtmlAttr($block->isSinglePrice()) ?>"
+                }
+            }
+        }
+    }
+}
+</script>
+<?php endif; ?>

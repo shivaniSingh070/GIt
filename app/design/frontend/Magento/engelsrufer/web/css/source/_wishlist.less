@@ -1,0 +1,238 @@
+/* My wishlist CSS Start Here */
+.wishlist-index-index{
+	.bot-wrap{
+		margin-top: 60px;
+	}
+}
+.products-grid.wishlist{
+	.product-items{
+		.flex-display();
+		.flex-wrap(wrap);
+		width: @width100;
+		.product-item{
+			width: 31.49%;
+			margin: 0 30px 30px 0;
+			&:nth-child(3n){
+				margin-right: 0;
+			}
+			.product-item-inner{
+				background: @primary-bg-color;
+				padding: 20px;
+				min-height: 483px;
+			}
+			.product-item-info{
+				border: 1px solid @primary-bg-color;
+				width: @width100;
+			}
+			.tax-info{
+				font-size: @small-font;
+				text-align: @text-center;
+				color: @text-color03;
+				.engels-color{
+					color: @btn-text-link-color;
+				}
+			}
+			.number-variant{
+				text-align: @text-center;
+				color: @text-color03;
+				height: 16px;
+			}
+			.comment-box{
+				margin-top: 38px;
+				.label{
+					color: @text-color03;
+					font-size: @small-font;
+				}
+				.control{
+					textarea{
+						height: 100px;
+						border: 1px solid @primary-text-color;
+						resize: none;
+						margin: @marginNone;
+					}
+				}
+			}
+			.box-tocart{
+				.fieldset{
+					border: @bdrNone;
+					padding: @paddingNone;
+					.field{
+						margin: 20px 0 0;
+						.label{
+							display: inline-block;
+							font-size: @small-font;
+							color: @secondary-text-color;
+							margin-right: 12px;
+							line-height: 33px;
+						}
+						.control{
+							width: 60px;
+							.qty{
+								border: 1px solid @primary-text-color;
+								height: 33px;
+
+							}
+						}
+					}
+					.product-item-actions{
+						margin: 20px 0 0;
+						.actions-primary{
+							width: @width100;
+							text-align: @text-center;
+							.action{
+								display: @displayB;
+								font-weight: normal;
+								width: 100%;
+								font-size: @secondary-font;
+								color: @white-btn;
+								&:hover{
+									text-decoration: @decoration-none;
+									color: @btn-text-link-color;
+								}
+							}
+						}
+					}
+				}
+			}
+			.product-item-actions{
+				margin: 27px 0 0;
+				.action{
+					margin: @marginNone;
+					font-size: @small-font;
+					color: @btn-text-link-color;
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+				.btn-remove{
+					float: @floatR;
+				}
+			}
+		}
+		.product-item-name{
+			font-weight: normal;
+			height: 56px;
+			overflow: hidden;
+			text-align: @text-center;
+			a{
+				&:extend(.product-item-details .product-item-name a);
+				&:hover{
+					&:extend(.product-item-details .product-item-name a:hover);
+				}
+			}
+		}
+		.price-box{
+			text-align: @text-center;			
+			p{
+				margin: @marginNone;
+			}
+			span{
+				display: inline-block;
+				font-size: @parimary-font;
+				font-weight: normal;
+			}
+			.price-container{
+			    color: @text-color03;
+			    font-weight: normal;
+			}
+			.old-price{
+				.price{
+					text-decoration: line-through;
+					color: @primary-text-color;
+				}
+			}
+		}
+	}
+	.product-item-photo{
+		height: 364px;
+		text-align: @text-center;
+		margin: @marginNone;
+	}
+}
+.form-wishlist-items{
+	>.actions-toolbar{
+		.primary{
+			.flex-display();
+			.flex-wrap(wrap);
+			.justify-content(space-between);
+			width: @width100;
+			.action{
+				width: 31.49%;
+				font-weight: normal;
+				margin-right: 0;
+			}
+		}
+		.secondary{
+			display: @displayN;
+		}
+	}
+}
+.account-container .column.main{
+	.wishlist.share{
+		.fieldset{
+			margin-bottom: 0;
+		}
+	}
+}
+.wishlist-shared-index{
+	.shared.wishlist{
+		.wishlist{
+			thead{
+				tr{
+					th{
+						&:extend(.cart-container .cart.table-wrapper .items thead tr th);
+						border-bottom: 1px solid #e3e3e3 !important;
+					}
+					th.product{
+						width: 35%;
+					}
+					th.comment{
+						width: 25%;
+					}
+				}
+			}
+			tbody{
+				tr{
+					td{
+						padding: 20px 10px 8px;
+						.product.photo{
+							display: table-cell;
+						    max-width: 100%;
+						    padding-right: 20px;
+						    position: static;
+						    vertical-align: top;
+						    width: 1%;
+							.product-image-photo{
+								height: auto;
+							}
+						}
+						.product-item-details{
+							&:extend(.cart-container .cart.table-wrapper .items tr td .product-item-details);
+							display: table-cell;
+						    vertical-align: top;
+						    white-space: normal;
+						    width: 99%;
+						    .product.name{
+						    	display: @displayB;
+						    	margin-bottom: 3px;
+						    }						
+						}
+						.towishlist{
+							padding-left: 20px; 
+							&:hover{
+								text-decoration: underline;
+							}
+						}
+					}
+					.col.product{
+						padding: 20px 8px;
+						display: @displayB;
+					    min-height: 75px;
+					    position: relative;
+					}
+				}
+			}
+		}
+	}
+}
+/* My wishlist CSS End Here */

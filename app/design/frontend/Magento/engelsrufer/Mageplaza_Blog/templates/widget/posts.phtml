@@ -1,0 +1,97 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Blog
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var \Mageplaza\Blog\Block\Widget\Posts $block */
+
+$posts = $block->getCollection();
+
+?>
+<div class="blog-widget-title"><a></a></div>
+<div class="post-list-container mpcss" id="mpblog-list-container">
+    <div class="widget-title">
+        <a href="<?php echo $block->getBlogUrl(''); ?>"><?php echo $block->getTitle(); ?></a>
+    </div>
+    <div class="row">
+        <?php foreach ($posts as $post) : ?>
+            <?php   $tags =  $this->helper('Pixelmechanics\Engelsrufer\Helper\Blog')->getTagCollection($post->getTagIds());
+                    $tagsHtml = [];
+                    foreach ($tags as $tag) :
+                       $tagsHtml[] = $tag->getName();
+                   endforeach; ?>
+            <div class="post-list-item">
+                <div class="post-item-wraper">
+                    <div class="post-image">
+                        <a href="<?php echo $post->getUrl() ?>">
+                            <?php
+                            /** Check if the blog image exist, if does not exist then should not throw the error on the home page.
+                            * N.A on 1.11.19
+                            * given by Robert
+                            * trello: https://trello-attachments.s3.amazonaws.com/5c7fce608f73ec77926941d7/5c86d7d4db8ae83f24df15a7/3fd3ff997a36c385ab735ce2da96ae6a/Blog_image_issue_given_by_robert.png   
+                            */
+                                $dir_path = BP; //get the dir path
+                                $blog_path = $dir_path.'/pub/media/mageplaza/blog/post/'; // get the mageplaza blog post path 
+                                $blog_img_path = $blog_path.$post->getImage(); //get the absolute path of the blog image 
+                                //check if the blog image exist or not
+                                if (file_exists($blog_img_path)) { ?> 
+                                    <img class="img-responsive"
+                                             src="<?php echo $block->resizeImage($post->getImage(), '400'); ?>"
+                                             alt="<?php echo $block->escapeHtml($post->getName()); ?>"/>
+                                    
+                                 <?php } ?>
+                        </a>
+                    </div>
+                    <div class="post-info-wraper">
+                      <?php /*
+                             * set blog tag and commented the post information
+                             * Updated by AA 06.05.2019
+                             */ ?>
+                        <div class="mp-post-info">
+                            <?php echo implode(', ', $tagsHtml); ?>
+                            <?php //echo $block->getPostInfo($post); ?>
+                        </div>
+                        <h2 class="mp-post-title" style="font-size: 22px">
+                            <a class="post-link-title" title="<?php echo $post->getName(); ?>"
+                               href="<?php echo $post->getUrl() ?>">
+                                <?php echo $post->getName(); ?>
+                            </a>
+                        </h2>
+                        <div class="post-short-description">
+                            <p><?php $blogSortDescription =  $post->getShortDescription(); 
+                                     $descriptionLength = strlen($blogSortDescription);
+                                     if($descriptionLength >= 150):
+                                        echo substr($blogSortDescription, 0, 147)."...";
+                                     else:
+                                        echo $blogSortDescription;
+                                     endif;?></p>
+                        </div>
+                        <div class="mp-clearfix"></div>
+                        <div class="mp-post-meta-info mp-alignright">
+                            <div class="actions">
+                                <a class="mp-read-more" href="<?php echo $post->getUrl(); ?>"
+                                   title="<?php echo __('Read More'); ?>"><?php echo __('Read more'); ?></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

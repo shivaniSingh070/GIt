@@ -1,0 +1,18 @@
+<?php
+
+  $lowestPrice = $block->productData();
+
+  $formattedPrice = $block->getCurrencySymbol($lowestPrice);
+ 
+  $product = $block->getCurrentProduct();
+  $specialPrice = $product->getSpecialPrice();
+  $id  =$product->getId();
+  $regularPrice = $product->getPrice();
+  $lowestPriceLabel = $block->lowestPriceLabel();
+ 
+  $catalogPrice = $block->getCatalogPrice($product, $regularPrice);
+// print_r($catalogPrice);die;
+?>
+<?php if( $specialPrice || $catalogPrice):?>
+  <strong><?= $lowestPriceLabel ?> : <?= $formattedPrice?></strong>
+<?php endif; ?>

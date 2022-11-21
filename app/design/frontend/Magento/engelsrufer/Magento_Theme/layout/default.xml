@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Removed unwanted blocks and add needed one
+ * Updated by AA 24.04.2019 https://trello.com/c/bSwKXAjl/
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+         <remove src="Ves_Brand::css/owl.carousel.min.css"/>
+         <remove src="Ves_Megamenu::css/styles.css"/>
+         <remove src="Ves_Brand::css/styles.css"/>
+         <remove src="Ves_All::lib/owl.carousel/assets/owl.carousel.css"/>
+         <remove src="Ves_All::lib/bootstrap/css/bootstrap-tiny.css"/>
+         <remove src="Ves_Megamenu::css/animate.min.css" />
+    </head>
+    <body>
+        <!-- Remove advance search link, header top panel and set positions of logo and language switcher.
+        Added blovk for my account
+        Updated by AA 24.04.2019 https://trello.com/c/bSwKXAjl/ -->
+        <referenceBlock name="advanced-search-link" remove="true"/>
+        <referenceBlock name="copyright" remove="true"/>
+        <referenceContainer name="header-wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="myaccount_section" as="myaccount_section" template="Magento_Theme::html/myaccount_Header.phtml"  before="top.search"/>
+        </referenceContainer>
+       <!-- Added logo for desktop screen, updated by AA on 24.06.2019 -->
+        <referenceContainer name="store.menu">
+           <block class="Magento\Theme\Block\Html\Header\Logo" name="logo-desktop" as="logo-desktop" template="Magento_Theme::html/logo_desktop.phtml" before="-"/>
+        </referenceContainer>
+        <!-- Remove newsletter form, footer default links and report bug from footer. Added static block and set copyright position
+        Updated by AA 24.04.2019 https://trello.com/c/bSwKXAjl/ -->
+        <referenceBlock name="form.subscribe" remove="true" />
+        <referenceBlock name="report.bugs" remove="true" /> 
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceContainer name="footer-container">
+            <container name="footer.wrapper" as="footer.wrapper" label="Page Footer" htmlTag="div" htmlClass="footer_wrapper">
+                <container name="footer" as="footer" label="Page Footer" htmlTag="div" htmlClass="footer content">
+                    <block class="Magento\Cms\Block\Block" name="footer_menu">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_menu</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+        <!-- added static block for copyright, updated by AA on 06.05.2019 https://trello.com/c/FoDl2D5H/206-26042019-ptb#comment-5ccc38d287e1991594ea3f59 -->
+            <block class="Magento\Cms\Block\Block" name="footer_copyright">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer-copyright</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

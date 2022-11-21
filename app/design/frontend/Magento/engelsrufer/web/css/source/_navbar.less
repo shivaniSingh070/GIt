@@ -1,0 +1,170 @@
+/* Navigation CSS Start Here */
+.nav-sections{
+	background: @bgNone;
+	padding: 20px 0;
+	margin: @marginNone;
+	.nav-sections-items{
+		position: @pos_r;
+	}
+	.logo{
+		display: @displayB;
+		float: @floatL;
+		margin: 0 45px 0 0;
+	}
+	.navigation{
+		background: @bgNone;
+		width: auto;
+		float: @floatL;
+		margin: @marginNone;
+		position: inherit;
+		ul{
+			padding: @paddingNone;
+			background: none;
+			position: inherit;		
+			.level0{
+				margin: @marginNone;
+				padding: 0 15px;
+				> a{
+					color: @secondary-text-color;
+					text-transform: uppercase;
+					padding: 16px 0 11px;
+					line-height: normal;
+					border: @bdrNone;
+					&:hover{
+						color: @btn-text-link-color;
+						background: none;
+					}
+				}
+				&:hover a{
+					background: none;
+				}
+			}
+			.level0.active{
+				>a{
+					background: @bgNone;
+					color: @btn-text-link-color !important;
+				}
+			}
+		}
+	}
+	/* Mega Menu CSS Start Here */
+	.ves-menu{
+		.navigation{
+			.subhover{
+				>.submenu{
+					top: inherit !important;
+					padding: 30px 0;
+				    border-radius: 0;
+				    color: @text-color04;
+				    .box-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+				    .transition(all 0.5s ease 0s);				    
+				    margin-top: 20px;
+				    border: @bdrNone;
+				    .translate(0, 70px);
+				    opacity: 0;
+				    visibility: hidden;
+				    display: inherit;
+			    	.nav-dropdown{
+			    		.mega-col.mega-col-level-1{
+				    		padding: 0 15px;
+				    		.nav-item{
+				    			.subitems-group{
+				    				font-weight: @fontB;
+				    				border-bottom: 1px solid #e3e3e3;
+				    				padding: 0 5px 3px;
+				    				margin-bottom: 5px;
+				    				color: #000;
+				    				text-transform: capitalize;
+				    				&:hover{
+				    					text-decoration: underline;
+				    					padding-left: 3px;
+				    				}
+				    			}
+				    			a{
+				    				&:hover{
+				    					padding-left: 3px;
+									    text-decoration: underline;
+									    color: @secondary-text-color;
+				    				}
+				    			}
+				    		}
+				    		.parent-cat{
+				    			.subitems-group{
+				    				&:hover{
+				    					text-decoration: none;
+				    					padding-left: 5px;
+				    					color: @btn-text-link-color;	
+				    				}
+				    			}
+				    		}
+				    		.active{
+				    			a{
+				    				border: none;
+				    			}
+				    		}
+				    		.megamenu-footer{
+				    			margin-top: 8px;
+				    			font-weight: 400;
+				    			color: @text-color06;
+				    			.view-more{
+				    				color: #333;
+				    				padding: 0;
+				    				.fa{
+				    					font-weight: @fontB;
+				    					font-size: @small-font;
+				    					.transition(all 0.5s ease 0s);	
+				    					.hidden{
+				    						display: @displayN;
+				    					}
+				    				}
+				    				&:hover{
+				    					text-decoration: underline;
+				    				}
+				    				&:hover .fa{
+				    					padding-left: 5px;
+				    				}
+				    			}
+				    		}
+				    	}
+				    	.mega-col.mega-col-1,
+				    	.mega-col.mega-col-7{
+				    		width: @width100;
+				    	}
+			    	}
+			    	.megamenu-content{
+			    		margin: 10px 0;
+			    		.nav-item{
+			    			a{
+			    				color: @text-color06;
+							    line-height: 28px;
+							    font-weight: 400;
+							    position: @pos_r;
+							    padding: 0 5px;
+							    font-size: 15px;
+							    .transition(all 0.3s ease 0s);
+							    &:hover{
+						    	    padding-left: 3px;
+								    text-decoration: underline;
+								    color: @secondary-text-color;
+							    }
+			    			}
+			    		}
+			    	}
+				}
+				&:hover .dropdown-menu{
+					top: inherit !important;
+					.translate(0, 45px);
+					opacity: 1;
+					visibility: visible;
+					.transition(all 0.5s ease 0s);
+				}
+			}
+		}
+		.ves-column6 > .item-content1 > .mega-col{
+		    width: 20%;
+		}
+	}
+	/* Mega Menu CSS End Here */
+}
+
+/* Navigation CSS End Here */

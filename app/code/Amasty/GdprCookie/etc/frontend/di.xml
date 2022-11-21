@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\App\Response\Http">
+        <plugin name="amcookieRemove" type="Amasty\GdprCookie\Plugin\Response\Http"/>
+    </type>
+    <type name="Magento\Framework\View\Page\Config\Renderer">
+        <plugin name="Amasty_GdprCookie::make-css" type="Amasty\GdprCookie\Plugin\View\Page\Config\Renderer" />
+    </type>
+    <type name="Magento\Framework\Controller\ResultInterface">
+        <plugin name="GdprCookie::ProcessPageResult" type="Amasty\GdprCookie\Plugin\ProcessPageResult" sortOrder="25" />
+    </type>
+    <type name="Magento\Store\Model\StoreSwitcherInterface">
+        <plugin name="GdprCookie::DetectStoreSwitch" type="Amasty\GdprCookie\Plugin\Model\StoreSwitcherPlugin" sortOrder="25" />
+    </type>
+    <type name="Magento\Framework\View\TemplateEngine\Php">
+        <plugin name="Amasty_GdprCookie::AddCookieScriptViewModelToPhpRenderer" type="Amasty\GdprCookie\Plugin\Framework\View\TemplateEngine\PhpPlugin" sortOrder="20" />
+    </type>
+
+    <type name="Amasty\GdprCookie\Block\CookieBar">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="modal" xsi:type="object">Amasty\GdprCookie\Model\Layout\CookieBar\Modal</item>
+                <item name="classic" xsi:type="object">Amasty\GdprCookie\Model\Layout\CookieBar\Classic</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

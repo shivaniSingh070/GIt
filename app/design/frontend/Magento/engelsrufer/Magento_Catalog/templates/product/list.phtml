@@ -1,0 +1,184 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+/*
+* Override by NA on 21.05.2019
+* Show variant of configurable products
+*/
+use Magento\Framework\App\Action\Action;
+$helperCatalog = $this->helper('Pixelmechanics\Engelsrufer\Helper\Catalog');
+/******called objecmanager instance for stock status by anoop******/
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+/* get Current category from helper Pixelmechanics\Engelsrufer\Helper\Catalog By AA on 22.05.2019 https://trello.com/c/iD9HOWhj */
+$category =  $helperCatalog->getCurrentCategory();
+$catgoryImage = "";
+
+if($category):
+    /* get media URL By AA on 22.05.2019 https://trello.com/c/iD9HOWhj */ 
+    $storeUrl = $this->helper('Pixelmechanics\Engelsrufer\Helper\Data')->getBaseUrl();
+    /* get  Product List Image from category collection Added by AA https://trello.com/c/iD9HOWhj */ 
+    $catgoryImage = $category->getProductlistImage();
+    /**
+     * After upgrade magento some url contains pub/media but some only media
+     * PM AJ on 22.03.2022
+     * @link: https://trello.com/c/RiSVPBgV
+     */
+        if(strpos($catgoryImage,"pub")!== false){
+            $catgoryImage = str_replace("/pub/","",$catgoryImage);
+            $categoryImageUrl = $storeUrl.$catgoryImage;
+        }else if(strpos($catgoryImage,"media")!== false){
+        $categoryImageUrl = $storeUrl.$catgoryImage;
+        }else{
+            $categoryImageUrl = $storeUrl."media/catalog/category/".$catgoryImage;
+        }
+endif;
+ 
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @var $block \Magento\Catalog\Block\Product\ListProduct
+ */
+?>
+<?php
+$_productCollection = $block->getLoadedProductCollection();
+$_helper = $this->helper('Magento\Catalog\Helper\Output'); ?>
+<?php if (!$_productCollection->count()): ?>
+    <div class="message info empty"><div><?= /* @escapeNotVerified */ __('We can\'t find products matching the selection.') ?></div></div>
+<?php else: ?>
+    <?= $block->getToolbarHtml() ?>
+    <?= $block->getAdditionalHtml() ?>
+    <?php
+    if ($block->getMode() == 'grid') {
+        $viewMode = 'grid';
+        $imageDisplayArea = 'category_page_grid';
+        $showDescription = false;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    } else {
+        $viewMode = 'list';
+        $imageDisplayArea = 'category_page_list';
+        $showDescription = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+    }
+    /**
+     * Position for actions regarding image size changing in vde if needed
+     */
+    $pos = $block->getPositioned();
+   /* define counter to show category image after 6th product Added by AA https://trello.com/c/iD9HOWhj */  
+    $flag = 0;
+    ?>
+    <div class="products wrapper <?= /* @escapeNotVerified */ $viewMode ?> products-<?= /* @escapeNotVerified */ $viewMode ?>">
+        <ol class="products list items product-items">
+            <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
+            <?php foreach ($_productCollection as $_product): 
+                  $flag++; // inctrement counter Added by AA https://trello.com/c/iD9HOWhj ?>
+                 <?php /* passing the product's id to get the total number of variant, Added by NA https://trello.com/c/lBLT9AAh/ */?>
+                <?php  $numberOfVariant = $helperCatalog->getConfigAttributeValue($_product->getEntityId()); ?>
+             <?php /* show image if catgeory image exists,
+                    * product count equals to 7 
+                    * and page number is 1
+                    * Added by AA https://trello.com/c/iD9HOWhj */?>   
+                <?php if($flag==7 && $catgoryImage && $_productCollection->getCurPage() ==1 && $viewMode == "grid" ): ?>
+                    <li class="category-image item product product-item">
+                        <img src="<?php echo $categoryImageUrl?>"/>
+                    </li>
+                <?php endif;?>
+                <li class="item product product-item">
+                    <div class="product-item-info" data-container="product-<?= /* @escapeNotVerified */ $viewMode ?>">
+                <?php /* Show the New & Sale Label By NA https://trello.com/c/s3o1mtxK*/ ?>
+                    <div class="label-row">
+                        <?php if($helperCatalog->isProductNew($_product)): ?>
+                            <div class="new-label">
+                                <?php echo __('New'); ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php $saleLabel = $helperCatalog->displayDiscountLabel($_product) ;?>
+                        <?php if($saleLabel):?>
+                            <div class="new-label sale-label">
+                                <?php echo $saleLabel; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                        <?php
+                        $productImage = $block->getImage($_product, $imageDisplayArea);
+                        if ($pos != null) {
+                            $position = ' style="left:' . $productImage->getWidth() . 'px;'
+                                . 'top:' . $productImage->getHeight() . 'px;"';
+                        }
+                        ?>
+                        <?php // Product Image ?>
+                        <a href="<?= /* @escapeNotVerified */ $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+                            <?= $productImage->toHtml() ?>
+                        </a>
+
+                        <div class="product details product-item-details">
+                            <?php
+                                $_productNameStripped = $block->stripTags($_product->getName(), null, true);
+                            ?>
+                      <?php /*  truncate product name after 30 characters, updated by AA on 14.06.2019 
+                                truncate product name after 50 characters, updated by NA on 19.06.2019
+                      */ ?>
+                            <?php $productName =  $_helper->productAttribute($_product, $_product->getName(), 'name');
+                                     $pNameLength = strlen($productName);
+                                     if($pNameLength >= 55):
+                                        $productName =  substr($productName, 0, 50)."...";
+                                     else:
+                                       $productName =  $productName;
+                                     endif;?>
+                            <strong class="product name product-item-name">
+                                <a class="product-item-link"
+                                   href="<?= /* @escapeNotVerified */ $_product->getProductUrl() ?>">
+                                    <?= /* @escapeNotVerified */ $productName;  ?>
+                                </a>
+                            </strong>
+                            <?php /* Removed Reviewhtml, descriptionhtml block and add to cart div, removed by AA on 01.05.2019 https://trello.com/c/pjgXbpAN/ */?>
+                           <div class="<?php echo $_product->getTypeId(); ?>"> <?= /* @escapeNotVerified */ $block->getProductPrice($_product) ?></div>
+
+                            <?php /* div added to print the number of count of variants of configurable products by NA */?>
+                            <div class="number-variant">
+                                <?php if( $numberOfVariant > 1 ): ?>
+                                    <?= $numberOfVariant ." ".__('Variants'); ?>
+                                <?php endif; ?>
+                                <?php 
+                                /**
+                                 *Added below code to display available later if out of stock
+                                 *See trello - https://trello.com/c/gxk6SgNq/120-044handling-von-verf%C3%BCgbarkeit-availability-handling
+                                 *By Anoop Singh
+                                */
+                                    // if($_product->getTypeId() == 'simple') {
+                                        $StockState = $objectManager->get('\Magento\CatalogInventory\Api\StockRegistryInterface');
+                                        $productStock = $StockState->getStockItem($_product->getId());
+                                        if (!$productStock->getIsInStock()):?>
+                                            <p><?php echo __('später verfügbar');?></p>
+                                        <?php endif;
+                                        
+                                    // }
+                                /******end of code by anoop*****/
+                                ?>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+    </div>
+    <?= $block->getToolbarHtml() ?>
+    <?php if (!$block->isRedirectToCartEnabled()) : ?>
+        <script type="text/x-magento-init">
+        {
+            "[data-role=tocart-form], .form.map.checkout": {
+                "catalogAddToCart": {
+                    "product_sku": "<?= /* @NoEscape */ $_product->getSku() ?>"
+                }
+            }
+        }
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

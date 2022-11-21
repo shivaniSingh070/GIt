@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Amasty\GiftCardAccount\Block\Customer\Cards"
+                   name="customer.account.amgiftcard.cards"
+                   template="Amasty_GiftCardAccount::customer/cards.phtml"
+                   cacheable="false">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="amcard-account-render" xsi:type="array">
+                                <item name="component" xsi:type="string">Amasty_GiftCardAccount/js/view/account/codes</item>
+                                <item name="template" xsi:type="string">Amasty_GiftCardAccount/account/codes</item>
+                                <item name="isAccount" xsi:type="string">1</item>
+                                <item name="children" xsi:type="array">
+                                    <item name="messages" xsi:type="array">
+                                        <item name="component" xsi:type="string">Amasty_GiftCardAccount/js/view/account/codes/messages</item>
+                                        <item name="displayArea" xsi:type="string">messages</item>
+                                    </item>
+                                    <item name="extra-column-header" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="displayArea" xsi:type="string">extra-column-header</item>
+                                        <item name="children" xsi:type="array">
+                                            <!-- extra-column-header -->
+                                        </item>
+                                    </item>
+                                    <item name="extra-column" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="displayArea" xsi:type="string">extra-column</item>
+                                        <item name="children" xsi:type="array">
+                                            <!-- extra-column -->
+                                        </item>
+                                    </item>
+                                    <item name="action-button" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item><item name="template" xsi:type="string">Amasty_GiftCardAccount/account/codes/buttons</item>
+                                        <item name="displayArea" xsi:type="string">action-button</item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="remove-button" xsi:type="array">
+                                                <item name="component" xsi:type="string">uiComponent</item>
+                                                <item name="sortOrder" xsi:type="string">10</item>
+                                                <item name="template" xsi:type="string">Amasty_GiftCardAccount/account/codes/buttons/remove</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="amcard-giftcards" xsi:type="array">
+                                <item name="component" xsi:type="string">Amasty_GiftCardAccount/js/view/account/cards</item>
+                                <item name="template" xsi:type="string">Amasty_GiftCardAccount/account/cards</item>
+                                <item name="isAccount" xsi:type="string">1</item>
+                                <item name="children" xsi:type="array">
+                                    <item name="messages" xsi:type="array">
+                                        <item name="component" xsi:type="string">Amasty_GiftCardAccount/js/view/account/cards/messages</item>
+                                        <item name="displayArea" xsi:type="string">messages</item>
+                                    </item>
+                                    <item name="after-action-button" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="displayArea" xsi:type="string">after-action-button</item>
+                                        <item name="children" xsi:type="array">
+                                            <!-- after action button -->
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

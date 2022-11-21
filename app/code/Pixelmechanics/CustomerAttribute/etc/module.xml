@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Define module name and module version
+ * For creating customer attribute
+ * Created by AA 07.11.2019
+ * https://trello.com/c/ytbOL9Aw/291-prio-1-new-customer-numbers#comment-5dc2cba65c2afc39cd6708a2
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Pixelmechanics_CustomerAttribute" setup_version="1.0.0">
+    </module>
+</config>
+

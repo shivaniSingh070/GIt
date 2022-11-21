@@ -1,0 +1,37 @@
+<!--
+/*
+ * @author: Na
+ * @date: 1 Aug 2019
+ * @description: Direct order email template
+ * 
+*/
+-->
+<!--@subject {{trans "Your Catalog of Engelsrufer is here!"}} @-->
+
+
+{{template config_path="design/email/header_template"}}
+
+<table class="message-details">
+    <tr>
+        <td><strong>{{trans "Hello"}} {{var name}}</strong></td>
+    </tr>
+    <tr>
+        <td>{{trans "We have received your order from the Engelsrufer catalog."}}</td>
+    </tr> 
+    <tr><td>{{trans "You can download this as a PDF here:"}}</td></tr>
+</table>
+<table class="button" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            <table class="inner-wrapper" border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr>
+                    <td align="center" id="bg-color">
+                        <a class="mailer-btn" href="{{var pdf }}" target="_blank">{{trans "Download Catalog"}}</a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

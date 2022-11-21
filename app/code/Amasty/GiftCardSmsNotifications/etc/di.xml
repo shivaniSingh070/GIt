@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Amasty\GiftCardSmsNotifications\Api\SenderInterface" type="Amasty\GiftCardSmsNotifications\Model\SmsSender" />
+
+    <type name="Amasty\GiftCardAccount\Model\Notification\NotifiersProvider">
+        <arguments>
+            <argument name="notifiers" xsi:type="array">
+                <item name="order_account_create" xsi:type="array">
+                    <item name="2" xsi:type="object">Amasty\GiftCardSmsNotifications\Model\Notification\Notifier\GiftCardConfirmationNotifier\Proxy</item>
+                </item>
+                <item name="card_expiration_sms" xsi:type="array">
+                    <item name="0" xsi:type="object">Amasty\GiftCardSmsNotifications\Model\Notification\Notifier\GiftCardExpirationNotifier\Proxy</item>
+                </item>
+                <item name="balance_change" xsi:type="array">
+                    <item name="1" xsi:type="object">Amasty\GiftCardSmsNotifications\Model\Notification\Notifier\GiftCardBalanceChangeNotifier\Proxy</item>
+                </item>
+                <item name="admin_account_send_sms" xsi:type="array">
+                    <item name="0" xsi:type="object">Amasty\GiftCardSmsNotifications\Model\Notification\Notifier\GiftCardConfirmationNotifier\Proxy</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Amasty\GiftCard\Model\OptionSource\GiftCardOption">
+        <arguments>
+            <argument name="options" xsi:type="array">
+                <item name="mobilenumber" xsi:type="string" translate="true">Recipient Phone</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

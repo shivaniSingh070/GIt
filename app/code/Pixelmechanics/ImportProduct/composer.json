@@ -1,0 +1,22 @@
+{
+    "name": "pixelmechanics/module-ImportProduct",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "AA",
+            "email": "info@mage2gen.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Pixelmechanics\\ImportProduct\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

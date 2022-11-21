@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!--
+/*** Copyright © Ulmod. All rights reserved. **/
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\Quote\Model\QuoteRepository" type="Ulmod\OrderImportExport\Model\Quote\OverrideLoadQuote" /> 	
+</config>

@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp/etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="twitter.com" type="host">*.twitter.com</value>
+                <value id="facebook" type="host">*.facebook.com</value>
+                <value id="facebook-net" type="host">*.facebook.net</value>
+                <value id="pinterest-js" type="host">*.pinimg.com</value>
+                <value id="pinterest" type="host">*.pinterest.com</value>
+                <value id="google-analytics" type="host">*.google-analytics.com</value>
+                <value id="googletagmanager.com" type="host">googletagmanager.com</value>
+                <value id="google" type="host">*.google.com</value>
+                <value id="gstatic" type="host">*.gstatic.com</value>
+                <value id="fontawesome" type="host">*.fontawesome.com</value>
+                <value id="addthis.com" type="host">*.addthis.com</value>
+                <value id="s7.addthis.com" type="host">s7.addthis.com</value>
+                <value id="m.addthis.com" type="host">m.addthis.com</value>
+                <value id="addthis-analytics" type="host">z.moatads.com</value>
+                <value id="addthis-cdn" type="host">*.addthisedge.com</value>
+                <value id="googleapis" type="host">apis.google.com</value>
+                <value id="graph-facebook" type="host">graph.facebook.com</value>
+                <value id="widgets-pinterest" type="host">widgets.pinterest.com</value>
+                <value id="adobedtm-cdn" type="host">*.adobedtm.com</value>
+                <value id="adobe-cdn" type="host">*.adobe.com</value>
+                <value id="tiktok" type="host">*.tiktok.com</value>
+            </values>
+        </policy>
+        <policy id="style-src">
+            <values>
+                <value id="cloudflare" type="host">*.cloudflare.com</value>
+                <value id="googleapis" type="host">*.googleapis.com</value>
+                <value id="twitter.com" type="host">*.twitter.com</value>
+                <value id="gstatic" type="host">*.gstatic.com</value>
+                <value id="typekit" type="host">*.typekit.net</value>
+                <value id="fontawesome" type="host">*.fontawesome.com</value>
+                <value id="fontawesomecdn" type="host">*.bootstrapcdn.com</value>
+                <value id="trustami-css" type="host">*.trustami.com</value>
+                <value id="tiktok" type="host">*.tiktok.com</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="cloudflare" type="host">*.cloudflare.com</value>
+                <value id="googleadservices" type="host">*.googleadservices.com</value>
+                <value id="google-analytics" type="host">*.google-analytics.com</value>
+                <value id="paypal" type="host">*.paypal.com</value>
+                <value id="twitter.com" type="host">*.twitter.com</value>
+                <value id="facebook" type="host">*.facebook.com</value>
+                <value id="facebook-net" type="host">*.facebook.net</value>
+                <value id="pinterest" type="host">*.pinterest.com</value>
+                <value id="vimeocdn" type="host">*.vimeocdn.com</value>
+                <value id="data" type="host">'self' data:</value>
+                <value id="google-img-src" type="host">*.google.com</value>
+                <value id="google-img-src" type="host">*.google.co.in</value>
+                <value id="tiktok" type="host">*.tiktok.com</value>
+                <value id="adobedtm-cdn" type="host">*.adobedtm.com</value>
+                <value id="adobe-cdn" type="host">*.adobe.com</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="facebook" type="host">*.facebook.com</value>
+                 <value id="pinterest" type="host">*.pinterest.com</value>
+                <value id="cloudflare" type="host">*.cloudflare.com</value>
+                <value id="twitter.com" type="host">*.twitter.com</value>
+                <value id="paypal" type="host">*.paypal.com</value>
+                <value id="google-analytics-src" type="host">*.google-analytics.com</value>
+                <value id="doubleclick-src" type="host">*.doubleclick.net</value>
+                <value id="trustami-src" type="host">*.trustami.com</value>
+                <value id="tiktok" type="host">*.tiktok.com</value>
+                <value id="adobedtm-cdn" type="host">*.adobedtm.com</value>
+                <value id="adobe-cdn" type="host">*.adobe.com</value>
+                
+            </values>
+        </policy>
+        <policy id="font-src">
+            <values>
+                <value id="twitter.com" type="host">*.twitter.com</value>
+                <value id="gstatic" type="host">*.gstatic.com</value>
+                <value id="typekit" type="host">*.typekit.net</value>
+                <value id="googleapis" type="host">*.googleapis.com</value>
+                <value id="fontawesome" type="host">*.fontawesome.com</value>
+                <value id="fontawesomecdn" type="host">*.bootstrapcdn.com</value>
+                <value id="tiktok" type="host">*.tiktok.com</value>
+            </values>
+        </policy>
+
+        <policy id="frame-src">
+            <values>
+                <value id="twitter.com" type="host">*.twitter.com</value>
+                <value id="facebook" type="host">*.facebook.com</value>
+                <value id="google.com" type="host">*.google.com</value>
+                <value id="addthis.com" type="host">*.addthis.com</value>
+                <value id="trustami-frame-src" type="host">*.trustami.com</value>
+                <value id="tiktok" type="host">*.tiktok.com</value>
+            </values>
+        </policy>
+
+        <policy id="form-action">
+            <values>
+                <value id="twitter.com" type="host">*.twitter.com</value>
+                <value id="pinterest" type="host">*.pinterest.com</value>
+                <value id="facebook" type="host">*.facebook.com</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>

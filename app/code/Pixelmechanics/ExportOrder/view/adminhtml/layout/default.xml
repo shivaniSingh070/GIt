@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!--
+Add a CSS File to the magento Backend.
+PM AA, 22.10.2019m see https://trello.com/c/7yfEDXmg/17-api-09-order-export-magento-navision-export-von-bestellinformationen-mit-kundeninformationen-navision-teil-2#comment-5daef0cbd1b9211e6857b5d0
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+		<css src="Pixelmechanics_ExportOrder::css/admin.css"/>
+   </head>
+</page>

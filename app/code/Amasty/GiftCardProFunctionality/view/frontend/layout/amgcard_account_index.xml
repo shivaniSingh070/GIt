@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer.account.amgiftcard.cards">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="amcard-account-render" xsi:type="array">
+                                <item name="children" xsi:type="array">
+                                    <item name="extra-column-header" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="displayArea" xsi:type="string">extra-column-header</item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="usage" xsi:type="array">
+                                                <item name="component" xsi:type="string">uiComponent</item>
+                                                <item name="sortOrder" xsi:type="string">10</item>
+                                                <item name="template" xsi:type="string">Amasty_GiftCardProFunctionality/account/codes/columns/usage/header</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                    <item name="extra-column" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="displayArea" xsi:type="string">extra-column</item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="usage" xsi:type="array">
+                                                <item name="component" xsi:type="string">uiComponent</item>
+                                                <item name="sortOrder" xsi:type="string">10</item>
+                                                <item name="template" xsi:type="string">Amasty_GiftCardProFunctionality/account/codes/columns/usage/row</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+        </referenceBlock>
+    </body>
+</page>

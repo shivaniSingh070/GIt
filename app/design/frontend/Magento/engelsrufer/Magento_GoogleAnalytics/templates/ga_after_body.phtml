@@ -1,0 +1,14 @@
+<?php
+/**
+ * Add file after body start for google tag code
+ * PM AJ 18.01.2022
+ * @link: https://trello.com/c/ru0RnDCQ/246-google-tag-manager-installation
+ * 
+ */
+?>
+
+<?php $helper = $this->helper('\Pixelmechanics\Engelsrufer\Helper\Data'); ?>
+<?php $themeAbsoluteFooter = $helper->getStoreConfig('design/footer/absolute_footer'); ?>
+<?php $currentStoreCode = $helper->getStoreCode(); ?>
+
+<?php echo $themeAbsoluteFooter; ?>

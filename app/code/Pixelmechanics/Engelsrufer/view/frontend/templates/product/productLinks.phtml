@@ -1,0 +1,40 @@
+<?php
+/*
+ * Show links in product detail page
+ * Link for related category and blog
+ * Created by AA 13.05.2019
+ */
+?>
+
+<?php
+/* get object of engelsrufer catalog helper */
+$helperCatalog = $this->helper('Pixelmechanics\Engelsrufer\Helper\Catalog');
+/* get current product object */
+$_product = $helperCatalog->getCurrentProduct();
+
+ /* get object of engelsrufer Data helper to get Base URL */
+ $helperData = $this->helper('Pixelmechanics\Engelsrufer\Helper\Data'); 
+ /* getBase Url */ $baseUrl = $helperData->getBaseUrl();
+?>
+
+<div class="category-link article-link">
+   <span><?php echo __("Show more item details"); ?></span>
+</div>
+<?php
+/* get related category url saved in attribute "category_url" */
+$productRelatedCategory = $_product->getCategoryUrl();
+?>
+<?php
+// If there is related category then show link otherwise not
+/* open the category link to the new tab, added target="_blank" by N.A on 19.11.19
+ * trello: https://trello.com/c/3XCYVjnX/46-za-pop-up-fenster-bei-produkten-pop-up-windows-for-products#comment-5dd3b03d2b5f58718dcde45a
+*/
+if ($productRelatedCategory): ?>
+    <div class="category-link">
+        <a href="<?php echo $baseUrl.$productRelatedCategory; ?>" target="_blank">
+            <?php echo __("Find the matching chain here"); ?>
+        </a>
+    </div>
+<?php endif; ?>
+
+

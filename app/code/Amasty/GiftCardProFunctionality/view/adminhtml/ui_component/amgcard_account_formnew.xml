@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="information">
+        <field name="usage">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Usage</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="default" xsi:type="string">multiple</item>
+                    <item name="sortOrder" xsi:type="number">42</item>
+                    <item name="tooltip" xsi:type="array">
+                        <item name="description" xsi:type="string" translate="true">
+                            <![CDATA[Select ‘Multiple’ value for a Gift Card that can be used an indefinite number of times till the balance is over. ‘Single’ value should be used for a Gift Card that needs to be applied only once. In this case, the remaining balance will be reset.]]>
+                        </item>
+                    </item>
+                </item>
+                <item name="options" xsi:type="object">Amasty\GiftCard\Model\Config\Source\Usage</item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

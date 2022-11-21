@@ -1,0 +1,46 @@
+<?php
+/**
+ * @author: Noshad Ali
+ * @package: Pixelmechanics_CatalogOrder
+ * @date: 1Aug2019
+ * trello: https://trello.com/c/UyuL2qfu/
+ */
+?>
+<div class="container">
+    <form class="order-catalog-form" action="<?php echo $block->getBaseUrl().'catalogorder/index/save'; ?>" id="pixelmechanics-catalogorder-form" method="post" enctype='multipart/form-data'  data-mage-init='{"validation": {}}'>
+    <fieldset class="fieldset">
+        <div class="block-title">
+            <strong id="block-customer-login-heading" role="heading" aria-level="2"><?php echo __('Order catalog by email')?></strong>
+        </div>
+        <div class="field name">
+            <label class="label" for="name"><span><?php echo __('Name'); ?></span></label>
+            <div class="control">
+                <input name="name" id="name" title="Name" value="" class="input-text" type="text" data-validate="{required:true}">
+            </div>
+        </div>
+        <div class="field email">
+            <label class="label" for="email"><span><?php echo __('Email'); ?></span></label>
+            <div class="control">
+                <input name="email" id="email" title="email" value="" class="input-text" type="text" data-validate="{required:true, 'validate-email':true}">
+            </div>
+        </div>
+        <div class="field tc-check required">
+            <div class="control">
+                <input type="checkbox" id="tc-check" name="tc-check" data-validate="{required:true}" class="input-checkbox checkbox required" value="1">
+                <label for="tc-check" class="label tc_check">
+                    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('terms-and-condition')->toHtml(); ?>
+                </label>
+            </div>
+           <div class="required-field">*<?php echo __('Required Fields');?></div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" title="Submit" class="action submit primary">
+                <span><?php echo __('Order now for free')?></span>
+            </button>
+        </div>
+        <div class="secondary"><a class="action back" href="<?php echo $block->getBaseUrl(); ?>"><span><?php echo __('back'); ?></span></a></div>
+    </div>
+</form>
+</div>

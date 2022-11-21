@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * copy value from sales_order to sales_order_grid table when new order is created
+ * Created by AA 18.11.2019
+ * https://trello.com/c/1FNqLT6A/47-export-order-only-when-payment-is-done-order-status-processing#comment-5dd244680f55406f9c884c70
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="erp_id" xsi:type="string">sales_order.erp_id</item>
+            </argument>
+            <argument name="columns" xsi:type="array">
+                <item name="debitor_no" xsi:type="string">sales_order.debitor_no</item>
+            </argument>
+            <!--
+            <argument name="columns" xsi:type="array">
+                <item name="navision_data" xsi:type="string">sales_order.navision_data</item>
+            </argument>
+            -->
+        </arguments>
+    </virtualType>
+</config>

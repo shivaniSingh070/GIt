@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+    observer to verify the captcha value
+    called CheckNewsletterFormObserver.php after newsletter form submitted
+    by AA on 8.10.2020
+    https://trello.com/c/lXc1y0rq/166-captcha-f%C3%BCr-registrierung-und-newsletter-registrierung
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch_newsletter_subscriber_new">
+        <observer name="captcha_newsletter_form" instance="Hm\Newsletters\Observer\CheckNewsletterFormObserver" />
+    </event>
+</config>

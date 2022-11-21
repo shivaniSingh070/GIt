@@ -1,0 +1,43 @@
+<!--
+/**
+ * added number inplace of checkmark, added checkout form 
+ * updated by AA on 12.06.2019
+-->
+
+<div class="order-summary hoverable">
+	<div class="step-title" data-role="title">
+            <i class="fa fa-truck"></i>
+            <!-- ko if: window.checkoutConfig.oscConfig.isUsedMaterialDesign -->
+                <span class="fa-stack fa-2x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                   <!-- ko if: !!Number(window.checkoutConfig.quoteData.is_virtual) -->
+                    <strong class="fa-stack-1x fa-stack-text fa-inverse">3. </strong>
+                <!-- /ko -->
+                <!-- ko ifnot: !!Number(window.checkoutConfig.quoteData.is_virtual) -->
+                    <strong class="fa-stack-1x fa-stack-text fa-inverse">4. </strong>
+                <!-- /ko -->
+                </span>
+            <!-- /ko -->
+<!--            <span data-bind="i18n: 'Shipping Methods'"></span>-->
+            <span data-bind="i18n: 'Order summary'"></span>
+	</div>
+        <div class="checkout-agreements-block mp-12">
+            <form id="co-place-order-agreement" class="form" novalidate="novalidate">
+                    <!-- ko foreach: getRegion('checkout-agreements') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!--/ko-->
+            </form>
+	</div>
+	<div class="opc-block-summary step-content" data-bind="blockLoader: isLoading">
+		<!-- ko foreach: elems() -->
+			<!-- ko template: getTemplate() --><!-- /ko -->
+		<!-- /ko -->
+
+		<p class="col-wide forgot-item" data-bind="style:{textAlign: 'right'}, visible: false">
+			<span>
+				<!-- ko i18n: 'Forgot an item?'--><!-- /ko -->
+				<a data-bind="attr: {href: window.checkout.shoppingCartUrl}, i18n: 'Edit your cart'"></a>
+			</span>
+		</p>
+	</div>
+</div>

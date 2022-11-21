@@ -1,0 +1,24 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Mostviewed
+ */
+?>
+<?php
+/** @var \Amasty\Mostviewed\Block\Analytics\Viewed $block */
+?>
+<script>
+    require([
+        'jquery',
+        'Amasty_Mostviewed/js/mostviewed_analytics'
+    ], function ($, analytics) {
+        analytics(
+            '<?= $block->escapeUrl($block->getViewedUrl()) ?>',
+            <?= /* @noEscape */ $block->getBlockId() ?>,
+            '<?= $block->escapeHtml($block->getBlockSelector()) ?>',
+            <?= /* @noEscape */ $block->getProductsFilter() ?>,
+            '<?= $block->escapeUrl($block->getClickUrl()) ?>'
+        );
+    });
+</script>

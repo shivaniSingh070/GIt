@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <amgiftcard>
+            <recipient_notification>
+                <template>A {{var gcard_email.getBalance()}} gift card has been purchased for you at {{var store.getName()}}. Please use the following gift card code at {{var store.getName()}}: {{var gcard_email.getGiftCode()}}.</template>
+            </recipient_notification>
+            <expiry_notification>
+                <template>Your Gift Card {{var gcard_email.getGiftCode()}} expires in {{var gcard_email.getExpiryDays()}} day(s). Please be aware that you will not be able to use the certificate at {{var store.getName()}} after it expires.</template>
+                <notify_expires_date_days>0</notify_expires_date_days>
+            </expiry_notification>
+            <change_balance_notification>
+                <template>Your Gift Card {{var gcard_email.getGiftCode()}} balance has been updated. Your current balance is: {{var gcard_email.getBalance()}}.</template>
+            </change_balance_notification>
+        </amgiftcard>
+    </default>
+</config>

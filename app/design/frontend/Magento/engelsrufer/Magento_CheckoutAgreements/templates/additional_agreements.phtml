@@ -1,0 +1,57 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block \Magento\CheckoutAgreements\Block\Agreements
+ */
+/*
+ * Get correct value of Wysiwyg editor
+ * Updated by AA on 23.07.2019
+ */
+if (!$block->getAgreements()) {
+    return;
+}
+/* called helper  to get correct Wysiwyg editor value updated by AA on 23.07.2019 */
+$helper = $this->helper('Pixelmechanics\Engelsrufer\Helper\Catalog');
+/** @var \Magento\CheckoutAgreements\Model\ResourceModel\Agreement\Collection $agreementsCollection */
+$agreementsCollection = $block->getAgreements();
+$agreementMappedArray = [];
+/** @var \Magento\CheckoutAgreements\Model\Agreement $agreement */
+foreach ($agreementsCollection as $agreement) {
+    if ($agreement->getIsActive()) {
+        /* called function to get correct store url, updated by AA on 23.07.2019 */
+        $textValue =  $helper->getWysiwygAttributeValue($agreement->getCheckboxText()); 
+        $agreementMappedArray[] = [
+            'mode' => $agreement->getMode(),
+            'agreementId' => $agreement->getAgreementId(),
+            'checkboxText' => $textValue,
+            'content' => $agreement->getContent()
+        ];
+    }
+}
+$agreementJson = json_encode($agreementMappedArray);
+?>
+
+<div data-bind="scope: 'checkout-agreements-component-scope'" class="checkout-agreements-block">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "checkout-agreements-component-scope": {
+                        "component": "Magento_CheckoutAgreements/js/view/checkout-agreements",
+                        "agreements": <?= /* @noEscape */ $agreementJson ?>,
+                        "isVisible": true
+                    }
+                }
+            }
+        }
+    }
+</script>

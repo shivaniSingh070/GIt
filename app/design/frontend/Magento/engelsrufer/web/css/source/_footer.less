@@ -1,0 +1,136 @@
+
+/* Footer CSS Start Here */
+.footer_wrapper{
+	background: @gray-light-bg02;
+}
+.footer.content{
+	border: none;
+	padding: 60px 0;
+	.footer-section{
+		.flex-display();
+		.flex-wrap(wrap);
+		.justify-content(space-between);
+		.foot-menu{	
+			width: 20%;
+			>h4{
+				font-size: @parimary-font;
+				color: @secondary-text-color;
+				margin: 0 0 30px;
+				text-transform: uppercase;
+				font-weight: @fontB;
+			}
+			p{
+				color: @text-color03;
+				a{
+					color: @btn-text-link-color;
+					&:hover{
+						text-decoration:underline;							
+					}
+				}
+			}
+			ul{
+				li{
+					margin: @marginNone;
+					padding: 7px 0;
+					&:first-child{
+						padding-top: 0;
+					}
+					&:last-child{
+						padding-bottom: 0;
+					}
+					a{
+						color: @text-color03;
+						&:hover{
+							color: @btn-text-link-color;							
+						}
+					}
+				}
+			}
+			.links{
+				margin: @marginNone;
+				li{
+					margin: @marginNone;
+					padding: 7px 0;		
+					a{
+						font-size: @parimary-font;
+						color: @secondary-text-color;
+						display: inline-block;
+						padding: @paddingNone;
+							&:hover{
+								color: @btn-text-link-color;
+							}
+					}
+				}
+			}
+		}
+		.service,
+		.payment{
+			width: 25%;
+		}
+		.about-us,
+		.customer-services,
+		.Social-media{
+			width: 16.666667%;
+		}
+		.Social-media{
+			ul{
+				.flex-display();
+				.flex-wrap(wrap);
+				li{
+					padding: 0 15px 0 0;
+					.fab{
+						width: 40px;
+					    height: 40px;
+					    line-height: 40px;
+					    background: #3B5998;
+					    text-align: @text-center;
+					    color: @white-btn;
+					    font-size: 0;
+					    &:before{
+					    	font-size: @parimary-font;
+					    }
+					}
+					.fab.fa-pinterest-p{
+					    background: #E60023;						
+					}
+					.fab.fa-instagram{
+					    background: #E4405F;						
+					}
+				}
+			}
+		}
+		.payment{
+			ul{
+				.flex-display();
+				.flex-wrap(wrap);
+				.align-items(center);
+				li{
+					padding: 0 23px 25px 0;
+					&:nth-last-of-type(-n+2){
+						padding-bottom: 0;
+					}
+					img{
+						display: @displayB;
+					}
+				}
+			}
+		}
+	}
+}
+.copyright{
+	background: @white-btn;
+	color: @text-color03;
+	text-align: @text-center;
+	font-size: @parimary-font;
+	margin: @marginNone;		
+	padding: 60px 0;
+	display: @displayB;
+	.engels-color{
+		color: @btn-text-link-color;
+	}
+}
+#dhl-footer-line {
+    display: block;
+    width: 100%;
+}
+/* Footer CSS End Here */

@@ -1,0 +1,13 @@
+<div data-amcardacc-js="template" data-bind="scope: 'amcard-giftcards'">
+    <div class="title" data-role="title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">
+                <strong id="block-discount-heading" role="heading" aria-level="2"><?=__('Apply Gift Card Code')?></strong>
+        </div>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "[data-amcardacc-js='template']": {
+            "Magento_Ui/js/core/app": <?= $block->getJsLayout() ?>
+        }
+    }
+</script>

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<!--/**
+* @author - N.A
+* @description - Override the DBstorage class to remove the duplicate URL Rewrites on category save.
+* @date - 08.05.2020
+* @link - https://trello.com/c/QQPkvb5b/40-2020-02-12-mehrsprachigkeit-l%C3%A4nderversionen-new-country-versions#comment-5eb3a9407167df10e6959d3b
+*/-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\UrlRewrite\Model\Storage\DbStorage" type="Pixelmechanics\UrlRewrite\Rewrite\Magento\UrlRewrite\Model\Storage\DbStorage"/>
+<!--/**
+* override the plugin Storge to solve the issue save category 
+* PM AJ 17.01.2022
+* @link https://trello.com/c/m7Dg1Zor/307-problem-beim-umbenennen-und-speichern-von-kategorien#comment-6245860264a56b405394cba1
+*/-->
+	<type name="Magento\UrlRewrite\Model\StorageInterface">
+        <plugin name="storage_plugin" type="Pixelmechanics\UrlRewrite\Plugin\Storage"/>
+    </type>
+</config>

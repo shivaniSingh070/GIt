@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author: Noshad Ali
+ * @package: Pixelmechanics_CatalogOrder
+ * @date: 1Aug2019
+ * trello: https://trello.com/c/UyuL2qfu/
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="pixelmechanics_catalogorder::core" title="CatalogOrder" module="Pixelmechanics_CatalogOrder" sortOrder="90" resource="Pixelmechanics_CatalogOrder::sample"/>
+        <add id="pixelmechanics_catalogorder::corder" title="Items" module="Pixelmechanics_CatalogOrder" sortOrder="10" parent="pixelmechanics_catalogorder::core" action="pixelmechanics_catalogorder/items/" resource="Pixelmechanics_CatalogOrder::items"/>
+    </menu>
+</config>

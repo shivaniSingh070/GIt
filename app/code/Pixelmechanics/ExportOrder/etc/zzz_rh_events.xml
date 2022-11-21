@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--/**
+* @author : AA
+* @description : Trigger an observer at event sales_order_place_after and sales_order_save_after
+* @date : 24.06.2019
+* @Trello: https://trello.com/c/7yfEDXmg
+*/-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+	
+    <event name="checkout_onepage_controller_success_action">
+        <observer name="trigger_order_export_after_order_success" instance="Pixelmechanics\ExportOrder\Observer\TriggerOrderExport" />
+    </event>
+    
+    <!--
+     called event after order saved
+     Updated by AA on 12.11.2019
+     https://trello.com/c/1FNqLT6A/47-export-order-only-when-payment-is-done-order-status-processing#comment-5dca84462a7f161585cbfb79
+	-->
+    
+    <event name="sales_order_save_after">
+        <observer name="trigger_order_export_after_order_status_change" instance="Pixelmechanics\ExportOrder\Observer\TriggerOrderExportOnOrderChange" />
+    </event>
+</config>

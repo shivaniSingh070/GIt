@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * contact page xml, set elements as per design
+ * Updated by AA 14.05.2019
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Contact</title>
+        <!--
+        Updated by AA on 20.11.2019
+        Added NOINDEX,FOLLOW for contact Us Page
+        https://trello.com/c/pdVnbGKK/287-prio-1-url-rewrites-clean-them-up#comment-5dd4028d4a58956a75f52e48
+       --> 
+        <meta name="robots" content="NOINDEX,FOLLOW"/>
+    </head>
+    <!-- moved page title in banner container --> 
+    <move element="page.main.title" destination="contact.banner" after="-"/>
+    <!-- Added page banner above breadcrumbs -->
+    <referenceContainer name="page.top">
+            <container name="contact.banner" label="Contact banner Container" htmlTag="div" htmlClass="contactBanner banner-container" before="breadcrumbs">
+                    <block class="Magento\Cms\Block\Block" name="login-banner">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">contact-banner</argument>
+                        </arguments>
+                    </block>
+            </container>
+        </referenceContainer>
+    <referenceContainer name="content">
+         <!-- set the position of blocks in  page, Added left static block  -->
+        <container name="contact.container" label="Contact Container" htmlTag="div" htmlClass="contact-container container">
+            <container name="contact.left.container" label="Contact Left Container" htmlTag="div" htmlClass="contact-left-container"  before="-">
+                <block class="Magento\Cms\Block\Block" name="login-data">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">contact-us-static-block</argument>
+                    </arguments>
+                </block>
+            </container>
+        
+            <container name="contact.right.container" label="Contact Right Container" htmlTag="div" htmlClass="contact-right-container">
+                <block class="Magento\Contact\Block\ContactForm" name="contactForm" template="Magento_Contact::form.phtml">
+                    <container name="form.additional.info" label="Form Additional Info"/>
+                </block>
+            </container>
+        </container> 
+    </referenceContainer>
+     <!--  Added breadcrumbs in Contact page -->
+     <!-- Adding the translation to the breadcrumb by N.A on 30.10.19
+      * trello: https://trello.com/c/pdVnbGKK/287-url-rewrites-clean-them-up#comment-5db86014ce66222b7973faac-->
+    <referenceBlock name="breadcrumbs">
+       <action method="addCrumb">
+           <argument name="crumbName" xsi:type="string" translate="true">Home</argument>
+           <argument name="crumbInfo" xsi:type="array">
+               <item name="title" xsi:type="string" translate="true">Home</item>
+               <item name="label" xsi:type="string" translate="true">Home</item>
+               <item name="link" xsi:type="string">{{baseUrl}}</item>
+           </argument>
+       </action>
+       <action method="addCrumb">
+           <argument name="crumbName" xsi:type="string" translate="true">Contact</argument>
+           <argument name="crumbInfo" xsi:type="array">
+               <item name="title" xsi:type="string" translate="true">Contact</item>
+               <item name="label" xsi:type="string" translate="true">Contact</item>
+           </argument>
+       </action>
+   </referenceBlock>
+</page>

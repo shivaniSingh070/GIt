@@ -1,0 +1,119 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ * added by NA to add the first name and lastname on the newsletter page
+ * updated by NA remove the "data-validate="{required:true}"" from LName and FName text box 
+ * updated by NA added the "data-validate="{required:true}"" from LName and FName text box 
+ * trello:https://trello.com/c/jpShH5U4/136-08einrichtung-newsletter-tool-in-den-shop-setup-newsletter-tool 
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Newsletter\Block\Subscribe $block */
+
+?>
+<div class="block newsletter newsletter-wrapper">
+    <div class="login-container container">
+        <div class="login-left-container">
+       <?php
+       echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('newsletter-left-part')->toHtml();
+       ?>
+        </div><!-- Newsletter Left Col -->
+        <div class="login-right-container">
+            <div class="block block-customer-login">
+                <div class="block-title"><span><?php /* @escapeNotVerified */ echo __('Sign up for the newsletter') ?></span></div>
+                <div class="block-content">
+                    <form class="form form-login subscribe" novalidate
+                          action="<?php echo $block->escapeUrl($block->getFormActionUrl()) ?>"
+                          method="post"
+                          data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+                          id="newsletter-validate-detail">
+                        <div class="field note">
+                            <?php echo $block->escapeHtml(__('Subscribe to our newsletter and receive information on new articles and offers to stay up to date')); ?>
+                        </div>
+                        <?php /* 
+                               Added Group in newsletter form
+                               by HA on 03.05.2022
+                               https://trello.com/c/E2mdqBZL/244-newsletter-formular-%C3%A4nderung
+                            */
+                            $helper = $this->helper("Hm\Newsletters\Helper\Data");?>
+                            
+                            <div class="mc-field-group">
+                            <strong class="label"><?php echo $helper->getGeneralConfig("display_text_label")  ?></strong>
+                            <ul>
+                            <?php 
+            
+                            $string = $helper->getGeneralConfig("display_text");
+                            $groupArray = explode(",", $string);
+                            $i=0;
+                            // if($storeName =="German"){
+                            foreach($groupArray as $group){
+                                if ($group != ""){?>
+                                
+                               <li><input class="subscriber-group" type="checkbox" value = <?php echo $group ?> name=<? echo "group-typ".$i ?> id = <?php "group-typ".$i++ ?>><label for = <?php "groupDamen" ?>> <?php echo $group ?> </lable> </li>
+                           
+                            <?php //}
+                        }}?>
+                            </ul>
+                        </div>
+                        <div class="field firstname">
+                            <label class="label" for="firstname"><span><?php echo $block->escapeHtml(__('Vorname')) ?></span></label>
+                            <div class="control">
+                                <input name="firstname" type="text" id="firstname" placeholder="<?php echo $block->escapeHtml(__('Vorname')) ?>"/>
+                            </div>
+                        </div>
+                        <div class="field lastname">
+                            <label class="label" for="lastname"><span><?php echo $block->escapeHtml(__('Nachname')) ?></span></label>
+                            <div class="control">
+                                <input name="lastname" type="text" id="lastname" placeholder="<?php echo $block->escapeHtml(__('Nachname')) ?>" />
+                            </div>
+                        </div>
+                        <?php /* 
+                               Added Input for date of birth in newsletter form
+                               by Ha on 14.06.2022
+                               https://trello.com/c/E2mdqBZL/244-newsletter-formular-%C3%A4nderung
+                              */ ?>
+                        <div class="field dateOfBirth">
+                            <label class="label" for="dateOfBirth"><span><?php echo $block->escapeHtml(__('Geburtsdatum')) ?></span></label>
+                            <div class="control">
+                            <input type="text" name="datepicker" id="datepicker" value="" class="datepicker">
+                            </div>
+                        </div>
+                        <div class="field newsletter">
+                            <label class="label" for="newsletter"><span><?php echo $block->escapeHtml(__('Mailadresse:')) ?></span></label>
+                            <div class="control">
+                                <input name="email" type="email" id="newsletter" placeholder="<?php echo $block->escapeHtml(__('Mailadresse')) ?>" data-validate="{required:true, 'validate-email':true}"/>
+                            </div>
+                        </div>
+                        <?php /* 
+                               Added captcha in newsletter form
+                               by AA on 8.10.2020
+                               https://trello.com/c/lXc1y0rq/166-captcha-f%C3%BCr-registrierung-und-newsletter-registrierung
+                              */ ?>
+                        <?php echo $block->getChildHtml('form.additional.info'); ?>
+                        <?php echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Pixelmechanics_Engelsrufer::termsConditionCheck.phtml")->toHtml();?>
+                        <div class="actions-toolbar">
+                            <div class="primary">
+                                <button class="action primary subscribe" title="<?php echo $block->escapeHtml(__('Absenden')) ?>" type="submit">
+                                    <span><?php echo $block->escapeHtml(__('Absenden')) ?></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div><!-- Newsletter Right Col -->
+    </div>
+</div>
+<script>
+require(["jquery", "mage/calendar"], function($){
+        $("#datepicker").datepicker({
+          showMonthAfterYear: false,
+          dateFormat:'mm/dd/yy',
+          changeMonth: true,
+          changeYear: true,
+          yearRange: '1940:',
+        })
+});
+</script>

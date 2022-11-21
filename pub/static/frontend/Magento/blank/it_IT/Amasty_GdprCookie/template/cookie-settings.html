@@ -1,0 +1,44 @@
+<div css="modalClass">
+    <p class="amgdprcookie-description" if="$data.description" data-bind="text: $data.description"></p>
+    <div class="amgdprcookie-main-wrapper">
+        <form id="amgdprcookie-form" class="amgdprcookie-settings-form" data-amcookie-js="form-cookie">
+            <div class="amgdprcookie-form-container">
+                <!-- ko foreach: items -->
+                <div class="amgdprcookie-cookie-container">
+                    <div class="amgdprcookie-header">
+                        <h3 class="amgdprcookie-caption" data-bind="text: name"></h3>
+                        <div class="amgdprcookie-toggle-cookie">
+                            <input class="amgdprcookie-input"
+                                   type="checkbox"
+                                   data-amcookie-js="field"
+                                   name="groups[]"
+                                   data-bind="
+                                    value: groupId,
+                                    attr: {id: 'switchBox-' + groupId, disabled: isEssential},
+                                    checked: checked">
+                            <label class="amgdprcookie-label" data-bind="attr: {for: 'switchBox-' + groupId}"></label>
+                        </div>
+                    </div>
+                    <p class="amgdprcookie-text" data-bind="text: description"></p>
+                    <a class="amgdprcookie-options"
+                       href="#"
+                       data-bind="
+                            i18n: 'More Information',
+                            attr: {title: $t('More Information'), 'aria-label': $t('More Information')},
+                            click: $parents[1].getInformationModal.bind($parents[1], $data)">
+                    </a>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="amgdprcookie-buttons-block -settings">
+                <button class="amgdprcookie-done"
+                        data-role="action"
+                        data-bind="
+                            text: $t('Done'),
+                            attr: {title: $t('Done')},
+                            click: $parent.saveCookie.bind($parent, $element, $data)">
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

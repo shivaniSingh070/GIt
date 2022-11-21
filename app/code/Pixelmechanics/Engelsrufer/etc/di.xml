@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Override details
+ * Created by AA 06.05.2019
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<!-- override store redirect to resolve the error message after redirect from one store to another(created by anoop)-->
+    <preference for="Magento\Store\Controller\Store\Redirect" type="Pixelmechanics\Engelsrufer\Controller\Store\Redirect" />
+	<preference for="Magento\Store\Controller\Store\SwitchAction" type="Pixelmechanics\Engelsrufer\Controller\Store\SwitchAction" />
+    <!-- end of override by anoop -->
+    <preference for="Mageplaza\Blog\Helper\Data" type="Pixelmechanics\Engelsrufer\Helper\Blog" />
+<!-- override Mageplaza\Blog\Block\Adminhtml\Post\Edit\Tab\Post -->
+    <type name="Mageplaza\Blog\Block\Adminhtml\Post\Edit\Tab\Post">
+        <plugin name="sr_stackexchange_user_form" type="Pixelmechanics\Engelsrufer\Block\Adminhtml\Post\Edit\Tab\Post" sortOrder="1"/>
+    </type>
+    <!-- Made a plugin to set the limiter for the wishlist page by NA 29.05.19--> 
+    <type name="Magento\Theme\Block\Html\Pager">
+    	<plugin name="wishlist_limiter" type="Pixelmechanics\Engelsrufer\Plugin\Html\Pager" sortOrder="1" />
+    </type>
+    <!-- Add Preference to get the subtotal with VAT BY NA 7.08.19-->
+    <preference for="Mageplaza\AbandonedCart\Block\Email\Template" type="Pixelmechanics\Engelsrufer\Block\Email\Template"/>
+    <!-- Add Preference to get the Stripe Credit card name and XXX in the values NA 5.11.19-->
+    <!-- remove the Preference by NA 25.03.2020 becuase we are using new stripe module now-->
+    <!-- <preference for="Stripeofficial\CreditCards\Block\Info" type="Pixelmechanics\Engelsrufer\Block\Stripe\Info" /> -->
+    <!-- Stop the email newsltter from the magento by NA 11.11.19-->
+    <type name="Magento\Newsletter\Model\Subscriber">
+        <plugin name="Pixelmechanics_Newsletter_Subscriber" type="Pixelmechanics\Engelsrufer\Newsletter\Model\Subscriber" sortOrder="1" disabled="false"/>
+    </type>
+    <!-- override the core function getRobots of file Magento\Framework\View\Page\Config, updated by AA on 25.11.2019
+      https://trello.com/c/W6c5ckeI/295-bug-seobility-and-deeptrawl-registrate-too-many-sites-on-engelsrufer#comment-5ddb7cc24ccc0577d066ff7f-->
+    <preference for="Magento\Framework\View\Page\Config" type="Pixelmechanics\Engelsrufer\View\Page\Config" />
+    <!-- Override the core Json to fix the UTF-8 issue on live by N.A on 17.06.2020
+        @link:https://trello.com/c/EY7iwcFy/135-live-shop-down-utf-8-format-missing -->
+    <preference for="Magento\Framework\Serialize\Serializer\Json" type="Pixelmechanics\Engelsrufer\Serialize\Serializer\Json" />
+    <!-- FIXED SAVE CATEGORY ISSUE ON PRODUCTION -->
+    <preference for="Magento\Catalog\Observer\InvalidateCacheOnCategoryDesignChange" type="Pixelmechanics\Engelsrufer\Rewrite\Magento\Catalog\Observer\InvalidateCacheOnCategoryDesignChange"/>
+    
+    <!-- Fixed Aread Code issue check in Amasty Modules -->
+    <preference for="Magento\Framework\App\State" type="Pixelmechanics\Engelsrufer\App\State"/>
+
+</config>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Amasty\GiftCardAccount\Model\GiftCardAccount\CartAction\Response\Builder">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="add_to_cart" xsi:type="array">
+                    <item name="singleUsageMsg" xsi:type="object">Amasty\GiftCardProFunctionality\Model\GiftCardAccount\CartAction\Response\Builder\AddToCart\UsageMessage</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="amGcProAppendGiftCardDataToOrder" type="Amasty\GiftCardProFunctionality\Plugin\Model\Quote\Item\ToOrderItemPlugin"/>
+    </type>
+
+    <type name="Magento\SalesRule\Model\Validator\Pool">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="discount" xsi:type="array">
+                    <item name="am_giftcard_validator" xsi:type="object">Amasty\GiftCardProFunctionality\Model\GiftCard\Validator\Discount</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

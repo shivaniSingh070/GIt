@@ -1,0 +1,61 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/**
+ * @var \Magento\Paypal\Block\Express\Shortcut $block
+ */
+?>
+<?php 
+  /* get the store code to display the paypal logo store wise by N.A on 19.10.19 
+  * trello https://trello.com/c/lzbBxhn7/123-044funktionen-produktdetailseiten-product-detail-page-cross-upselling#comment-5da9c674ef9c957ac0940929
+  */
+  $helper =  $this->helper('Pixelmechanics\Engelsrufer\Helper\Data');
+  $mediaUrl = $helper->getPubMediaUrl();
+  $storeCode = $helper->getStoreCode();
+  /*set the paypal img based on store by N.A on 19.10.19*/
+  if ($storeCode == 'en'){
+      $paypalImg = $mediaUrl."images/paypal-en.png";
+  }else{
+      $paypalImg = $mediaUrl."images/paypal.png";
+  }
+?>
+<?php
+$labelPosition = '';
+if ($block->isOrPositionBefore()) {
+    $labelPosition = ' before';
+} elseif ($block->isOrPositionAfter()) {
+    $labelPosition = ' after';
+}
+$shortcutHtmlId = $block->escapeHtml($block->getShortcutHtmlId());
+$isInCatalogProduct = false;
+if ($block->getIsInCatalogProduct()) {
+    $isInCatalogProduct = $block->getIsInCatalogProduct();
+}
+?>
+<div data-label="<?= $block->escapeHtml(__('or')) ?>"
+     class="paypal checkout <?= /* @noEscape */ $labelPosition ?> paypal-logo
+        <?= /* @noEscape */ $shortcutHtmlId ?>"
+     data-mage-init='{
+     "paypalCheckout": {
+                "isCatalogProduct": "<?= /* @noEscape */ !empty($isInCatalogProduct) ? (bool)$isInCatalogProduct : false ?>",
+                "shortcutContainerClass": "<?= /* @noEscape */ "." . $shortcutHtmlId ?>"
+            }
+     }'
+    >
+   <?php /* Added width and height to image  updated by AA on 14.06.2019 */?>
+    <input type="image" data-action="checkout-form-submit"
+           data-checkout-url="<?= $block->escapeUrl($block->getCheckoutUrl()) ?>"
+           src="<?php echo $paypalImg; ?>"
+           alt="<?= $block->escapeHtml(__('Checkout with PayPal')) ?>"
+           title="<?= $block->escapeHtml(__('Checkout with PayPal')) ?>" width="287px" height="55px" />
+    <?php if ($block->getAdditionalLinkImage()): ?>
+        <?php $linkImage = $block->getAdditionalLinkImage(); ?>
+        <a href="<?= $block->escapeUrl($linkImage['href']) ?>">
+            <img src="<?= $block->escapeHtml($linkImage['src']) ?>" />
+        </a>
+    <?php endif; ?>
+</div>

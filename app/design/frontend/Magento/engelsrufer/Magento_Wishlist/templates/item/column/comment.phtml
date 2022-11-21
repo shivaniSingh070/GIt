@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/* @var \Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Comment $block  */
+
+/* @var \Magento\Wishlist\Model\Item $item */
+$helper = $this->helper('Pixelmechanics\Engelsrufer\Helper\Catalog');
+$item = $block->getItem();
+$product = $item->getProduct();
+?>
+<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('tax_info_product')->toHtml(); ?>
+<!-- passing the product's id to get the total number of variant, Added by NA https://trello.com/c/lBLT9AAh/213-za-to-be-conzeptualized-variants-on-pld-->
+<?php  $numberOfVariant = $helper->getConfigAttributeValue($product->getEntityId()); ?>
+<!-- div added to print the number of count of variants of configurable products by NA-->
+    <div class="number-variant">
+        <?php if( $numberOfVariant > 1 ): ?>
+            <?= $numberOfVariant  ." ".__('Variants'); ?>
+        <?php endif; ?>
+    </div>
+<div class="field comment-box">
+    <label class="label" for="product-item-comment-<?= $block->escapeHtmlAttr($item->getWishlistItemId()) ?>">
+        <span><?= $block->escapeHtml(__('Comment')) ?></span>
+    </label>
+    <div class="control">
+        <textarea id="product-item-comment-<?= $block->escapeHtmlAttr($item->getWishlistItemId()) ?>" placeholder="<?= /* @noEscape */ $this->helper('Magento\Wishlist\Helper\Data')->defaultCommentString() ?>" name="description[<?= $block->escapeHtmlAttr($item->getWishlistItemId()) ?>]" title="<?= $block->escapeHtmlAttr(__('Comment')) ?>" class="product-item-comment"><?= ($block->escapeHtml($item->getDescription())) ?></textarea>
+    </div>
+</div>

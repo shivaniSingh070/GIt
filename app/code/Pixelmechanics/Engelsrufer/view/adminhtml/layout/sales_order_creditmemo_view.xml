@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Override this template as we are facing issue on viewing Invoice, It was displaying html code due to Tax rates details was missing
+ * Updated by PM AJ 0n 01.04.2022
+ * @link: https://trello.com/c/NMHf5Em4
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="tax">
+            <action method="setTemplate">
+                <argument name="template" translate="true" xsi:type="string">Pixelmechanics_Engelsrufer::order/totals/tax.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

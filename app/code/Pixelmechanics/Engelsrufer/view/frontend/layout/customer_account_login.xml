@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * login page xml, set elements as per design
+ * Updated by AA 26.04.2019
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>       
+       <!-- moved page title in banner container --> 
+        <move element="page.main.title" destination="customer.account.banner" after="-"/>
+       <!-- Added page banner above breadcrumbs -->
+        <referenceContainer name="page.top">
+            <container name="customer.account.banner" label="Customer account banner Container" htmlTag="div" htmlClass="accountBanner banner-container" before="breadcrumbs">
+                    <block class="Magento\Cms\Block\Block" name="login-banner">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">account-banner</argument>
+                        </arguments>
+                    </block>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <!-- set the position of blocks in login  page, Added left banner static block and terms and condition checkbox  -->
+            <container name="customer.login.container" label="Customer Login Container" htmlTag="div" htmlClass="login-container container">
+                <container name="customer.login.left" label="Customer Login left Container" htmlTag="div" htmlClass="login-left-container" before="-">
+                    <block class="Magento\Cms\Block\Block" name="login-data">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">login-left-block</argument>
+                        </arguments>
+                    </block>
+                </container>
+                <container name="customer.login.right" label="Customer Login right Container" htmlTag="div" htmlClass="login-right-container">
+                    <block class="Magento\Customer\Block\Form\Login" name="customer_form_login" template="Magento_Customer::form/login.phtml" />
+                    <!-- removed the checkbox and term& condition checkbox from the login page by N.A on 15.10.19
+                    * trello: https://trello.com/c/G77MO9Nw/118-design-043anpassen-der-login-registrierungsseite-login-registration#comment-5da488b136407e61f84d7786-->
+                        <!-- <container name="form.additional.info" as="form_additional_info"/> -->
+                        <!-- <block class="Magento\Framework\View\Element\Template" name="policy-check" template="Magento_Customer::policyCheck.phtml"/> -->
+                    <!-- </block> -->
+                    <block class="Magento\Customer\Block\Form\Login\Info" name="customer.new" template="Magento_Customer::newcustomer.phtml"/>
+                </container>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="form.additional.info">
+            <block class="Magento\Framework\View\Element\Template" name="termsConditionCheck" template="Pixelmechanics_Engelsrufer::termsConditionCheck.phtml"/>
+        </referenceContainer>
+    <!--  Added breadcrumbs in login page -->
+         <referenceBlock name="breadcrumbs">
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Home</item>
+                    <item name="label" xsi:type="string">Home</item>
+                    <item name="link" xsi:type="string">{{baseUrl}}</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Account</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Account</item>
+                    <item name="label" xsi:type="string">Account</item>
+                </argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

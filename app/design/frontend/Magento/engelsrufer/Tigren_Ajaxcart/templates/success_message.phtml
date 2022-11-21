@@ -1,0 +1,60 @@
+<?php
+/**
+ * @copyright Copyright (c) 2016 www.tigren.com
+ */
+/*
+ * Design success popup after add to cart
+ * Updated by AA on 09.08.2019
+ */
+?>
+<?php $_product = $block->getProduct();
+// called helper Pixelmechanics\Engelsrufer\Helper\Catalog to get price of last added item
+$helper = $this->helper('Pixelmechanics\Engelsrufer\Helper\Catalog'); ?>
+<div class="mb-login-popup-title">
+    <strong><?php echo __('Success'); ?></strong>
+</div>
+<div class="mb-ajaxsuite-popup-border ajaxcart-success-box ">
+    <div class="success-content modal-content-col">
+        <?php echo $block->getChildHtml('ajaxcart.message'); ?>
+        <div class="product-image">
+            <?php echo $block->getChildHtml('product_image'); ?>
+        </div>
+        <div class="product-info">
+             <div class="product-name"><?php echo $_product->getName() ?></div>
+             <?php if($_product->getTypeId() !="grouped"): ?>
+                <div class="price">
+                    <span><?php echo __("Price");?>:</span>
+                    <?php echo $helper->getItemPrice();
+                     // unset price session
+                    $helper->unSetItemPrice(); ?>
+                </div>
+                <?php echo $block->getChildHtml('tax-info'); ?>
+             <?php endif; ?>
+              
+              <?php echo $block->getChildHtml('product_option'); ?>
+        </div>
+        <?php echo $block->getChildHtml('ajaxcart.cartinfo'); ?>
+        <?php echo $block->getChildHtml('ajaxcart.product.related'); ?>
+    </div>
+    <div class="link">
+        <?php echo $block->getChildHtml('product_links'); ?>
+    </div>
+    <div class="ajaxcart-buttons ajaxsuite-buttons">
+        <button type="button" id="ajaxcart_cancel" class="action primary mb-ajaxsuite-close"
+                title="<?php echo __('Continue shopping') ?>">
+            <span><?php echo __('Continue shopping') ?></span>
+            <?php
+            if ($popupTTL = $this->helper('Tigren\Ajaxsuite\Helper\Data')->getTTLAjaxSuite()) {
+                ?>
+                (<span class="ajaxsuite-autoclose-countdown"><?php echo $popupTTL ?></span>)
+                <?php
+            }
+            ?>
+        </button>
+        <button type="button" id="ajaxcart_checkout" class="action focus primary"
+                title="<?php echo __('View Cart') ?>"
+                onClick="window.location = '<?php echo $block->getUrl('checkout/cart'); ?>'">
+            <span><?php echo __('View Shopping Cart') ?></span>
+        </button>
+    </div>
+</div>

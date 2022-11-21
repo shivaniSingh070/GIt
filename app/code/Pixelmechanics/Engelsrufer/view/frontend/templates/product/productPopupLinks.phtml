@@ -1,0 +1,35 @@
+<?php
+/*
+ * Show links in product detail page
+ * Link for related category and blog
+ * Created by AA 13.05.2019
+ */
+?>
+
+<?php
+/* get object of engelsrufer catalog helper */
+$helperCatalog = $this->helper('Pixelmechanics\Engelsrufer\Helper\Catalog');
+/* get current product object */
+$_product = $helperCatalog->getCurrentProduct();
+
+ /* get object of engelsrufer Data helper to get Base URL */
+ $helperData = $this->helper('Pixelmechanics\Engelsrufer\Helper\Data'); 
+ /* getBase Url */ $baseUrl = $helperData->getBaseUrl();
+?>
+<?php
+/* get related category url saved in attribute "category_url" */
+$productRelatedCategory = $_product->getCategoryUrl();
+?>
+<?php
+// If there is related category then show link otherwise not
+if ($productRelatedCategory): ?>
+    <div class="category-link">
+    	<p>    
+            <a href="<?php echo $baseUrl.$productRelatedCategory; ?>">
+               <?php echo __("Do you need a necklace for this article? click here"); ?>
+            </a>
+	</p>
+    </div>
+<?php endif; ?>
+
+

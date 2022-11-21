@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Mostviewed
+ */
+--><!--
+/**
+* Copyright © 2015 Amasty. All rights reserved.
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Page\Config\Renderer">
+        <plugin name="Amasty_Mostviewed::make-css" type="Amasty\Mostviewed\Plugin\View\Page\Config\Renderer" />
+    </type>
+    <type name="Magento\Catalog\Block\Product\ProductList\Related">
+        <plugin name="Amasty_Mostviewed::collectionRelated" type="Amasty\Mostviewed\Plugin\Community\Related"/>
+    </type>
+    <type name="Magento\Checkout\Block\Cart\Crosssell">
+        <plugin name="Amasty_Mostviewed::collectionCrosssell" type="Amasty\Mostviewed\Plugin\Community\Crosssell"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\ProductList\Upsell">
+        <plugin name="Amasty_Mostviewed::collectionUpsell" type="Amasty\Mostviewed\Plugin\Community\Upsell"/>
+    </type>
+    <type name="Magento\TargetRule\Block\Product\AbstractProduct">
+        <plugin name="Amasty_Mostviewed::collection" type="Amasty\Mostviewed\Plugin\Enterprise\Product"/>
+    </type>
+
+    <type name="Amasty\Mostviewed\Block\Widget\Related">
+        <plugin name="Amasty_Mostviewed::mostviewed-ctr" type="Amasty\Mostviewed\Plugin\Analytics\Ctr"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\ProductList\Related">
+        <plugin name="Amasty_Mostviewed::magento-related-ctr" type="Amasty\Mostviewed\Plugin\Analytics\Ctr"/>
+    </type>
+    <type name="Magento\Checkout\Block\Cart\Crosssell">
+        <plugin name="Amasty_Mostviewed::magento-crosssell-ctr" type="Amasty\Mostviewed\Plugin\Analytics\Ctr"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\ProductList\Upsell">
+        <plugin name="Amasty_Mostviewed::magento-upsell-ctr" type="Amasty\Mostviewed\Plugin\Analytics\Ctr"/>
+    </type>
+    <type name="Magento\TargetRule\Block\Catalog\Product\ProductList\Related">
+        <plugin name="Amasty_Mostviewed::magento-ee-related-ctr" type="Amasty\Mostviewed\Plugin\Analytics\Ctr"/>
+    </type>
+    <type name="Magento\TargetRule\Block\Checkout\Cart\Crosssell">
+        <plugin name="Amasty_Mostviewed::magento-ee-crosssell-ctr" type="Amasty\Mostviewed\Plugin\Analytics\Ctr"/>
+    </type>
+    <type name="Magento\TargetRule\Block\Catalog\Product\ProductList\Upsell">
+        <plugin name="Amasty_Mostviewed::magento-ee-upsell-ctr" type="Amasty\Mostviewed\Plugin\Analytics\Ctr"/>
+    </type>
+    <type name="Magento\Theme\Block\Html\Topmenu">
+        <plugin name="Amasty_Mostviewed::TopMenuFirst"
+                type="Amasty\Mostviewed\Plugin\Theme\Block\Html\Topmenu" sortOrder="-1" />
+        <plugin name="Amasty_Mostviewed::TopMenuLast"
+                type="Amasty\Mostviewed\Plugin\Theme\Block\Html\TopmenuLast" sortOrder="999" />
+    </type>
+    <type name="Infortis\UltraMegamenu\Block\Navigation">
+        <plugin name="Amasty_Mostviewed::TopMenuUltimo"
+                type="Amasty\Mostviewed\Plugin\Theme\Block\Html\TopmenuThemes" sortOrder="999" />
+    </type>
+    <type name="Smartwave\Megamenu\Block\Topmenu">
+        <plugin name="Amasty_Mostviewed::TopMenuPorto"
+                type="Amasty\Mostviewed\Plugin\Theme\Block\Html\TopmenuThemes" sortOrder="999" />
+    </type>
+</config>

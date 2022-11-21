@@ -1,0 +1,23 @@
+<?php 
+/*
+ * called top description if exists
+ * Updated by AA 0n 31.05.2019
+ */
+
+// get Current category from helper Pixelmechanics\Engelsrufer\Helper\Catalog By AA on 31.05.2019 
+$helperCatalog = $this->helper('Pixelmechanics\Engelsrufer\Helper\Catalog');
+$category = $helperCatalog->getCurrentCategory();
+/*
+ * use getWysiwygAttributeValue to resolve page builder image path issue on frontend
+ * Updated by PM AJ 0n 01.04.2022
+ * @link: https://trello.com/c/mv4UM5AD
+ */
+$catgoryTopDesc = $helperCatalog->getWysiwygAttributeValue($category->getTopDescription());
+?>
+    <?php if ($catgoryTopDesc): ?>
+        <div class="category-top-description">
+           <?php echo $catgoryTopDesc; ?>
+        </div>
+    <?php endif; ?>
+
+

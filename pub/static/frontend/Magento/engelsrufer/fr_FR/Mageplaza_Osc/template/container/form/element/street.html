@@ -1,0 +1,37 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Osc
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+
+<input class="input-text" required type="text" data-bind="
+    value: value,
+    hasFocus: focused,
+    attr: {
+        name: inputName,
+        placeholder: placeholder,
+        'aria-describedby': noticeId,
+        id: uid,
+        disabled: disabled
+    }" />
+<!-- 
+    *removed the css from the input ,css: 'google-auto-complete' and commented the below line by NA on 14.2.2020
+    * tello: https://trello.com/c/faXkByug/58-sendcloud-fehlende-%C3%BCbermittlung-der-hausnummer-sendcloud-missing-transmission-of-house-number#comment-5e464c3216c6c35e5e103e89
+-->
+<!-- <i class="fa fa-location-arrow osc-geolocation" data-bind="attr: {id: uid + '-geolocation'},"></i> -->

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ * updated by AA on 25.07.2019
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+   <!--
+    Updated by AA on 20.11.2019
+    Added NOINDEX,FOLLOW for customer account page
+    https://trello.com/c/pdVnbGKK/287-prio-1-url-rewrites-clean-them-up#comment-5dd4028d4a58956a75f52e48
+   -->
+    <head>
+        <meta name="robots" content="NOINDEX,FOLLOW"/>
+    </head>
+    <body>
+        <!-- Remove recent orders from Dashboard -->
+        <referenceBlock name="customer_account_dashboard_top" remove="true"/>
+        <!-- moved page title in banner container -->
+        <move element="page.main.title" destination="customer.account.banner" after="-"/>
+        <!-- Added page banner above breadcrumbs -->
+        <referenceContainer name="page.top">
+            <container name="customer.account.banner" label="Customer account banner Container" htmlTag="div" htmlClass="accountBanner banner-container" before="breadcrumbs">
+                <block class="Magento\Cms\Block\Block" name="login-banner">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">account-banner</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

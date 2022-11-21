@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <!-- removed cross sell from cart page, updated by AA on 09.08.2019 -->
+    <referenceBlock name="checkout.cart.crosssell" remove="true"/>   
+     <referenceContainer name="main.content" htmlTag="div" htmlClass="cart-container container" />
+     <referenceContainer name="page.top">
+            <container name="cart.banner" label="Cart banner Container" htmlTag="div" htmlClass="accountBanner banner-container" after="-">
+                    <block class="Magento\Cms\Block\Block" name="login-banner">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">account-banner</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Template" name="order_title" template="Pixelmechanics_Engelsrufer::account/sale/cartTitle.phtml" after="-"/>
+            </container>
+    </referenceContainer>
+
+     <move element="checkout.cart.form" destination="checkout.cart.container" before="-" />
+     <referenceContainer name="checkout.cart.container">
+     	<container name="cart.summery.container" htmlClass="container cart-summery-container" htmlTag="div" />
+ 	 </referenceContainer>
+     <move element="cart.summary" destination="cart.summery.container" after="-" />
+     <move element="checkout.cart.coupon" destination="cart.summery.container" before="cart.summary" />
+
+      <referenceContainer name="footer-container">
+     <!-- added static block in footer -->
+        <container name="account.bottom" label="account bottom Container" htmlTag="div" htmlClass="statics-block-wrap bot-wrap" before="-">
+            <block class="Magento\Cms\Block\Block" name="account-static-info">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">bottom-static-banners</argument>
+                </arguments>
+            </block> 
+        </container>
+    </referenceContainer>
+
+    <!-- Add a New container to set the gift cart and coupon cart in single container on the cart page by NA. 05.07.19-->
+    <referenceContainer name="cart.summery.container">
+        <container name="combine.discount.giftcart" htmlClass="discount-gift-as-single" htmlTag="div"/>
+    </referenceContainer>
+
+    <move element="checkout.cart.coupon" destination="combine.discount.giftcart" before="-"/>
+    <move element="checkout.cart.amgiftcard" destination="combine.discount.giftcart" after="-"/>
+
+  <!-- Remove the estimate shipping cost form from the cart by NA, 30.07.19 -->
+
+<referenceBlock name="checkout.cart.shipping">
+<arguments>
+        <argument name="jsLayout" xsi:type="array">
+            <item name="components" xsi:type="array">
+                <item name="block-summary" xsi:type="array">
+                    <item name="children" xsi:type="array">
+                        <item name="block-rates" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="componentDisabled" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+                    <item name="block-shipping" xsi:type="array">
+                    <item name="children" xsi:type="array">
+                        
+                     <item name="address-fieldsets" xsi:type="array">
+                        <item name="children" xsi:type="array">
+                            <item name="city" xsi:type="array">
+                                <item name="config" xsi:type="array">
+                                    <item name="componentDisabled" xsi:type="boolean">true</item>
+                                </item>
+                            </item>
+                             <item name="country_id" xsi:type="array">
+                                <item name="config" xsi:type="array">
+                                    <item name="componentDisabled" xsi:type="boolean">true</item>
+                                </item>
+                             </item>
+                              <item name="region_id" xsi:type="array">
+                                  <item name="config" xsi:type="array">
+                                    <item name="componentDisabled" xsi:type="boolean">true</item>
+                                </item>
+                              </item>
+                              <item name="postcode" xsi:type="array">
+                                 <item name="config" xsi:type="array">
+                                    <item name="componentDisabled" xsi:type="boolean">true</item>
+                                </item>
+                              </item>
+                              <item name="region" xsi:type="array">
+                                  <item name="config" xsi:type="array">
+                                      <item name="componentDisabled" xsi:type="boolean">true</item>
+                                  </item>
+                              </item>
+                        </item>
+
+                </item></item>
+                </item>
+            </item>
+                </item>
+            </item>
+        </argument>
+    </arguments>
+</referenceBlock>
+</page>

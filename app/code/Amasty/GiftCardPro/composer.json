@@ -1,0 +1,26 @@
+{
+    "name": "amasty\/gift-card-pro",
+    "description": "Gift Card Pro by Amasty",
+    "require": {
+        "php": "^7.3.0",
+        "amasty\/module-gift-card": ">=2.7.0",
+        "amasty\/module-gift-card-pro-functionality": ">=1.0.0",
+        "amasty\/module-gift-card-sms-notifications": ">=1.0.0",
+        "amasty\/module-export-core": ">=1.6.0",
+        "amasty\/module-import-core": ">=1.4.1",
+        "amasty\/base": ">=1.12.17"
+    },
+    "type": "magento2-module",
+    "version": "2.6.0",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Amasty\\GiftCardPro\\": ""
+        }
+    }
+}

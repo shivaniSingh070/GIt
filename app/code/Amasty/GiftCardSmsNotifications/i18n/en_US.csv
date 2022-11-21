@@ -1,0 +1,12 @@
+"Save & Send Sms","Save & Send Sms"
+"Something went wrong with sending sms.","Something went wrong with sending sms."
+message,message
+"Recipient Phone","Recipient Phone"
+"Enter Number With Country code & without any sign. e.g:-(91xxxxxxx09)","Enter Number With Country code & without any sign. e.g:-(91xxxxxxx09)"
+"Number of Days Before Expiry","Number of Days Before Expiry"
+"When set to 0 (zero), the notification is sent once the certificate expires.","When set to 0 (zero), the notification is sent once the certificate expires."
+"
+                            Please insert a phone number if not complete and click the 'Save & Send SMS' button to send Gift Card SMS to the recipient.
+                        ","
+                            Please insert a phone number if not complete and click the 'Save & Send SMS' button to send Gift Card SMS to the recipient.
+                        "

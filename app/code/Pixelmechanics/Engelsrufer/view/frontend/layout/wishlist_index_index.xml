@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * updated by AA on 18.05.2019
+ * Set wishlist layout
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <!-- moved page title in banner container -->
+    <move element="page.main.title" destination="customer.account.banner" after="-"/>
+    <!-- Added page banner above breadcrumbs -->
+    <referenceContainer name="page.top">
+        <container name="customer.account.banner" label="Customer account banner Container" htmlTag="div" htmlClass="accountBanner banner-container" before="breadcrumbs">
+            <block class="Magento\Cms\Block\Block" name="login-banner">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">account-banner</argument>
+                </arguments>
+            </block>
+        </container>
+    </referenceContainer>
+    <!-- Remove wishlist collection called for my account pages-->
+    <referenceBlock name="wishlist.collection" remove="true"/>
+   <!-- remove options "see details" from configurable product -->
+    <referenceBlock name="customer.wishlist.item.options" remove="true" />
+  <!-- -moved name, price in more info block, updated by AA 0n 24.06.2019 -->
+    <move element="customer.wishlist.item.name" destination="customer.wishlist.item.inner" before="-"/>
+    <move element="customer.wishlist.item.price" destination="customer.wishlist.item.inner" after="customer.wishlist.item.name"/>
+</page>

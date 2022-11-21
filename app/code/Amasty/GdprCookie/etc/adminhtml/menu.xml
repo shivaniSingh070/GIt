@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Amasty_GdprCookie::gdpr_cookie"
+             title="Cookie Consent"
+             module="Amasty_GdprCookie"
+             sortOrder="110"
+             parent="Magento_Customer::customer"
+             resource="Amasty_GdprCookie::gdpr_cookie"/>
+        <add id="Amasty_GdprCookie::cookies"
+             title="Cookies"
+             module="Amasty_GdprCookie"
+             sortOrder="10"
+             parent="Amasty_GdprCookie::gdpr_cookie"
+             action="amasty_gdprcookie/cookie/index"
+             resource="Amasty_GdprCookie::cookies"/>
+        <add id="Amasty_GdprCookie::cookie_group"
+             title="Cookie Groups"
+             module="Amasty_GdprCookie"
+             sortOrder="20"
+             parent="Amasty_GdprCookie::gdpr_cookie"
+             action="amasty_gdprcookie/cookieGroup/index"
+             resource="Amasty_GdprCookie::cookie_group"/>
+        <add id="Amasty_GdprCookie::cookie_consent"
+             title="Cookie Consents Log"
+             module="Amasty_GdprCookie"
+             sortOrder="30"
+             parent="Amasty_GdprCookie::gdpr_cookie"
+             action="amasty_gdprcookie/cookieConsent/index"
+             resource="Amasty_GdprCookie::cookie_consent"/>
+    </menu>
+</config>

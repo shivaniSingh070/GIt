@@ -1,0 +1,18 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Mostviewed
+ */
+?>
+<?php
+/** @var \Amasty\Mostviewed\Block\Checkout\Cart\Bundle $block */
+$bundle = $block->getBundle();
+?>
+
+<?php if ($bundle) : ?>
+    <div class="amrelated-cart-bundle" data-pack-id="<?= /* @noEscape */ $bundle->getPackId();?>">
+        <?= /* @noEscape */ $block->renderBundle($bundle); ?>
+    </div>
+<?php endif;?>
+

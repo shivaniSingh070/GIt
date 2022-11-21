@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author: Noshad Ali
+ * @package: Pixelmechanics_CatalogOrder
+ * @date: 1Aug2019
+ * trello: https://trello.com/c/UyuL2qfu/
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<virtualType name="PixelmechanicsCatalogOrderGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+		<arguments>
+			<argument name="appliers" xsi:type="array">
+				<item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+				<item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+			</argument>
+		</arguments>
+	</virtualType>
+	<virtualType name="PixelmechanicsCatalogOrderGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+		<arguments>
+			<argument name="collection" xsi:type="object" shared="false">Pixelmechanics\CatalogOrder\Model\ResourceModel\CatalogOrder\Collection</argument>
+			<argument name="filterPool" xsi:type="object" shared="false">PixelmechanicsCatalogOrderGridFilterPool</argument>
+		</arguments>
+	</virtualType>
+	<virtualType name="Pixelmechanics\CatalogOrder\Model\ResourceModel\CatalogOrder\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">pixelmechanics_catalogorder</argument>
+			<argument name="resourceModel" xsi:type="string">Pixelmechanics\CatalogOrder\Model\ResourceModel\CatalogOrder</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="pixelmechanics_catalogorder_index_listing_data_source" xsi:type="string">Pixelmechanics\CatalogOrder\Model\ResourceModel\CatalogOrder\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+
+	<!-- <preference for="Magento\Framework\Mail\Template\TransportBuilder" 
+		type="Pixelmechanics\CatalogOrder\Model\Mail\TransportBuilder"/>
+
+	<preference for="Magento\Framework\Mail\Message" 
+		type="Pixelmechanics\CatalogOrder\Model\Mail\Message"/> -->
+</config>

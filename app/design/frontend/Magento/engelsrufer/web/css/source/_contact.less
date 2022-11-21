@@ -1,0 +1,112 @@
+ /* Contact us Page CSS Start Here */
+.contactBanner{
+	.page-title-wrapper{
+		.page-title{	
+			font-size: @heading-font45;
+		}
+	}
+}
+.contact-container{
+	.flex-display();
+	.flex-wrap(wrap);
+	margin-bottom: 90px;
+	.contact-block-title{
+		font-size: @heading-font22;
+	    font-weight: @fontB02;
+	    color: @secondary-text-color;
+	    margin: @marginNone;
+	    text-transform: @uppercase-text;
+	    padding-bottom: 10px;
+	    margin-bottom: 15px;
+	}
+	.contact-block-content{
+		padding: 15px 0;
+		.inner-block{
+			margin: 15px 0 10px;
+			.fa{
+				float: @floatL;
+				background: #f1f1f1;
+			    .border-radius(50%);
+			    line-height: 30px;
+			    text-align: @text-center;
+			    width: 30px;
+			    height: 30px;
+			    padding: 0 8px;
+			    margin-right: 10px;
+			}
+			.fa-phone{
+				.rotate(90deg);
+			}
+			.fa-envelope{
+				font-weight: 300;
+			}
+			.contact-content{
+				font-size: @small-font;
+			}
+		}
+	}
+}
+.contact-left-container{
+	width: 33.33333333%;
+	padding-right: 15px;
+}
+/* Contact Right Section CSS Start Here */
+.contact-right-container{
+	width: 66.66666667%;
+	padding-left: 15px;
+	.fieldset{
+		.legend{
+			&:extend(.contact-container .contact-block-title);
+		}
+		.no-label{
+			padding-top: 15px;
+			margin-bottom: 29px;
+			font-size: @small-font;
+		}
+		.captcha.no-label{
+			margin-bottom: 0;
+		}
+
+		.tc-check{
+			.control{
+				position: relative;
+
+				#tc-check{
+					position: absolute;
+					margin: 1px;
+					top: unset;
+				}
+
+				.label.tc_check{
+					p{
+						margin-left: 20px;
+					}
+				}
+			}
+
+			.required-field{
+				margin-top: 0;
+			}
+		}
+	}
+}
+.contact-index-index .column:not(.sidebar-additional) .form.contact{
+	width: @width100;
+}
+.fieldset > .field{
+	margin-bottom: 26px;
+}
+.fieldset > .field:not(.choice) > .label{
+	width: @width100;
+	padding: @paddingNone;
+	font-size: @parimary-font;
+	text-align: left;
+	color: #000;
+	line-height: @lineHeight26;
+	font-weight: normal;
+}
+.fieldset > .field:not(.choice) > .control{
+	width: @width100;
+}
+/* Contact Right Section CSS End Here */
+/* Contact us Page CSS End Here */

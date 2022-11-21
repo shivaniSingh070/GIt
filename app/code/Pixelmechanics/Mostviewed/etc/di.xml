@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Override Messages class
+ * Created by HA 07.06.2022
+*/
+-->
+   <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Amasty\Mostviewed\Block\Checkout\Cart\Messages" type="Pixelmechanics\Mostviewed\Block\Checkout\Cart\Messages" />
+</config>

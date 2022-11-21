@@ -1,0 +1,13 @@
+<?php
+/* 
+ * get blog title and show in blog overview page
+ * Created by AA on 14.05.2019
+ */
+?>
+<?php // call helper to get blog title ?>
+<?php $helperBlog = $this->helper('Mageplaza\Blog\Helper\Data'); ?>
+
+<?php // call helper (Mageplaza\Blog\Helper\Data) function "getBlogName" to get Blog title from configuration GOTO GOTO: Shops >> configuration >> Megplaza extension >> Better Blog >> Blog Name ?>
+<h1 class="page-title">
+    <span><?php echo $helperBlog->getBlogName(); ?></span>
+</h1>

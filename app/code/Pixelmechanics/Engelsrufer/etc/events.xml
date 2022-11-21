@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--/**
+* @author : AA
+* @description : Trigger an observer at checkout_cart_add_product_complete (after add to cart)
+* @date : 26.07.2019
+*/-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+    <event name="checkout_cart_add_product_complete">
+        <observer name="get_quote" instance="Pixelmechanics\Engelsrufer\Observer\Getquote" />
+    </event>
+
+</config>

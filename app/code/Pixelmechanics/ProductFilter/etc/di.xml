@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Overrided magento modules to filer collections by price > 0, having image and enabled available later in all collections.
+ * by Anoop Singh
+ * See trello - https://trello.com/c/gxk6SgNq/120-044handling-von-verf%C3%BCgbarkeit-availability-handling
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\Catalog\Block\Product\ListProduct" type="Pixelmechanics\ProductFilter\Block\Product\ListProduct"/>
+	<preference for="Magento\CatalogSearch\Block\SearchResult\ListProduct" type="Pixelmechanics\ProductFilter\Block\Product\ListProduct"/>
+	<preference for="Mageplaza\Productslider\Block\NewProducts" type="Pixelmechanics\ProductFilter\Block\Product\NewProducts"/>
+	<preference for="Mageplaza\Productslider\Block\BestSellerProducts" type="Pixelmechanics\ProductFilter\Block\Product\BestSellerProducts"/>
+	<preference for="Mageplaza\Productslider\Block\OnSaleProduct" type="Pixelmechanics\ProductFilter\Block\Product\OnSaleProduct"/>
+	<preference for="Magento\Catalog\Block\Product\ProductList\Related" type="Pixelmechanics\ProductFilter\Block\Product\Related"/>
+	<preference for="Magento\Catalog\Block\Product\ProductList\Upsell" type="Pixelmechanics\ProductFilter\Block\Product\Upsell"/>
+	<preference for="Magento\Catalog\Block\Product\ProductList\Crosssell" type="Pixelmechanics\ProductFilter\Block\Product\Crosssell"/>
+	<preference for="Mageplaza\Blog\Block\Post\RelatedProduct" type="Pixelmechanics\ProductFilter\Block\Post\RelatedProduct"/>
+</config>

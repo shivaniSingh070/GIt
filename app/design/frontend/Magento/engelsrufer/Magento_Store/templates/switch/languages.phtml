@@ -1,0 +1,49 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Store\Block\Switcher $block */
+?>
+
+<!-- get pub media URL. Updated by AA, 23.04.2019  https://trello.com/c/SSb9Xrqw -->
+<?php $mediaUrl = $this->helper('Pixelmechanics\Engelsrufer\Helper\Data')->getPubMediaUrl();?>
+
+<?php if (count($block->getStores())>1): ?>
+<?php $id = $block->getIdModifier() ? '-' . $block->getIdModifier() : '' ?>
+<div class="switcher language switcher-language" data-ui-id="language-switcher" id="switcher-language<?= $block->escapeHtmlAttr($id) ?>">
+    <!-- commented Language label from dropdown, Updated by AA, 23.04.2019  https://trello.com/c/SSb9Xrqw -->
+    <!--<strong class="label switcher-label"><span><?= $block->escapeHtml(__('Language')) ?></span></strong>-->
+    <div class="actions dropdown options switcher-options">
+        <div class="action toggle switcher-trigger"
+             id="switcher-language-trigger<?= $block->escapeHtmlAttr($id) ?>"
+             data-mage-init='{"dropdown":{}}'
+             data-toggle="dropdown"
+             data-trigger-keypress-button="true">
+            <strong class="view-<?= $block->escapeHtml($block->getCurrentStoreCode()) ?>">
+                <!-- Added flag for language  Updated by AA, 23.04.2019  https://trello.com/c/SSb9Xrqw -->
+                <span><img src="<?php echo $mediaUrl.'flags/flag_' . $block->getCurrentStoreCode() . '.png';?>" alt="<?= $block->escapeHtml(__($block->getStoreName())) ?>"/><?= $block->escapeHtml(__($block->getStoreName())) ?></span>
+            </strong>
+        </div>
+        <ul class="dropdown switcher-dropdown"
+            data-target="dropdown">
+            <?php foreach ($block->getStores() as $_lang): ?>
+             <?php  /* commented the current store check to show current store in dropdown, uodated by AA on 2.05.2019  https://trello.com/c/SSb9Xrqw */ ?>
+                <?php //if ($_lang->getId() != $block->getCurrentStoreId()): ?>
+                    <li class="view-<?= $block->escapeHtml($_lang->getCode()) ?> switcher-option">
+                    <?php // Fixed with Domain change without using Magento store change : Trello KL :https://trello.com/c/zHx4nbni/129-2020-06-1-update-magento-version-234#comment-609141bc62d25d3deaaffa04?>
+                        <a href="<?= $block->escapeUrl($_lang->getBaseUrl()) ?>">
+                            <!-- Added flag for language  Updated by AA, 23.04.2019  https://trello.com/c/SSb9Xrqw -->
+                            <img src="<?php echo $mediaUrl.'flags/flag_' . $_lang->getCode() . '.png';?>" alt="<?= $block->escapeHtml(__($_lang->getName())) ?>" />
+                            <?= $block->escapeHtml(__($_lang->getName())) ?>
+                        </a>
+                    </li>
+                <?php //endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+<?php endif; ?>

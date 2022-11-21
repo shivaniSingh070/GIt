@@ -1,0 +1,30 @@
+<!-- ko if: isShowModal -->
+<form id="amgdprcookie-form" class="amgdprcookie-settings-form" data-amcookie-js="form-cookie">
+    <div class="amgdprcookie-groups-container" data-amcookie-js="groups">
+        <!-- ko foreach: $data.groups -->
+        <div class="amgdprcookie-cookie-container -modal">
+            <div class="amgdprcookie-header">
+                <h3 class="amgdprcookie-caption" data-bind="text: $data.name"></h3>
+                <!--ko template: $parent.templates.toggle--><!-- /ko -->
+            </div>
+            <p class="amgdprcookie-text" data-bind="text: $data.description"></p>
+            <a class="amgdprcookie-link"
+               href="#"
+               data-bind="
+                    i18n: 'More Information',
+                    attr: {title: $t('More Information'), 'aria-label': $t('More Information')},
+                    click: $parent.getInformationModal.bind($parent, $data)">
+            </a>
+        </div>
+        <!--/ko-->
+    </div>
+    <div class="amgdprcookie-policy-container" data-amcookie-js="policy">
+        <div class="amgdprcookie-text-container">
+            <p class="amgdprcookie-policy" data-bind="html: $data.cookieText"></p>
+        </div>
+        <!--ko template: {
+                name: $data.templates.buttons,
+                data: {current: $data, allowAction: $data.allowCookies} } --><!-- /ko -->
+    </div>
+</form>
+<!--/ko-->

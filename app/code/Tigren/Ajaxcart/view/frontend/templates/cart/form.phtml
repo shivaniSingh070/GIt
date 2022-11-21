@@ -1,0 +1,99 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**  @var $block \Magento\Checkout\Block\Cart\Grid */
+/** @var  $helperJs \Tigren\Ajaxcart\Helper\Data */
+$helperJs = $this->helper('Tigren\Ajaxcart\Helper\Data');
+$configYes = array(
+    "shoppingCart1" => array(
+        "emptyCartButton" => ".action.clear",
+        "updateCartActionContainer" => "#update_cart_action_container"
+    )
+);
+$configNo = array(
+    "shoppingCart" => array(
+        "emptyCartButton" => ".action.clear",
+        "updateCartActionContainer" => "#update_cart_action_container"
+    )
+);
+?>
+<?php $mergedCells = ($this->helper('Magento\Tax\Helper\Data')->displayCartBothPrices() ? 2 : 1); ?>
+<?= $block->getChildHtml('form_before') ?>
+<div id="additional_input_data">
+    <input type="hidden" id="ajax_cart_hidden" name="ajax_cart_update" value="1">
+</div>
+<form action="<?= /* @escapeNotVerified */ $block->getUrl('checkout/cart/updatePost') ?>"
+      method="post"
+      id="form-validate"
+      data-mage-init='{"Magento_Checkout/js/action/update-shopping-cart":
+              {"validationURL" : "/checkout/cart/updateItemQty"}
+          }'
+      class="form form-cart">
+    <?= $block->getBlockHtml('formkey') ?>
+    <div class="cart table-wrapper<?= $mergedCells == 2 ? ' detailed' : '' ?>">
+        <?php if ($block->getPagerHtml()): ?>
+            <div class="cart-products-toolbar cart-products-toolbar-top toolbar" data-attribute="cart-products-toolbar-top"><?= $block->getPagerHtml() ?></div>
+        <?php endif ?>
+        <table id="shopping-cart-table"
+               class="cart items data table"
+               data-mage-init=<?= $helperJs->getEnableAjaxShoppingCart() ? json_encode($configYes) : json_encode($configNo) ?>>
+            <caption role="heading" aria-level="2" class="table-caption"><?= /* @escapeNotVerified */ __('Shopping Cart Items') ?></caption>
+            <thead>
+            <tr>
+                <th class="col item" scope="col"><span><?= /* @escapeNotVerified */ __('Item') ?></span></th>
+                <th class="col price" scope="col"><span><?= /* @escapeNotVerified */ __('Price') ?></span></th>
+                <th class="col qty" scope="col"><span><?= /* @escapeNotVerified */ __('Qty') ?></span></th>
+                <th class="col subtotal" scope="col"><span><?= /* @escapeNotVerified */ __('Subtotal') ?></span></th>
+                <th class="col remove" scope="col"><span><?= /* @escapeNotVerified */ __('') ?></span></th>
+            </tr>
+            </thead>
+            <?php foreach ($block->getItems() as $_item): ?>
+                <?= $block->getItemHtml($_item) ?>
+            <?php endforeach ?>
+        </table>
+        <?php if ($block->getPagerHtml()): ?>
+            <div class="cart-products-toolbar cart-products-toolbar-bottom toolbar" data-attribute="cart-products-toolbar-bottom"><?= $block->getPagerHtml() ?></div>
+        <?php endif ?>
+    </div>
+    <div class="cart main actions">
+        <?php if ($block->getContinueShoppingUrl()): ?>
+            <button class="action continue-shopping" type="button" onclick="location.href='<?= $block->escapeUrl($block->getContinueShoppingUrl()) ?>'"  title="<?= $block->escapeHtml(__('Continue Shopping')) ?>" >
+                <span><?= $block->escapeHtml(__('Continue Shopping')) ?></span>
+            </button>
+        <?php endif; ?>
+        <button type="submit"
+                name="update_cart_action"
+                data-cart-empty=""
+                value="empty_cart"
+                title="<?= $block->escapeHtml(__('Clear Shopping Cart')) ?>"
+                class="action clear" id="empty_cart_button">
+            <span><?= /* @escapeNotVerified */ __('Clear Shopping Cart') ?></span>
+        </button>
+        <button type="submit"
+                name="update_cart_action"
+                data-cart-item-update=""
+                value="update_qty"
+                title="<?= $block->escapeHtml(__('Update Cart')) ?>"
+                class="action update">
+            <span><?= /* @escapeNotVerified */ __('Update Cart') ?></span>
+        </button>
+        <input type="hidden" value="" id="update_cart_action_container" data-cart-item-update=""/>
+    </div>
+</form>
+<?= $block->getChildHtml('checkout.cart.order.actions') ?>
+<?= $block->getChildHtml('shopping.cart.table.after') ?>
+
+<?php if(!$helperJs->getEnableAjaxShoppingCart() || $helperJs->getEnableAjaxShoppingCart() === 0): ?>
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "qtyButton": ""
+        }
+    }
+</script>
+<?php endif; ?>

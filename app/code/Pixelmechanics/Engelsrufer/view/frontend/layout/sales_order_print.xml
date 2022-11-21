@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Updated By NA, 15.07.19
+ * Add the container and account-contaienr to resolve the design issue of print order from the account section frontend.
+ * https://trello.com/c/hZXHykLK/93-021mobile-views-responsive-ansichten-7-mobile-responsive#comment-5d2c5be909333d5e4e304333
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="main.content" htmlTag="main" htmlClass="container account-container"></referenceContainer>
+    </body>
+</page>

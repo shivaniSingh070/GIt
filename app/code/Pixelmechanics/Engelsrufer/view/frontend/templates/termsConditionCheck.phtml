@@ -1,0 +1,16 @@
+<?php
+
+/* 
+ * Added terms and condition checkbox in user forms
+ * Created by AA 26.04.2019
+ */
+?>
+<div class="field tc-check required">
+    <div class="control">
+        <input type="checkbox" id="tc-check" name="tc-check" data-validate="{required:true}" class="input-checkbox checkbox required" value="1">
+        <label for="tc-check" class="label tc_check">
+            <?php  echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('terms-and-condition')->toHtml(); ?>
+        </label>
+    </div>
+   <div class="required-field">*<?php echo __('Required Fields');?></div>
+</div>

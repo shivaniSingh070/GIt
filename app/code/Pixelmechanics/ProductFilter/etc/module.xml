@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Created module to filter products by price > 0, having image and enabled available later in all collections.
+ * by Anoop Singh
+ * See trello - https://trello.com/c/gxk6SgNq/120-044handling-von-verf%C3%BCgbarkeit-availability-handling
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+	<module name="Pixelmechanics_ProductFilter" setup_version="1.0.0">
+		<sequence>
+			<module name="Magento_Catalog"/>
+		</sequence>
+	</module>
+</config>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Ulmod. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">            
+                <block class="Ulmod\OrderImportExport\Block\Adminhtml\Backend\Widget\Tab" name="export_tab" template="Ulmod_OrderImportExport::widget/tab/content.phtml">
+                    <action method="setTitle">
+                        <argument name="title" xsi:type="string"><![CDATA[Export]]></argument>
+                    </action>
+                    <action method="setLabel">
+                        <argument name="label" xsi:type="string"><![CDATA[Export]]></argument>
+                    </action>
+                    <action method="setAclResources">
+                        <argument name="resources" xsi:type="string">Ulmod_OrderImportExport::export</argument>
+                    </action>
+                    <block class="Ulmod\OrderImportExport\Block\Adminhtml\Actions\Export\Form" name="export_form" cacheable="false"/>
+                </block>            
+        </referenceContainer> 
+    </body>
+</page>

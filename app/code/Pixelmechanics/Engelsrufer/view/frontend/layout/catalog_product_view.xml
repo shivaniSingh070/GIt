@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * product detail page xml, set elements as per design
+ * Updated by AA on 30.04.2019
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+   
+    <body>
+        <move element="page.main.title" destination="product.info.main"  before="product.info.price"/>
+        <move element="product.info.brand" destination="product.info.main" before="-"/>
+      <!-- removed upsell and related products, updated by AA 0n 28.08.2019 -->
+        <referenceBlock name="product.info.upsell" remove="true"/>    
+        <referenceBlock name="catalog.product.related" remove="true"/> 
+        <!-- remove unwanted links  -->
+        <referenceBlock name="view.addto.compare" remove="true"/>
+        <referenceBlock name="product.info.mailto" remove="true"/>
+        <referenceBlock name="skip_gallery_before.wrapper" remove="true"/>
+        <referenceBlock name="skip_gallery_after.wrapper" remove="true"/>
+        <referenceBlock name="related.post.tab" remove="true"/>
+        <referenceContainer name="product.info.stock.sku" remove="true"/>
+        <referenceContainer name="product.info.details" remove="true"/>
+        <!-- remove stock status text (in stock/out of stock) -->
+        <referenceBlock name="product.info.type" remove="true"/>
+        <!-- set parent container for product info and media container -->
+        <referenceContainer name="content">
+            <container name="product.top.container" htmlTag="div" htmlClass="container clearfix" before="-">
+                <container name="product.info.main" htmlTag="div" htmlClass="product-info-main" before="-"/>
+                <container name="product.info.media" htmlTag="div" htmlClass="product media" after="product.info.main"/>
+            </container>
+        </referenceContainer>
+        <!-- set tax info static block and "bullet point" attribute value -->
+        <referenceContainer name="product.info.price">
+            <block class="Magento\Cms\Block\Block" name="tax-info">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">tax_info_product</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Template" name="product_bullets" template="Pixelmechanics_Engelsrufer::product/productBullets.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="product_links" template="Pixelmechanics_Engelsrufer::product/productLinks.phtml"/>
+        </referenceContainer>
+        <!-- call static block for delivery info -->
+        <referenceContainer name="content">
+            <container name="product.static.container" htmlTag="div" htmlClass="static-container" after="product.top.container">
+                <block class="Magento\Cms\Block\Block" name="static-info">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">product-static-info</argument>
+                    </arguments>
+                </block>
+           <!-- moved wishlidt inside add to cart container for configurable products (for simple check catalog_product_view_type_simple.xml)-->
+                <referenceBlock name="product.info.addtocart.additional">
+                    <block class="Magento\Catalog\Block\Product\View" name="product.info.addto" as="addto" template="Magento_Catalog::product/view/addto.phtml" before="-"/>
+                </referenceBlock>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <container name="product.detail.container" htmlTag="div" htmlClass="product detail container detail-container" after="product.static.container">
+                <block class="Magento\Framework\View\Element\Template" name="product_detail" template="Pixelmechanics_Engelsrufer::product/productDetails.phtml"/>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="content.aside" htmlTag="div" htmlClass="container" />
+        <!-- Add sale & New label to product page By NA On 22May2019 -->
+        <referenceContainer name="product.info.media">
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.label.new.sale" before="-" template="Magento_Catalog::product/label.phtml" />
+        </referenceContainer>
+
+        <!-- Added a new product title for the mobile & add extra class into it by NA on 09.07.19 -->
+        <referenceContainer name="product.top.container">
+        <!--  Called custom file to get product title in mobile theme by AA on 17.08.2021
+              https://trello.com/c/uvdDQ8ml -->
+            <block class="Magento\Theme\Block\Html\Title" name="page.main.title.mobile" template="Pixelmechanics_Engelsrufer::product/title.phtml" before="product.info.media"/>
+        </referenceContainer>
+        <referenceBlock name="page.main.title.mobile">
+            <arguments>
+                <argument name="css_class" xsi:type="string">product-mobile</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

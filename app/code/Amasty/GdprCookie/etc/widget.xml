@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:helloworld:Magento_Widget:etc/widget.xsd">
+    <widget class="Amasty\GdprCookie\Block\Widget\Settings" id="amasty_gdproockie_settings">
+        <label>Amasty Cookie Settings</label>
+        <description>Gdpr Cookie Settings Page</description>
+    </widget>
+</widgets>

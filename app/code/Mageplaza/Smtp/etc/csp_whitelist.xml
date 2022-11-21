@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Smtp
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="avada" type="host">*.avada.io</value>
+                <value id="adobedtm" type="host">*.adobedtm</value>
+                <value id="dotdigital" type="host">*.dotdigital</value>
+                <value id="cardinalcommerce" type="host">*.cardinalcommerce.com</value>
+                <value id="signifyd" type="host">*.signifyd.com</value>
+                <value id="ccdc02" type="host">*.ccdc02.com</value>
+                <value id="authorize" type="host">*.authorize.net</value>
+                <value id="paypal" type="host">*.paypal.com</value>
+                <value id="ytimg" type="host">*.ytimg.com</value>
+                <value id="google" type="host">*.google.com</value>
+                <value id="vimeo" type="host">*.vimeo.com</value>
+                <value id="braintreegateway" type="host">*.braintreegateway.com</value>
+                <value id="payments-amazon" type="host">*.payments-amazon.com</value>
+                <value id="paypal" type="host">*.adobedtm geostag.cardinalcommerce.com</value>
+                <value id="ytimg" type="host">*.ytimg.com</value>
+                <value id="google" type="host">*.google.com</value>
+                <value id="vimeo" type="host">*.vimeo.com</value>
+                <value id="braintreegateway" type="host">*.braintreegateway.com</value>
+                <value id="payments-amazon" type="host">*.payments-amazon.com</value>
+                <value id="googletagmanager" type="host">*.googletagmanager.com</value>
+                <value id="chimpstatic" type="host">https://chimpstatic.com</value>
+                <value id="doubleclick" type="host">*.doubleclick.net</value>
+                <value id="cloud-iq" type="host">*.cloud-iq.net</value>
+            </values>
+        </policy>
+         <policy id="style-src">
+            <values>
+                <value id="cloudflare" type="host">*.cloudflare.com</value>
+                <value id="googleapis" type="host">*.googleapis.com</value>
+                <value id="twitter.com" type="host">*.twitter.com</value>
+                <value id="twimg" type="host">*.twimg.com</value>
+                <value id="gstatic" type="host">*.gstatic.com</value>
+                <value id="typekit" type="host">*.typekit.net</value>
+                <value id="trustedshops" type="host">*.trustedshops.com</value>
+                <value id="usercentrics" type="host">*.usercentrics.eu</value>
+                <value id="fontawesome" type="host">*.fontawesome.com</value>
+                
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+            
+                <value id="google-co" type="host">*.google.co.in</value>
+                <value id="engelsrufer" type="host">*.engelsrufer.de</value>
+                <value id="ssl-images-amazon" type="host">*.ssl-images-amazon.com</value>
+                <value id="ssl-images-amazoncouk" type="host">*.ssl-images-amazon.co.uk</value>
+                <value id="ssl-images-amazonco" type="host">*.ssl-images-amazon.co.jp</value>
+                <value id="ssl-images-amazon" type="host">*.ssl-images-amazon.jp</value>
+                <value id="ssl-images-amazon" type="host">*.ssl-images-amazon.it</value>
+                <value id="ssl-images-amazon" type="host">*.ssl-images-amazon.fr</value>
+                <value id="ssl-images-amazon" type="host">*.ssl-images-amazon.es</value>
+                <value id="media-amazon" type="host">*.media-amazon.com</value>
+                <value id="media-amazonco" type="host">*.media-amazon.co.uk</value>
+                <value id="media-amazoncojp" type="host">*.media-amazon.co.jp</value>
+                <value id="media-amazonjp" type="host">*.media-amazon.jp</value>
+                <value id="media-amazonit" type="host">*.media-amazon.it</value>
+                <value id="media-amazonfr" type="host">*.media-amazon.fr</value>
+                <value id="media-amazones" type="host">*.media-amazon.es</value>
+                <value id="cloudfront" type="host">*.cloudfront.net</value>
+                <value id="cloudflare" type="host">*.cloudflare</value>
+                <value id="amazon" type="host">*.amazon.com</value>
+                <value id="klarna-base" type="host">*.klarna.com</value>
+                <value id="googleadservices" type="host">*.googleadservices.com</value>
+                <value id="google-analytics" type="host">*.google-analytics.com</value>
+                <value id="paypal" type="host">*.paypal.com</value>
+                <value id="twitter" type="host">*.twitter.com</value>
+                <value id="twimg" type="host">*.twimg.com</value>
+                <value id="vimeocdn" type="host">*.vimeocdn.com</value>
+                <value id="youtube-img" type="host">*.ytimg.com</value>
+                <value id="lightemporium" type="host">*.lightemporium.com</value>                
+                <value id="usercentrics" type="host">*.usercentrics.eu</value>
+                <value id="magentocommerce" type="host">*.magentocommerce.com</value>
+                <value id="amazonpay" type="host">*.amazonpay.com</value>
+                <value id="amazonpaycouk" type="host">*.amazonpay.co.uk</value>
+                <value id="amazonpaycojp" type="host">*.amazonpay.co.jp</value>
+                <value id="amazonpayjp" type="host">*.amazonpay.jp</value>
+                <value id="amazonpayfr" type="host">*.amazonpay.fr</value>
+                <value id="amazonpayit" type="host">*.amazonpay.it</value>
+                <value id="amazonservicescom" type="host">*.amazonservices.com</value>
+                <value id="amazonservicescouk" type="host">*.amazonservices.co.uk</value>
+                <value id="amazonservicesjp" type="host">*.amazonservices.jp</value>
+                <value id="amazonservicesit" type="host">*.amazonservices.it</value>
+                <value id="amazonservicesfr" type="host">*.amazonservices.fr</value>
+                <value id="amazonserviceses" type="host">*.amazonservices.es</value>
+                <value id="trackedlinknet" type="host">*.trackedlink.net</value>
+                <value id="dotdigital" type="host">*.dotdigital.com</value>
+                <value id="google" type="host">*.google.com</value>
+
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="cloudflare" type="host">*.cloudflare.com</value>
+                <value id="cardinalcommerce" type="host">*.cardinalcommerce</value>
+                <value id="twitter" type="host">*.twitter.com</value>
+                <value id="paypal" type="host">*.paypal.com</value>
+                <value id="twimg" type="host">*.twimg.com</value>
+                <value id="amazonpay" type="host">*.amazonpay.com</value>
+                <value id="amazonpaycouk" type="host">*.amazonpay.co.uk</value>
+                <value id="amazonpaycojp" type="host">*.amazonpay.co.jp</value>
+                <value id="amazonpayjp" type="host">*.amazonpay.jp</value>
+                <value id="amazonpayfr" type="host">*.amazonpay.fr</value>
+                <value id="amazonpayit" type="host">*.amazonpay.it</value>
+                <value id="amazonservicescom" type="host">*.amazonservices.com</value>
+                <value id="amazonservicescouk" type="host">*.amazonservices.co.uk</value>
+                <value id="amazonservicesjp" type="host">*.amazonservices.jp</value>
+                <value id="amazonservicesit" type="host">*.amazonservices.it</value>
+                <value id="amazonservicesfr" type="host">*.amazonservices.fr</value>
+                <value id="amazonserviceses" type="host">*.amazonservices.es</value>
+                <value id="trackedlinknet" type="host">*.trackedlink.net</value>
+                <value id="dotdigital" type="host">*.dotdigital.com</value>
+                <value id="doubleclick" type="host">*.doubleclick.net</value>
+                <value id="google-analytics" type="host">*.google-analytics.com</value>              
+            </values>
+        </policy>
+        <policy id="font-src">
+            <values>
+                <value id="cloudflare" type="host">*.cloudflare.com</value>
+                <value id="twitter.com" type="host">*.twitter.com</value>
+                <value id="gstatic" type="host">*.gstatic.com</value>
+                <value id="typekit" type="host">*.typekit.net</value>
+                <value id="twimg" type="host">*.twimg.com</value>
+                <value id="trustedshops" type="host">*.trustedshops.com</value>
+                <value id="googleapis" type="host">*.googleapis.com</value>
+            </values>
+        </policy>        
+        <policy id="frame-src">
+            <values>
+                <value id="twitter.com" type="host">*.twitter.com</value>
+            </values>
+        </policy>        
+        <policy id="form-action">
+            <values>
+                <value id="twitter.com" type="host">*.twitter.com</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>
+

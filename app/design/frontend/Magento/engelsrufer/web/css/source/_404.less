@@ -1,0 +1,56 @@
+/* 404 Page CSS Start Here */
+.cms-content{
+	margin-top: 128px;
+}
+
+.cms-content{
+	h2{
+		font-size: @heading-font02;
+		font-weight: @fontB;
+		margin: 0 0 45px;
+	}
+	dl{
+		margin-bottom: 46px;
+		dt{
+			color: @secondary-text-color;
+			font-weight: @fontB02;
+			text-transform: @uppercase-text;
+			margin-bottom: 15px;
+		}
+		dd{
+			.disc{
+				li{
+					padding: 0 0 10px 20px;
+					color: @secondary-text-color;
+					position: @pos_r;
+					margin: @marginNone;
+					&:before{
+						content:"";
+						width: 6px;
+						height: 6px;
+						background: @secondary-text-color;
+						position: @pos_a;
+						left: 0;
+						top: 10px;
+						.border-radius(100%);
+					}
+					&:last-child{
+						padding-bottom: 0;
+					}
+				}
+			}
+			.separator{
+				color: @secondary-text-color;
+			}
+			a{
+				&:hover{
+					text-decoration: underline;
+				}
+			}
+		}
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+}
+/* 404 Page CSS End Here */

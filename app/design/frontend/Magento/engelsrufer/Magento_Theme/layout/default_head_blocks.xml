@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ * Added viewport and theme-color
+ * updated by Noshad on 22.07.2019
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="theme-color" content="#f5a079" />
+        <!-- Added meta tag for Pinterest, https://projects.zoho.com/portal/pixelmechanics2#taskdetail/1781812000000381050/1781812000000400001/1781812000000735020, By AA on 5th July 2021-->
+        <meta name="p:domain_verify" content="a1ca7f2ef4a21d74338e8f0849369f29"/>
+    </head> 
+</page>

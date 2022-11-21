@@ -1,0 +1,43 @@
+/* Breadcrumbs CSS Start Here */
+body .breadcrumbs{
+	background: #fafafa;
+	min-height: 50px;
+	margin: 35px 0 70px;
+	max-width: 100%;
+	.items{
+		&:extend(.nav-sections-items);
+		.item{
+			color: @text-color06;
+			font-size: @parimary-font;
+			padding: 15px 0;
+			display: inline-block;
+			margin: @marginNone;
+			a{
+				color: @text-color06;
+				&:hover{
+					color: @btn-text-link-color;
+					text-decoration: @decoration-none;
+				}
+			}
+		}
+	}
+	.item:not(:last-child)::after {
+	    -webkit-font-smoothing: antialiased;
+	    -moz-osx-font-smoothing: grayscale;
+	    font-size: @heading-font24;
+	    line-height: 18px;
+	    content: '\e608';
+	    font-family: 'icons-blank-theme';
+	    margin: @marginNone;
+	    vertical-align: top;
+	    display: inline-block;
+	    font-weight: normal;
+	    overflow: hidden;
+	    text-align: @text-center;
+	}
+	strong{
+		font-weight: 400;
+	}
+}
+
+/* Breadcrumbs CSS End Here */

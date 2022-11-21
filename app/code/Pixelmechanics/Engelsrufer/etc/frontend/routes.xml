@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/* Define routing for module
+ * Define frontName
+ * Created by AA 24.04.2019
+*/
+--> 
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="engelsrufer" frontName="newsletters">
+            <module name="Pixelmechanics_Engelsrufer" />
+        </route>
+    </router>
+</config>

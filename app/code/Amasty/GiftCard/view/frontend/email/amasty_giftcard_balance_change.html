@@ -1,0 +1,21 @@
+<!--@subject Gift Card {{var gcard_email.getGiftCode()}} balance has been updated @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var gcard_email.getRecipientName()":"Recipient name",
+"var gcard_email.getGiftCode()":"Gift Code",
+"var gcard_email.getBalance()":"Current balance"}
+@-->
+<!--@styles
+@-->
+
+{{template config_path="design/email/header_template"}}
+<table cellspacing="0" cellpadding="0" class="message-container">
+    <tr>
+        <td>
+            Dear {{var gcard_email.getRecipientName()}},<br>
+            <br>
+            Your Gift Card {{var gcard_email.getGiftCode()}} balance has been updated. Your current balance is: <b>{{var gcard_email.getBalance()}}</b>.
+        </td>
+    </tr>
+</table>
+{{template config_path="design/email/footer_template"}}

@@ -1,0 +1,118 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Mostviewed
+ */
+?>
+<?php
+/**
+ * @var \Amasty\Mostviewed\Block\Widget\Related $block
+ * @codingStandardsIgnoreFile
+ */
+/*
+ * File override by AA on 28.08.2019
+ */
+?>
+<!-- Helper to get the count of variants of configurable products By AA, date: 28-08-19 -->
+<?php $helper = $this->helper('Pixelmechanics\Engelsrufer\Helper\Catalog'); ?>
+<?php if ($block->getProductCollection() && $block->getProductCollection()->getSize()) : ?>
+    <?php
+    $type = 'widget-product-grid';
+
+    $mode = 'grid';
+
+    $image = 'related_products_list';
+    $items = $block->getProductCollection()->getItems();
+
+    $isSlider = $block->getBlockLayout();
+    $tagWrap = $isSlider ? 'div' : 'ol';
+    $tag = $isSlider ? 'div' : 'li';
+
+    $showWishlist = true;
+    $showCompare = true;
+    $showCart = $block->getAddToCart();
+    $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    $description = false;
+    ?>
+
+    <div class="grid-related new-block-content block-margin block block <?= /* @noEscape */ $block->getCssClass() ?> block-products-list <?= /* @noEscape */ $mode ?>"         >
+             <?php if ($block->getTitle()) : ?>
+            <div class="row related">
+                <h3 class="block-title title"><?= $block->escapeHtml(__($block->getTitle())) ?></h3>
+            </div>
+        <?php endif; ?>
+        <div class="block-content">
+            <div class="products wrapper">
+                <div class="products-<?= /* @noEscape */ $mode ?> <?= /* @noEscape */ $mode ?>">
+                    <<?= /* @noEscape */ $tagWrap ?> class="items product-items <?= /* @noEscape */ $type ?> <?= /* @noEscape */ $isSlider ? 'owl-carousel owl-theme"' : '' ?>" <?= /* @noEscape */ $isSlider ? 'data-amrelated-js="slider"' : '' ?>>
+                    <?php $iterator = 1; ?>
+                    <?php foreach ($items as $item) : ?>
+                        <?= /* @noEscape */ ($iterator++ == 1) ? '' : '</' . $tag . '>' ?><<?= /* @noEscape */ $tag ?> class="product-item">
+                        <?php /* passing the product's id to get the total number of variant, Added by AA on 28.08.2019 */ ?>
+                        <?php $numberOfVariant = $helper->getConfigAttributeValue($item->getEntityId()); ?>
+                        <div class="product-item-info">
+                            <a href="<?= $block->escapeUrl($block->getProductUrl($item)) ?>" class="product-item-photo">
+                                <?= /* @noEscape */ $block->getImage($item, $image)->toHtml() ?>
+                            </a>
+                            <div class="product-item-details">
+                                <strong class="product-item-name">
+                                    <a title="<?= $block->escapeHtml($item->getName()) ?>"
+                                       href="<?= $block->escapeUrl($block->getProductUrl($item)) ?>"
+                                       class="product-item-link">
+                                           <?= $block->escapeHtml($item->getName()) ?>
+                                    </a>
+                                </strong>
+                                <?php if ($templateType) : ?>
+                                    <?= /* @noEscape */ $block->getReviewsSummaryHtml($item, $templateType) ?>
+                                <?php endif; ?>
+                                <?= /* @noEscape */ $block->getProductPriceHtml($item, \Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE) ?>
+                                <!-- div added to print the number of count of variants of configurable products by AA-->
+                                <div class="number-variant">
+                                    <?php if ($numberOfVariant > 1): ?>
+                                        <?= $numberOfVariant . " " . __('Variants'); ?>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?= /* @noEscape */ ($iterator == count($items) + 1) ? '</' . $tag . '>' : '' ?>
+
+                    <?php endforeach ?>
+                    </<?= /* @noEscape */ $tagWrap ?>>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php if ($isSlider) : ?>
+        <script>
+            require(['jquery', 'mageplaza/core/owl.carousel'], function ($) {
+                $('.owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 45,
+                    nav: true,
+                    dots: false,
+                    responsive: {
+                        0: {
+                            items: 1,
+                            nav: true
+                        },
+                        640: {
+                            items: 2,
+                            nav: true
+                        },
+                        768: {
+                            items: 3,
+                            nav: true
+                        },
+                        1000: {
+                            items: 4,
+                            nav: true,
+                            loop: false
+                        }
+                    }
+                });
+            });
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

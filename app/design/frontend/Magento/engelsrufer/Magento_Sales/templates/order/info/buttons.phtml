@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/*
+ * Updated by AA on 27.06.2019
+ */
+
+?>
+
+    <?php  $_order = $block->getOrder() ?>
+    <?php if ($this->helper('Magento\Sales\Helper\Reorder')->canReorder($_order->getEntityId())) : ?>
+        <a href="#" data-post='<?php /* @escapeNotVerified */ echo
+        $this->helper(\Magento\Framework\Data\Helper\PostHelper::class)
+            ->getPostData($block->getReorderUrl($_order))
+        ?>' class="action order">
+            <span><?= /* @escapeNotVerified */ __('Reorder') ?></span>
+        </a>
+    <?php endif ?>
+<div class="order-date-row">
+    <?php // called order date in order to wrap in a div?>
+<?php echo $this->getLayout()->createBlock("Magento\Sales\Block\Order\Info")->setTemplate("Magento_Sales::order/order_date.phtml")->toHtml();?>
+    <a class="action print"
+       href="<?= /* @escapeNotVerified */ $block->getPrintUrl($_order) ?>"
+       onclick="this.target='_blank';">
+        <span><?= /* @escapeNotVerified */ __('Print Order') ?></span>
+    </a>
+    <?= $block->getChildHtml() ?>
+</div>
+

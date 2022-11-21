@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * For product list page, set the lements as per design
+ * updated by AA on 18.05.2019
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
+    <referenceContainer name="main.content" htmlTag="div" htmlClass="account-container container" />
+    <move element="page.main.title" destination="customer.account.banner" after="-"/>
+    <!-- Remove Billing Agreements-->
+    <referenceBlock name="customer-account-navigation-billing-agreements-link" remove="true"/>
+    <!-- Remove My Downloadable Products-->
+    <referenceBlock name="customer-account-navigation-downloadable-products-link" remove="true"/>
+    <!-- Remove My Credit Cards-->
+    <referenceBlock name="customer-account-navigation-my-credit-cards-link" remove="true"/>
+    <!-- Remove Newsletter Subscriptions-->
+    <referenceBlock name="customer-account-navigation-newsletter-subscriptions-link" remove="true"/>
+    <referenceBlock name="customer-account-navigation-delimiter-1" remove="true"/>
+    <referenceBlock name="customer-account-navigation-delimiter-2" remove="true"/>
+    <referenceBlock name="wishlist_sidebar" remove="true"/>
+    <referenceBlock name="category-sidebar" remove="true"/>
+    <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+    <referenceBlock name="catalog.compare.sidebar" remove="true"/> 
+    <referenceContainer name="page.top">
+            <container name="customer.account.banner" label="Customer account banner Container" htmlTag="div" htmlClass="accountBanner banner-container" after="-">
+                    <block class="Magento\Cms\Block\Block" name="login-banner">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">account-banner</argument>
+                        </arguments>
+                    </block>
+            </container>
+    </referenceContainer>
+    <referenceContainer name="content">
+      <!-- Set wishlist collection -->
+         <block class="Magento\Wishlist\Block\Customer\Sidebar" name="wishlist.collection"  template="Pixelmechanics_Engelsrufer::account/wishlist.phtml" after="-">
+             <block class="Magento\Cms\Block\Block" name="tax-info">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">tax_info_product</argument>
+                </arguments>
+            </block>
+         </block>
+    </referenceContainer>
+    <referenceContainer name="footer-container">
+     <!-- added static block in footer -->
+        <container name="account.bottom" label="account bottom Container" htmlTag="div" htmlClass="statics-block-wrap bot-wrap" before="-">
+            <block class="Magento\Cms\Block\Block" name="account-static-info">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">bottom-static-banners</argument>
+                </arguments>
+            </block> 
+        </container>
+    </referenceContainer>
+</page>

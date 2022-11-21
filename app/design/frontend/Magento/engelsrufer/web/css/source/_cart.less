@@ -1,0 +1,448 @@
+/* Cart Page CSS Start Here */
+.cart-container.container{
+	padding-top: 128px;
+	.page-title-wrapper{
+		.page-title{
+			font-size: @heading-font02;
+			color: @text-color03;
+			font-weight: @fontB;
+		}
+	}
+}
+.cart-container{
+	.cart.table-wrapper{
+		margin-bottom: 30px;
+		.items{
+			thead{
+				tr{
+					th{
+						padding: 0 6px 6px;
+						font-size: @secondary-font;
+						font-weight: @fontB;
+						color: @secondary-text-color;
+						border-bottom: @gray-light-bg03;
+						vertical-align: top;
+						.tax-info{
+							display: @displayB;
+						    color: @primary-text-color;
+						    font-size: @small-font;
+						}
+					}
+				}
+			}
+			tr{
+				td.col.item{
+					padding: 20px 8px;					
+				}
+				td{
+					.product-item-photo{
+						.product-image-photo{
+							width: 100px;
+							height: auto;
+							object-fit: inherit;
+						}
+					}
+					.product-item-details{
+						background: none;
+						padding: 11px 0 0;
+						min-height: inherit;
+						text-align: left;
+						.product-item-name{
+							height: auto;
+							margin: @marginNone;
+							text-align: left;
+							a{
+								text-transform: inherit;
+								font-size: @secondary-font;
+								color: @btn-text-link-color;
+							}
+						}
+						.item-options{
+							font-size: @secondary-font;
+							text-align: left;
+							dt{
+								display: inline-block;
+								font-weight: normal;
+								color: @secondary-text-color;
+							}
+							dd{
+								display: inline-block;
+							}
+						}
+					}
+					.actions-toolbar{
+						.action-edit{
+							padding-right: 32px!important;
+							&:before{
+								font-size: @small-font;
+							    line-height: 28px;
+							    color: @primary-text-color;
+							    content: '\f303';
+							    font-family: 'Font Awesome 5 Free';
+							    vertical-align: @valignM;
+							    display: inline-block;
+							    font-weight: 900;
+							    text-align: @text-center;							    
+							}
+						}
+						.action-delete{
+							&:before{
+								&:extend(.cart-container .cart.table-wrapper .items tr td .actions-toolbar .action-edit:before);
+								content: '\f2ed';
+							}
+						}
+						.action{
+							padding: @paddingNone;
+							margin: @marginNone;
+							background: @bgNone;
+							border: @bdrNone;
+							span{
+								display: @displayN;
+							}
+							&:hover{
+								&:before{
+									color: @secondary-text-color;
+								}
+							}							
+						}
+						.action-towishlist{
+							float: @floatL;
+							color: @secondary-text-color;
+							font-size: @parimary-font;
+							font-weight: normal;
+							span{
+								display: @displayB;
+							}
+							&:hover{
+								color: @btn-text-link-color;
+								text-decoration: underline;
+							}
+						}
+					}
+					&:last-child{
+						text-align: right;
+					}
+				}
+				.col{
+					.price-excluding-tax,
+					.price-including-tax{
+						margin: @marginNone !important;
+						font-size: @parimary-font;
+						padding-top: 12px;
+						.price{
+							font-weight: normal;
+						}
+					}
+				}
+				.col.qty{
+					.field.qty{
+						.label{
+							display: @displayN;
+						}
+						.control{
+							.input-text.qty{
+								width: 55px;
+								height: 40px;
+								text-align: @text-center;
+								margin-top: @marginNone;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.cart.actions{
+		margin-bottom: 25px;
+		max-width: 566px;
+    	width: @width100;
+		.action{
+			margin-bottom: 0;
+			padding: 15px 25px;
+			width: 49.5%;
+		}
+		.action.clear{
+			background-color: @badge-bg-color;
+			border-color: @badge-bg-color;
+			&:hover{
+				color: @badge-bg-color;
+				background: @bgNone;
+			}
+		}
+	}
+}
+.cart-summery-container{
+	.discount-gift-as-single{
+		max-width: 565px;
+		width: @width100;
+		float: @floatL;
+	}
+	.block.discount,
+	.discount-gift-as-single .block.discount+div{
+		&:extend(.block-customer-login);
+		width: @width100;
+		float: @floatL;
+		margin-bottom: 30px;
+		&:before,
+		&:after{
+			&:extend(.cart-summery-container .cart-summary:before);
+		}
+		&:after{
+			&:extend(.cart-summery-container .cart-summary:after);			
+		}
+		.title{
+			color: @secondary-text-color;
+			margin: 0 0 45px;
+			strong{
+				font-size: @heading-font02;
+				font-weight: @fontB;
+				line-height: 33px;
+			}
+		}
+		.content{
+			display: @displayB !important;
+		}
+		.amgiftcard-form{
+			margin: @marginNone;
+			.amactions-toolbar{
+				.action{
+					width: @width100;
+				}
+				button[type="submit"]{
+					margin-bottom: 10px;
+				}
+			}
+		}
+		.actions-toolbar{
+			.primary{
+				float: @floatR;
+				margin: @marginNone;
+				display: @displayB;
+			}
+		}
+
+		//Start - new html structure after update, CSS needs adjustment https://trello.com/c/b8ZUG7t9/213-update-magento-auf-243-oder-23-neueste-version
+		.amcard-field-block{
+			display: @displayB;
+			.amgcard-datalist-container{
+				margin-bottom: 20px;
+				input.amcard-field{
+					border: 1px solid #191919;
+					height: 50px;
+					background: #fff;
+					padding-left: 9px;
+					padding-right: 9px;
+				}
+				.amcard-input-arrow::after{
+					display: none;
+				}
+			}
+		}
+		.amcard-title{
+			color:#000;
+		}
+		.amcard-field-block.-code{
+			margin-top: 5px;
+		}
+		.amcard-datalist-message{
+			margin-top: 10px;
+		}
+		.amcard-button,
+		.amcard-check{
+			width: @width100;
+			padding: 15px 40px;
+			font-size: 18px;
+			font-family: 'Josefin Sans', sans-serif;
+		}
+
+		@media screen and (max-width:767px){
+			.amcard-field-container.-cart{
+				max-width: 100%;
+			} 
+		}
+		//End - new html structure after update, CSS needs adjustment https://trello.com/c/b8ZUG7t9/213-update-magento-auf-243-oder-23-neueste-version
+		
+		
+	}
+	.cart-summary{
+		&:extend(.block-customer-login);
+		max-width: 684px;
+		width: @width100;
+		float: @floatR;
+		background: @bgNone;
+		/*margin-top: -70px;*/
+		&:before,
+		&:after{
+			content: "";
+		    background: @btn-text-link-color;
+		    width: 1px;
+		    height: 8px;
+		    position: @pos_a;
+		    top: -8px;
+		    left: -1px;
+		}
+		&:after{
+			right: -1px;
+			left: inherit;
+		}
+		.summary.title{
+			font-size: @heading-font02;
+			font-weight: @fontB;
+			color: @secondary-text-color;
+			margin: 0 0 45px;
+		}
+		.block{
+			position: @pos_r;
+			.title{
+				margin-bottom: 15px;
+				cursor: pointer;
+				padding: 0 10px;
+				&:after{
+				    font-size: @heading-font;
+				    line-height: 22px;
+				    color: @secondary-text-color;
+				    content: '\e622';
+				    font-family: 'icons-blank-theme';
+				    display: inline-block;
+				    font-weight: normal;
+				    position: @pos_a;
+				    right: 0;
+				    .transition(all 0.5s ease 0s);
+				}
+				strong{
+					font-size: @parimary-font;
+					font-weight: @fontB;
+					color: @secondary-text-color;
+				}
+			}
+			.content{
+				.fieldset{
+					margin: @marginNone;
+					.field{
+						margin-bottom: 25px;
+					}
+				}
+			}
+			.rate{
+				.items{
+					.item-title{
+						display: @displayN;
+					}
+					.item-options{
+						input[type="radio"]{
+							margin-right: 8px;
+						}
+						.label{
+							color: @secondary-text-color;
+							.price{								
+								float: right;
+								span{
+									padding-right: 45px;
+								}
+							}
+						}
+						.field{
+							margin: @marginNone;
+							font-weight: @fontB;
+						}
+					}
+				}
+			}
+		}
+		.active{
+			.title{
+				&:after{
+					.rotate(180deg);
+				}
+			}
+		}
+		.cart-totals{
+			border: @bdrNone;
+			.totals{
+				position: @pos_r;
+				tr{
+					th,td{
+						padding: 15px 10px;
+						color: @secondary-text-color;
+						border-top: 1px solid @secondary-text-color;
+						font-weight: @fontB;
+					}
+					td{
+						text-align: right;
+						padding-right: 45px;
+					}
+					th{
+						.tax-info{
+							color: @primary-text-color;
+						}
+					}
+				}
+				.totals-tax-summary{
+					position: @pos_r;
+					th,td{
+						cursor: pointer;
+					}
+					&:after{
+						&:extend(.cart-summery-container .cart-summary .block .title:after);
+						/*right: 42px;*/
+						line-height: 50px;
+						cursor: pointer;
+					}
+				}
+				.totals-tax-summary.expanded{
+					&:after{
+						.rotate(180deg);
+					}
+				}				
+				.totals-tax-details{
+					display: @displayN;
+				}
+				.totals-tax-details.shown{
+					display: table-row;
+				}
+				.mark{
+					span.value{
+						display: @displayN;
+					}
+				}
+			}
+		}
+		.checkout-methods-items{
+			margin-top: 15px;
+			.item{
+				text-align: right;
+				margin: @marginNone;
+				a{
+					color: @btn-text-link-color;
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+				// Removed Code PATCH for Trello card : https://trello.com/c/zHx4nbni/129-2020-06-1-update-magento-version-234#comment-606fe388dd278704e9260c8e
+				//&:last-child{
+				//	display: @displayN;
+				//}
+			}
+			button.checkout{
+				width: auto;
+				background-color: @green-color;
+				border-color: @green-color;
+				&:hover{
+					background: @bgNone;
+					color: @green-color;
+				}
+			}
+		}
+	}
+}
+.cart-empty{
+	p{
+		a{
+			color: @btn-text-link-color;
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+}
+/* Cart Page CSS End Here */

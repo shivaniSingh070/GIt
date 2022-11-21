@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Added tradeTracker script phtml file in checkout success page
+ * By AA on 8.9.2021 
+ * @trello url: https://trello.com/c/5BJVIHn6/
+ * 
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- added phtml file in checkout success page -->
+        <!-- 
+        /**
+        * code commented as Installed TradeTracker Module
+        * By PM AJ on 31.03.2022 
+        * @trello url: https://trello.com/c/5BJVIHn6
+        *
+        -->
+        <!--<referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   template="Magento_Checkout::checkout/tradeTracker.phtml"/>
+        </referenceContainer> -->
+    </body>
+</page>

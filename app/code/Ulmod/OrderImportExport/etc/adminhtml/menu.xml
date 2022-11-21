@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Ulmod. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Ulmod_OrderImportExport::orderimportexport" 
+			title="Export/Import Orders by Ulmod" 
+			sortOrder="90" module="Ulmod_OrderImportExport" 
+			parent="Magento_Backend::system" 
+			resource="Ulmod_OrderImportExport::orderimportexport"/>		
+        <add id="Ulmod_OrderImportExport::import" 
+		title="Import Orders" 
+			translate="title" module="Ulmod_OrderImportExport" 
+			sortOrder="41" 
+			parent="Ulmod_OrderImportExport::orderimportexport" 
+			action="adminhtml/orderimportexport/importorder" 
+			resource="Ulmod_OrderImportExport::import"/>		
+        <add id="Ulmod_OrderImportExport::export" title="Export Orders" 
+			translate="title" 
+			module="Ulmod_OrderImportExport" 
+			sortOrder="42" 
+			parent="Ulmod_OrderImportExport::orderimportexport" 
+			action="adminhtml/orderimportexport/exportorder" 
+			resource="Ulmod_OrderImportExport::export"/>
+
+        <add id="Ulmod_OrderImportExport::exportlog" title="Export Orders History" 
+			translate="title" 
+			module="Ulmod_OrderImportExport" 
+			sortOrder="43" 
+			parent="Ulmod_OrderImportExport::orderimportexport" 
+			action="adminhtml/orderimportexport/exportlog" 
+			resource="Ulmod_OrderImportExport::exportlog"/>
+			
+        <add id="Ulmod_OrderImportExport::importlog" title="Import Orders History" 
+			translate="title" 
+			module="Ulmod_OrderImportExport" 
+			sortOrder="44" 
+			parent="Ulmod_OrderImportExport::orderimportexport" 
+			action="adminhtml/orderimportexport/importlog" 
+			resource="Ulmod_OrderImportExport::importlog"/>			
+			
+    </menu>		
+</config>
+

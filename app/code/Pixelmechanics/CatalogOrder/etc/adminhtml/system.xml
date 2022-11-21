@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<!--/*
+* @author : Noshad Ali
+* @Date :  1 Aug 2019
+* @Description : Direct order for system configuratoin
+* @trello : https://trello.com/c/UyuL2qfu
+*/ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		
+		<section id="contact" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Contacts</label>
+            <tab>general</tab>
+            <resource>Magento_Contact::contact</resource>
+            <group id="catalog_order_email" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Catalog Order Email Options</label>
+                 <field id="recipient_email" translate="label comment" type="text" showInDefault="1" canRestore="1"  showInStore="1" showInWebsite="1">
+			        <label>Catalog Recipient Email</label>     
+			    </field>
+			    <field id="from" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Send From</label>
+                        <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+			   <field id="email_template" translate="label comment" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+				    <label>Email Template</label>
+				    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+			  </field>
+			  <field id="order_file_upload" translate="label" type="Magento\Config\Block\System\Config\Form\Field\File" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+		            <label>Order Catalog File</label>
+		            <backend_model>Magento\Config\Model\Config\Backend\File</backend_model>
+		            <upload_dir config="system" scope_info="1">catalog_order</upload_dir>
+	          </field>
+            </group>
+        </section>
+	</system>
+</config>

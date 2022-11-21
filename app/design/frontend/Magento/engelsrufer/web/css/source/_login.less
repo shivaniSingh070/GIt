@@ -1,0 +1,244 @@
+
+/* Login Page CSS Start Here */
+.banner-container{
+	position: @pos_r;
+	border-top: 1px solid @gray-light-bg03;
+	text-align: @text-center;
+	.page-title-wrapper{
+		position: @pos_a;
+	    top: 50%;
+	    left: 50%;
+	    .translate (-50%, -50%);
+	    border: @bdrNone;
+	    .page-title{
+	    	margin: @marginNone;
+	    	font-size: 55px;
+	    	font-weight: @fontB02;
+	    }
+	}
+}
+.login-container{
+	.flex-display();
+	.flex-wrap(wrap);
+	margin-bottom: 80px;
+}
+.login-left-container{
+	 width: @width50;
+	 padding-right: 15px;
+	 .login-left-img{
+	 	img{
+	 		height: 100%;
+			width: 100%;
+			object-fit: cover;
+	 	}
+	 }
+}
+.login-right-container{
+	&:extend(.login-left-container);
+	padding-left: 15px;
+	padding-right: 0;
+}
+.block-customer-login{
+	border: 1px solid @gray-light-bg03;
+	border-top: 8px solid #f5a079;
+	padding: 50px;
+	position: @pos_r;
+	@media screen and (max-width: 1280px){
+		padding: 30px;
+	}
+	@media screen and (max-width: 480px){
+		padding: 20px;
+	}
+}
+.login-right-container {
+	.block-customer-login {
+		.block-title {
+			color: @secondary-text-color;
+			font-size: 30px;
+			font-weight: @fontB;
+			line-height: normal;
+			text-transform: @uppercase-text;
+		}
+	}
+}
+.block-customer-login {
+	.block-content {
+		.form-login {
+			.field {
+				margin-bottom: 26px;
+				.label {
+					color: #000000;
+					display: @displayB;
+					font-weight: normal;
+					line-height: @lineHeight26;
+					margin-bottom: 0;
+					padding: @paddingNone;
+					text-align: left;
+					width: @width100;
+					font-size: @parimary-font;
+				}
+				.control {
+					position: @pos_r;
+					width: 100%;
+					.tc_check {
+						line-height: 19px;
+						padding-left: 32px;
+						padding-right: 40px;
+						position: @pos_r;
+						p{
+							position: @pos_r;
+							&:after{
+								&:extend(.fieldset > .field.required > .label:after, .fieldset > .fields > .field.required > .label:after);
+								margin: 0 0 0 3px;
+							}
+						}
+					}
+				}				
+				.input-checkbox {
+					margin: @marginNone;
+					position: @pos_a;
+					left: 0;
+					top: 1px;
+				}
+			}
+			.tc-check{
+				margin-bottom: 10px;
+			}
+			.password {
+				margin-bottom: 21px;
+			}
+			.field.note {
+				margin: 48px 0 54px;
+			}
+		}
+	}
+}
+body .input-text,
+body input[type="text"], 
+body input[type="password"], 
+body input[type="url"], 
+body input[type="tel"], 
+body input[type="search"], 
+body input[type="number"], 
+body input[type="datetime"], 
+body input[type="email"],
+body select.select,
+body select {
+	border: 1px solid @secondary-text-color;
+	height: 50px;
+	background: @white-btn;
+	padding-left: 9px;
+	padding-right: 9px;
+}
+body textarea,
+body textarea.input-text{
+	border: 1px solid @secondary-text-color;
+	height: auto;	
+}
+.block-new-customer {
+	background: @btn-text-link-color;
+	margin-top: 60px;
+	padding: 60px 50px;
+	#block-new-customer-heading {
+		color: @white-btn;
+		display: @displayB;
+		font-size: @heading-font;
+		text-transform: @uppercase-text;
+		line-height: normal;
+	}
+	.block-content {
+		p {
+			color: @white-btn;
+			margin: 48px 0 45px;
+		}
+		.actions-toolbar{
+			margin: @marginNone;
+			display: inline-block;
+			.action{
+				margin-top: 0 !important;
+				padding-bottom: 11px;
+			}
+		}
+	}
+}
+.primary {
+	a.action {
+		background: @white-btn;
+		border: 1px solid transparent;
+		color: @text-color03;
+		display: inline-block;
+		font-weight: normal;
+		padding: 15px 40px;
+		.border-radius(0px);
+		min-width: 248px;
+		text-align: @text-center;
+		&:hover{
+			background: @bgNone;
+			color: @white-btn !important;
+			border-color: @white-btn;
+		}
+	}
+}
+
+.login-container {
+	.fieldset {
+		&:after {
+			bottom: 99px;
+			float: @floatR;			
+			margin-top: 43px;
+			position: @pos_a;
+			right: 8%;
+		}
+	}
+}
+.block-customer-login {
+	.actions-toolbar {
+		float: @floatL;
+		margin-top: 0;
+	}
+	a.action.remind {
+		display: inline-block;
+		line-height: 38px;
+		color: @btn-text-link-color;
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+	input#tc-check {
+		float: @floatL;
+	}
+}
+.fieldset {
+	&:last-child {
+		margin-bottom: 0px !important;
+	}
+}
+.login{
+	.actions-toolbar {
+		.primary {
+			.action {
+				margin: 0 25px 0 0;
+				.border-radius(0px);
+				padding: 15px 40px;
+				min-width: 248px;
+			}
+		}
+	}
+}
+.login-container .fieldset{
+	&:after{
+		display: @displayN;
+	}
+}
+.tc_check {
+	color: @primary-text-color !important;
+}
+.required-field {
+    width: @width100;
+    float: @floatL;
+    text-align: right;
+    color: #e02b27;
+    font-size: 1.2rem;
+    margin-top: 30px;
+}
+/* Login Page CSS Ends Here */

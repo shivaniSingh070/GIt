@@ -1,0 +1,17 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Mostviewed
+ */
+?>
+<?php
+/** @var \Amasty\Mostviewed\Block\Checkout\Cart\Messages $block */
+$object = $block->getMessage();
+?>
+
+<?php if ($object && ($message = $block->convertMessage($object))) : ?>
+    <div class="amrelated-cart-message" data-pack-id="<?= /* @noEscape */ $object->getPackId();?>">
+        <?= /* @noEscape */ $message; ?>
+    </div>
+<?php endif;?>

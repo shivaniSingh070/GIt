@@ -1,0 +1,33 @@
+<?php
+
+/* 
+ * Show blog category listing
+ * Created by AA on 14.05.2019
+ */
+?>
+
+<?php // call helper to get category collection ?>
+<?php $helperBlog = $this->helper('Mageplaza\Blog\Helper\Data'); ?>
+
+<?php // call helper (Mageplaza\Blog\Helper\Data) function "getObjectList" to get enabled category ?>
+<?php $categories = $helperBlog->getObjectList('category'); ?>
+
+<?php  /* get object of engelsrufer Data helper to get Base URL */
+          $helperData = $this->helper('Pixelmechanics\Engelsrufer\Helper\Data'); ?>
+<?php /* getBase Url */ $baseUrl = $helperData->getBaseUrl(); ?>
+<?php /* get blog route Url defined in configuration GOTO: Shops >> configuration >> Megplaza extension >> Better Blog >> Name der Route */
+        $blogRoute =  $helperBlog->getRoute(); ?>
+<?php /* get blog URL suffix defined in configuration GOTO: Shops >> configuration >> Megplaza extension >> Better Blog >> Url Suffix */ 
+        $blogSuffix =  $helperBlog->getUrlSuffix(); ?>
+<ul>
+    <?php 
+    foreach($categories as $category): ?>
+    <li>
+       <?php  $categoryUrl =   $baseUrl.$blogRoute."/"."category/".$category->getUrlKey().$blogSuffix; //prepare category URL ?>
+        <a href="<?php echo $categoryUrl; ?>">
+     <?php /* added translation for category name, updated by AA on 13.06.2019 */ ?>
+            <?php  echo __($category->getName()); //show category name ?>
+        </a>
+    </li>
+    <?php endforeach; ?>
+</ul>

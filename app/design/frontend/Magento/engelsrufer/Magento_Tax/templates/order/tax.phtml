@@ -1,0 +1,40 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ * Remove Full Summary of tax from the Order email. 30.07.19
+ * trello: https://trello.com/c/moBxmNoT/233-bug-shopping-cart-calculation-steuerberechnung-f%C3%BCr-versand 
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+    $_order  = $block->getOrder();
+    $_source = $block->getSource();
+    $_fullInfo = $this->helper('Magento\Tax\Helper\Data')->getCalculatedTaxes($_source);
+    global $taxIter; $taxIter++;
+?>
+
+<?php if ($_fullInfo && $block->displayFullSummary()): ?>
+        <?php foreach ($_fullInfo as $info): ?>
+            <?php
+                $percent    = $info['percent'];
+                $amount     = $info['tax_amount'];
+                $baseAmount = $info['base_tax_amount'];
+                $title      = $info['title'];
+            ?>
+            <tr class="totals tax details details-<?= /* @escapeNotVerified */ $taxIter ?> <?= ($block->getIsPlaneMode()) ? ' plane' : '' ?>">
+                <td <?= /* @escapeNotVerified */ $block->getLabelProperties() ?>>
+                    <?= $block->escapeHtml($title) ?>
+                    <?php if (!is_null($percent)): ?>
+                        (<?= (float)$percent ?>%)
+                    <?php endif; ?>
+                    <br />
+                </td>
+                <td <?= /* @escapeNotVerified */ $block->getValueProperties() ?> rowspan="1">
+                    <?= /* @escapeNotVerified */ $_order->formatPrice($amount) ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+<?php endif;?>

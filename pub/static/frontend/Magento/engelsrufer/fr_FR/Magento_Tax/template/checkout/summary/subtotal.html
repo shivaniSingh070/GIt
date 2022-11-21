@@ -1,0 +1,48 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--
+added incl. Vat text in subtotal, updated by AA on 09.08.2019
+-->
+<!-- ko if: isBothPricesDisplayed() -->
+<tr class="totals sub excl">
+    <th class="mark" scope="row">
+        <span data-bind="i18n: title"></span>
+        <span data-bind="i18n: excludingTaxMessage"></span>
+    </th>
+    <td class="amount">
+        <span class="price" data-bind="text: getValue(), attr: {'data-th': excludingTaxMessage}"></span>
+    </td>
+</tr>
+<tr class="totals sub incl">
+    <th class="mark" scope="row">
+        <span data-bind="i18n: title"></span>
+        <span data-bind="i18n: includingTaxMessage"></span>
+    </th>
+    <td class="amount">
+        <span class="price" data-bind="text: getValueInclTax(), attr: {'data-th': includingTaxMessage}"></span>
+    </td>
+</tr>
+<!-- /ko -->
+<!-- ko if: !isBothPricesDisplayed() && isIncludingTaxDisplayed() -->
+<tr class="totals sub">
+    <th class="mark" scope="row">
+        <span data-bind="i18n: 'Subtotal'"></span>
+        <span class="tax-info" data-bind="i18n: 'incl. VAT'"></span>
+    </th>
+    <td class="amount">
+        <span class="price" data-bind="text: getValueInclTax(), attr: {'data-th': title}"></span>
+    </td>
+</tr>
+<!-- /ko -->
+<!-- ko if: !isBothPricesDisplayed() && !isIncludingTaxDisplayed() -->
+<tr class="totals sub">
+    <th data-bind="i18n: title" class="mark" scope="row"></th>
+    <td class="amount">
+        <span class="price" data-bind="text: getValue(), attr: {'data-th': title}"></span>
+    </td>
+</tr>
+<!-- /ko -->

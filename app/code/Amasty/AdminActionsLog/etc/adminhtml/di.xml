@@ -1,0 +1,372 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="history" xsi:type="array">
+                    <item name="class" xsi:type="string">Amasty\AdminActionsLog\Ui\DataProvider\Product\Form\Modifier\History</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Amasty\AdminActionsLog\Ui\DataProvider\ActionsLog\Listing">
+        <arguments>
+            <argument name="collectionModifiers" xsi:type="array">
+                <item name="amaudit_order_history_listing" xsi:type="object">Amasty\AdminActionsLog\Ui\Component\Listing\Filter\FilterOrderListing</item>
+                <item name="amaudit_product_history_listing" xsi:type="object">Amasty\AdminActionsLog\Ui\Component\Listing\Filter\FilterProductListing</item>
+                <item name="amaudit_customer_history_listing" xsi:type="object">Amasty\AdminActionsLog\Ui\Component\Listing\Filter\FilterCustomerListing</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Action Validators configuration start -->
+    <type name="Amasty\AdminActionsLog\Logging\ActionType\Validation\ObjectClassValidator">
+        <arguments>
+            <argument name="classList" xsi:type="object">AmActionLog_GlobalIgnoreClassList</argument>
+        </arguments>
+    </type>
+    <!-- Action Validators configuration end -->
+
+    <!-- Action Handler configuration start -->
+    <virtualType name="AmActionLog_CacheHandlerConfig" type="Amasty\AdminActionsLog\Logging\ActionType\TypeConfig">
+        <arguments>
+            <argument name="actionsRegExp" xsi:type="array">
+                <item name="all_no_index" xsi:type="string">adminhtml_cache_(?!index)</item>
+            </argument>
+            <argument name="validators" xsi:type="array">
+                <item name="log_allowed" xsi:type="object">Amasty\AdminActionsLog\Logging\ActionType\Validation\LoggingAllowedValidator</item>
+            </argument>
+            <argument name="event" xsi:type="const">Amasty\AdminActionsLog\Api\Logging\MetadataInterface::EVENT_DISPATCH</argument>
+            <argument name="priority" xsi:type="number">0</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmActionLog_ExportHandlerConfig" type="Amasty\AdminActionsLog\Logging\ActionType\TypeConfig">
+        <arguments>
+            <argument name="actionsRegExp" xsi:type="array">
+                <item name="filetypes" xsi:type="string">(csv|excel|xml)</item>
+                <item name="export_post" xsi:type="string">_exportPost$</item>
+            </argument>
+            <argument name="validators" xsi:type="array">
+                <item name="log_allowed" xsi:type="object">Amasty\AdminActionsLog\Logging\ActionType\Validation\LoggingAllowedValidator</item>
+            </argument>
+            <argument name="event" xsi:type="const">Amasty\AdminActionsLog\Api\Logging\MetadataInterface::EVENT_DISPATCH</argument>
+            <argument name="priority" xsi:type="number">50</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmActionLog_AdminSessionHandlerConfig" type="Amasty\AdminActionsLog\Logging\ActionType\TypeConfig">
+        <arguments>
+            <argument name="actionsRegExp" xsi:type="array">
+                <item name="all" xsi:type="string">.*</item>
+            </argument>
+            <argument name="validators" xsi:type="array">
+                <item name="log_allowed" xsi:type="object">Amasty\AdminActionsLog\Logging\ActionType\Validation\LoggingAllowedValidator</item>
+            </argument>
+            <argument name="event" xsi:type="const">Amasty\AdminActionsLog\Api\Logging\MetadataInterface::EVENT_DISPATCH</argument>
+            <argument name="priority" xsi:type="number">100</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmActionLog_EntitySaveBeforeHandlerConfig" type="Amasty\AdminActionsLog\Logging\ActionType\TypeConfig">
+        <arguments>
+            <argument name="actionsRegExp" xsi:type="array">
+                <item name="all" xsi:type="string">.*</item>
+            </argument>
+            <argument name="validators" xsi:type="array">
+                <item name="log_allowed" xsi:type="object">Amasty\AdminActionsLog\Logging\ActionType\Validation\LoggingAllowedValidator</item>
+                <item name="class_ignore" xsi:type="object">Amasty\AdminActionsLog\Logging\ActionType\Validation\ObjectClassValidator</item>
+            </argument>
+            <argument name="event" xsi:type="const">Amasty\AdminActionsLog\Api\Logging\MetadataInterface::EVENT_SAVE_BEFORE</argument>
+            <argument name="priority" xsi:type="number">1000</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmActionLog_EntitySaveAfterHandlerConfig" type="Amasty\AdminActionsLog\Logging\ActionType\TypeConfig">
+        <arguments>
+            <argument name="actionsRegExp" xsi:type="array">
+                <item name="all" xsi:type="string">.*</item>
+            </argument>
+            <argument name="validators" xsi:type="array">
+                <item name="log_allowed" xsi:type="object">Amasty\AdminActionsLog\Logging\ActionType\Validation\LoggingAllowedValidator</item>
+                <item name="class_ignore" xsi:type="object">Amasty\AdminActionsLog\Logging\ActionType\Validation\ObjectClassValidator</item>
+            </argument>
+            <argument name="event" xsi:type="const">Amasty\AdminActionsLog\Api\Logging\MetadataInterface::EVENT_SAVE_AFTER</argument>
+            <argument name="priority" xsi:type="number">1000</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmActionLog_EntityDeleteHandlerConfig" type="Amasty\AdminActionsLog\Logging\ActionType\TypeConfig">
+        <arguments>
+            <argument name="actionsRegExp" xsi:type="array">
+                <item name="all" xsi:type="string">.*</item>
+            </argument>
+            <argument name="validators" xsi:type="array">
+                <item name="log_allowed" xsi:type="object">Amasty\AdminActionsLog\Logging\ActionType\Validation\LoggingAllowedValidator</item>
+                <item name="class_ignore" xsi:type="object">Amasty\AdminActionsLog\Logging\ActionType\Validation\ObjectClassValidator</item>
+            </argument>
+            <argument name="event" xsi:type="const">Amasty\AdminActionsLog\Api\Logging\MetadataInterface::EVENT_DELETE</argument>
+            <argument name="priority" xsi:type="number">1000</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmActionLog_LayoutRenderBeforeHandlerConfig" type="Amasty\AdminActionsLog\Logging\ActionType\TypeConfig">
+        <arguments>
+            <argument name="actionsRegExp" xsi:type="array">
+                <item name="all" xsi:type="string">.*</item>
+            </argument>
+            <argument name="validators" xsi:type="array">
+                <item name="log_allowed" xsi:type="object">Amasty\AdminActionsLog\Logging\ActionType\Validation\LoggingAllowedValidator</item>
+                <item name="log_visit_history_enabled" xsi:type="object">Amasty\AdminActionsLog\Logging\ActionType\Validation\LoggingVisitHistoryValidator</item>
+            </argument>
+            <argument name="event" xsi:type="const">Amasty\AdminActionsLog\Api\Logging\MetadataInterface::EVENT_LAYOUT_RENDER_BEFORE</argument>
+            <argument name="priority" xsi:type="number">100</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmActionLog_SucceedLoginHandlerConfig" type="Amasty\AdminActionsLog\Logging\ActionType\TypeConfig">
+        <arguments>
+            <argument name="actionsRegExp" xsi:type="array">
+                <item name="all" xsi:type="string">.*</item>
+            </argument>
+            <argument name="validators" xsi:type="array">
+                <item name="log_allowed" xsi:type="object">Amasty\AdminActionsLog\Logging\ActionType\Validation\LoggingAllowedValidator</item>
+                <item name="tfa_granted" xsi:type="object">Amasty\AdminActionsLog\Logging\ActionType\Validation\TwoFactorGranted</item>
+            </argument>
+            <argument name="event" xsi:type="const">Amasty\AdminActionsLog\Api\Logging\MetadataInterface::EVENT_LOGIN</argument>
+            <argument name="priority" xsi:type="number">150</argument>
+        </arguments>
+    </virtualType>
+    <type name="Amasty\AdminActionsLog\Logging\ActionType\HandlerResolver">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="admin_session" xsi:type="array">
+                    <item name="handlerClass" xsi:type="string">Amasty\AdminActionsLog\Logging\ActionType\Dispatch\AdminSession</item>
+                    <item name="config" xsi:type="object">AmActionLog_AdminSessionHandlerConfig</item>
+                </item>
+                <item name="cache" xsi:type="array">
+                    <item name="handlerClass" xsi:type="string">Amasty\AdminActionsLog\Logging\ActionType\Dispatch\Cache</item>
+                    <item name="config" xsi:type="object">AmActionLog_CacheHandlerConfig</item>
+                </item>
+                <item name="export" xsi:type="array">
+                    <item name="handlerClass" xsi:type="string">Amasty\AdminActionsLog\Logging\ActionType\Dispatch\Export</item>
+                    <item name="config" xsi:type="object">AmActionLog_ExportHandlerConfig</item>
+                </item>
+                <item name="entity_save_before" xsi:type="array">
+                    <item name="handlerClass" xsi:type="string">Amasty\AdminActionsLog\Logging\ActionType\BeforeSave\Entity</item>
+                    <item name="config" xsi:type="object">AmActionLog_EntitySaveBeforeHandlerConfig</item>
+                </item>
+                <item name="entity_save_after" xsi:type="array">
+                    <item name="handlerClass" xsi:type="string">Amasty\AdminActionsLog\Logging\ActionType\AfterSave\Entity</item>
+                    <item name="config" xsi:type="object">AmActionLog_EntitySaveAfterHandlerConfig</item>
+                </item>
+                <item name="entity_delete" xsi:type="array">
+                    <item name="handlerClass" xsi:type="string">Amasty\AdminActionsLog\Logging\ActionType\Delete\Entity</item>
+                    <item name="config" xsi:type="object">AmActionLog_EntityDeleteHandlerConfig</item>
+                </item>
+                <item name="layout_render_before" xsi:type="array">
+                    <item name="handlerClass" xsi:type="string">Amasty\AdminActionsLog\Logging\ActionType\RenderBefore\Layout</item>
+                    <item name="config" xsi:type="object">AmActionLog_LayoutRenderBeforeHandlerConfig</item>
+                </item>
+                <item name="succeed_login" xsi:type="array">
+                    <item name="handlerClass" xsi:type="string">Amasty\AdminActionsLog\Logging\ActionType\Login\SucceedLogin</item>
+                    <item name="config" xsi:type="object">AmActionLog_SucceedLoginHandlerConfig</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Action Handler configuration end -->
+
+    <!-- Entity Save Handler configuration start -->
+    <type name="Amasty\AdminActionsLog\Logging\Entity\SaveHandlerProvider">
+        <arguments>
+            <argument name="entityTypes" xsi:type="array">
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Config" xsi:type="array">
+                    <item name="config" xsi:type="string">Magento\Framework\App\Config\Value</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Sales\Order" xsi:type="array">
+                    <item name="order" xsi:type="string">Magento\Sales\Model\Order</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Sales\Invoice" xsi:type="array">
+                    <item name="invoice" xsi:type="string">Magento\Sales\Model\Order\Invoice</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Sales\Creditmemo" xsi:type="array">
+                    <item name="credit_memo" xsi:type="string">Magento\Sales\Model\Order\Creditmemo</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Sales\Shipment" xsi:type="array">
+                    <item name="order_shipment" xsi:type="string">Magento\Sales\Model\Order\Shipment</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Sales\Rma" xsi:type="array">
+                    <item name="rma" xsi:type="string">Magento\Rma\Model\Rma</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Cms\Block" xsi:type="array">
+                    <item name="block" xsi:type="string">Magento\Cms\Model\Block</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Cms\Page" xsi:type="array">
+                    <item name="page" xsi:type="string">Magento\Cms\Model\Page</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Cms\Widget" xsi:type="array">
+                    <item name="widget" xsi:type="string">Magento\Widget\Model\Widget\Instance</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Catalog\Product" xsi:type="array">
+                    <item name="product" xsi:type="string">Magento\Catalog\Model\Product</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Catalog\Category" xsi:type="array">
+                    <item name="category" xsi:type="string">Magento\Catalog\Model\Category</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Customer\Customer" xsi:type="array">
+                    <item name="customer" xsi:type="string">Magento\Customer\Model\Backend\Customer</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Customer\CustomerAddress" xsi:type="array">
+                    <item name="customer_address" xsi:type="string">Magento\Customer\Model\Address</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Customer\CustomerGroup" xsi:type="array">
+                    <item name="customer_group" xsi:type="string">Magento\Customer\Model\Group</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Marketing\Promotions\CatalogPriceRule" xsi:type="array">
+                    <item name="catalog_price_rule" xsi:type="string">Magento\CatalogRule\Model\Rule</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Marketing\Promotions\CartPriceRule" xsi:type="array">
+                    <item name="cart_price_rule" xsi:type="string">Magento\SalesRule\Model\Rule</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Marketing\Promotions\GiftCardAccounts" xsi:type="array">
+                    <item name="gift_card_account" xsi:type="string">Magento\GiftCardAccount\Model\Giftcardaccount</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Marketing\Promotions\RelatedProductsRule" xsi:type="array">
+                    <item name="related_products_rule" xsi:type="string">Magento\TargetRule\Model\Rule</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Marketing\Communications\EmailTemplates" xsi:type="array">
+                    <item name="email_templates" xsi:type="string">Magento\Email\Model\BackendTemplate</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Marketing\Communications\NewsletterTemplates" xsi:type="array">
+                    <item name="newsletter_templates" xsi:type="string">Magento\Newsletter\Model\Template</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Marketing\Seo\UrlRewrite" xsi:type="array">
+                    <item name="url_rewrites" xsi:type="string">Magento\UrlRewrite\Model\UrlRewrite</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Customer\CustomerSegment" xsi:type="array">
+                    <item name="customer_segment" xsi:type="string">Magento\CustomerSegment\Model\Segment</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\EavAttribute" xsi:type="array">
+                    <item name="attribute" xsi:type="string">Magento\Catalog\Model\ResourceModel\Eav\Attribute</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Admin\User" xsi:type="array">
+                    <item name="admin" xsi:type="string">Magento\User\Model\User</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Admin\UserExpiration" xsi:type="array">
+                    <item name="admin_expiration" xsi:type="string">Magento\Security\Model\UserExpiration</item>
+                </item>
+                <item name="Amasty\AdminActionsLog\Logging\Entity\SaveHandler\Admin\UserRole" xsi:type="array">
+                    <item name="admin_role" xsi:type="string">Magento\Authorization\Model\Role</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Entity Save Handler configuration end -->
+
+    <!-- Entity Restore Handler configuration start -->
+    <type name="Amasty\AdminActionsLog\Restoring\Entity\RestoreHandlerProvider">
+        <arguments>
+            <argument name="entityTypes" xsi:type="array">
+                <item name="Amasty\AdminActionsLog\Restoring\Entity\RestoreHandler\Config" xsi:type="array">
+                    <item name="config" xsi:type="string">Magento\Framework\App\Config\Value</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Entity Restore Handler configuration end -->
+
+    <!-- SessionUserDataProvider configuration start -->
+    <virtualType name="AmActionLogRemoteAddressWithAdditionalIpHeaders" type="Magento\Framework\HTTP\PhpEnvironment\RemoteAddress\Proxy">
+        <arguments>
+            <argument name="alternativeHeaders" xsi:type="array">
+                <item name="x-forwarded-for" xsi:type="string">HTTP_X_FORWARDED_FOR</item>
+                <item name="x-real-ip" xsi:type="string">HTTP_X_REAL_IP</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Amasty\AdminActionsLog\Model\Admin\SessionUserDataProvider">
+        <arguments>
+            <argument name="remoteAddress" xsi:type="object">AmActionLogRemoteAddressWithAdditionalIpHeaders</argument>
+            <argument name="geolocation" xsi:type="object">Amasty\Geoip\Model\Geolocation\Proxy</argument>
+            <argument name="locateList" xsi:type="object">Magento\Framework\Locale\ListsInterface\Proxy</argument>
+        </arguments>
+    </type>
+    <!-- SessionUserDataProvider configuration end -->
+
+    <type name="Amasty\AdminActionsLog\Logging\ActionType\Dispatch\AdminSession">
+        <arguments>
+            <argument name="activeSessionManager" xsi:type="object">Amasty\AdminActionsLog\Api\ActiveSessionManagerInterface\Proxy</argument>
+            <argument name="visitHistoryManager" xsi:type="object">Amasty\AdminActionsLog\Api\VisitHistoryManagerInterface\Proxy</argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\AdminActionsLog\Restoring\RestoreValidator">
+        <arguments>
+            <argument name="notRestorableCategories" xsi:type="array">
+                <item name="create_order" xsi:type="string">sales/order_create</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- TODO: remove some ignored classes-->
+    <virtualType name="AmActionLog_GlobalIgnoreClassList" type="Amasty\AdminActionsLog\Logging\Util\Ignore\ClassList">
+        <arguments>
+            <argument name="list" xsi:type="array">
+                <item name="amasty_adminactionslog_model_logentry" xsi:type="string">Amasty\AdminActionsLog\Model\LogEntry\LogEntry</item>
+                <item name="amasty_adminactionslog_model_logdetail" xsi:type="string">Amasty\AdminActionsLog\Model\LogEntry\LogDetail</item>
+                <item name="amasty_adminactionslog_activesessions_activesessions" xsi:type="string">Amasty\AdminActionsLog\Model\ActiveSession\ActiveSession</item>
+                <item name="amasty_adminactionslog_visithistoryentry" xsi:type="string">Amasty\AdminActionsLog\Model\VisitHistoryEntry\VisitHistoryEntry</item>
+                <item name="amasty_adminactionslog_visithistoryentry_detail" xsi:type="string">Amasty\AdminActionsLog\Model\VisitHistoryEntry\VisitHistoryDetail</item>
+                <item name="amasty_adminactionslog_loginattempt" xsi:type="string">Amasty\AdminActionsLog\Model\LoginAttempt\LoginAttempt</item>
+                <item name="amasty_acart_model_quoteemail" xsi:type="string">Amasty\Acart\Model\QuoteEmail</item>
+                <item name="amasty_fpc_flusheslog" xsi:type="string">Amasty\Fpc\Model\FlushesLog</item>
+                <item name="magento_downloadable_model_link" xsi:type="string">Magento\Downloadable\Model\Link</item>
+                <item name="magento_ui_model_bookmark" xsi:type="string">Magento\Ui\Model\Bookmark</item>
+                <item name="magento_quote_quote_address" xsi:type="string">Magento\Quote\Model\Quote\Address</item>
+                <item name="magento_store_model_store" xsi:type="string">Magento\Store\Model\Store</item>
+                <item name="magento_quote_quote" xsi:type="string">Magento\Quote\Model\Quote</item>
+                <item name="magento_quote_quote_item" xsi:type="string">Magento\Quote\Model\Quote\Item</item>
+                <item name="magento_quote_quote_payment" xsi:type="string">Magento\Quote\Model\Quote\Payment</item>
+                <item name="magento_sales_order_item" xsi:type="string">Magento\Sales\Model\Order\Item</item>
+                <item name="magento_sales_order_address" xsi:type="string">Magento\Sales\Model\Order\Address</item>
+                <item name="magento_quote_item_option" xsi:type="string">Magento\Quote\Model\Quote\Item\Option</item>
+                <item name="magento_quote_address_rate" xsi:type="string">Magento\Quote\Model\Quote\Address\Rate</item>
+                <item name="magento_sales_order_payment" xsi:type="string">Magento\Sales\Model\Order\Payment</item>
+                <item name="magento_tax_order_tax" xsi:type="string">Magento\Tax\Model\Sales\Order\Tax</item>
+                <item name="magento_sales_tax_item" xsi:type="string">Magento\Sales\Model\Order\Tax\Item</item>
+                <item name="magento_cataloginventory_stock_item" xsi:type="string">Magento\CatalogInventory\Model\Adminhtml\Stock\Item</item>
+                <item name="magento_salesrule_model_coupon" xsi:type="string">Magento\SalesRule\Model\Coupon</item>
+                <item name="magento_theme_model_theme" xsi:type="string">Magento\Theme\Model\Theme</item>
+                <item name="magento_theme_model_data" xsi:type="string">Magento\Theme\Model\Theme\Data</item>
+                <item name="magento_security_model_adminsessioninfo" xsi:type="string">Magento\Security\Model\AdminSessionInfo</item>
+                <item name="magento_configurableproduct_configurable_attribute" xsi:type="string">Magento\ConfigurableProduct\Model\Product\Type\Configurable\Attribute</item>
+                <item name="magento_logging_model_event" xsi:type="string">Magento\Logging\Model\Event</item>
+                <item name="magento_logging_event_changes" xsi:type="string">Magento\Logging\Model\Event\Changes</item>
+                <item name="magento_googleoptimizer_model_code" xsi:type="string">Magento\GoogleOptimizer\Model\Code</item>
+                <item name="magento_bundle_model_selection" xsi:type="string">Magento\Bundle\Model\Selection</item>
+                <item name="magento_bundle_model_link" xsi:type="string">Magento\Bundle\Model\Link</item>
+                <item name="magento_indexer_indexer_state" xsi:type="string">Magento\Indexer\Model\Indexer\State</item>
+                <item name="magento_catalog_product_option" xsi:type="string">Magento\Catalog\Model\Product\Option</item>
+                <item name="magento_catalog_option_value" xsi:type="string">Magento\Catalog\Model\Product\Option\Value</item>
+                <item name="magento_bundle_model_option" xsi:type="string">Magento\Bundle\Model\Option</item>
+                <item name="magento_catalogrule_flag" xsi:type="string">Magento\CatalogRule\Model\Flag</item>
+                <item name="magento_saleerule_cutomer" xsi:type="string">Magento\SalesRule\Model\Rule\Customer</item>
+                <item name="magento_invoice_item" xsi:type="string">Magento\Sales\Model\Order\Invoice\Item</item>
+                <item name="magento_shipment_item" xsi:type="string">Magento\Sales\Model\Order\Shipment\Item</item>
+                <item name="magento_creditmemo_item" xsi:type="string">Magento\Sales\Model\Order\Creditmemo\Item</item>
+                <item name="magento_adminnotification_system_message" xsi:type="string">Magento\AdminNotification\Model\System\Message</item>
+                <item name="magento_integration_oauth_token" xsi:type="string">Magento\Integration\Model\Oauth\Token</item>
+                <item name="dotdigitalgroup_email_model_catalog" xsi:type="string">Dotdigitalgroup\Email\Model\Catalog</item>
+                <item name="magento_customerattributes_sales_quote" xsi:type="string">Magento\CustomerCustomAttributes\Model\Sales\Quote</item>
+                <item name="magento_customerattributes_sales_quote_address" xsi:type="string">Magento\CustomerCustomAttributes\Model\Sales\Quote\Address</item>
+                <item name="magento_customerattributes_sales_order_address" xsi:type="string">Magento\CustomerCustomAttributes\Model\Sales\Order\Address</item>
+                <item name="magento_customerattributes_sales_order" xsi:type="string">Magento\CustomerCustomAttributes\Model\Sales\Order</item>
+                <item name="magento_sales_status_history" xsi:type="string">Magento\Sales\Model\Order\Status\History</item>
+                <item name="magento_tfa_config" xsi:type="string">Magento\TwoFactorAuth\Model\UserConfig</item>
+                <item name="vartex_tax_customer_country" xsi:type="string">Vertex\Tax\Model\Data\CustomerCountry</item>
+                <item name="vartex_tax_customer_code" xsi:type="string">Vertex\Tax\Model\Data\CustomerCode</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\App\Config\Value">
+        <plugin name="Amasty_AdminActionsLog::configSaveBefore" type="Amasty\AdminActionsLog\Plugin\App\Config\ValuePlugin"/>
+    </type>
+</config>

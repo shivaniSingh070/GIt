@@ -1,0 +1,479 @@
+//
+//  Import Core
+//  ____________________________________________
+
+@amimportcore-reset-icon__background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMCAuNzc1TDkuMjI0IDAgNSA0LjIyNS43NzYgMCAwIC43NzUgNC4yMjUgNSAwIDkuMjI1Ljc3NiAxMCA1IDUuNzc1IDkuMjI0IDEwIDEwIDkuMjI1IDUuNzc1IDUgMTAgLjc3NXoiIGZpbGw9IiNCODM4NTEiLz48L3N2Zz4=');
+@amimportcore-delete-icon__background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjE0OCAyMmg5LjczMmwxLjIyMy0xMS45NDRINS45OEw3LjE1IDIyem03LjU4NS0xNy4wM1YyLjY4M2MwLS4zNzctLjI5Mi0uNjgyLS42NTItLjY4Mkg5Ljk0OGMtLjM2IDAtLjY1MS4zMDYtLjY1MS42ODJ2Mi4yNTFBMTguMjU3IDE4LjI1NyAwIDAwNSA1Ljk2MXYyLjEwMmgxNFY1LjkwNXMtMS43MDktLjYxNi00LjI2OC0uOTM0aC4wMDF6bS0xLjI5OS0uMTI1YTIyLjQ4IDIyLjQ4IDAgMDAtMi45MDctLjAyVjMuNjJjMC0uMTg4LjE0My0uMzQuMzI0LS4zNGgyLjI1NmMuMTgyIDAgLjMyNy4xNTIuMzI3LjM0djEuMjI2eiIgZmlsbD0iIzVBNTU1MiIvPjwvc3ZnPg==');
+@amimportcore-table__background: #f6f6f6;
+@amimportcore-border__color: #adadad;
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .amimportcore-dynamic-rows {
+        // Override magento styles start
+        & {
+            margin-top: 0!important;
+        }
+
+        & > .admin__field-label {
+            margin-bottom: 20px!important;
+            font-size: 20px!important;
+        }
+
+        .amimportcore-remove .action-delete:before {
+            position: absolute;
+            top: 18px;
+            right: 30px;
+            width: 15px;
+            height: 20px;
+            background: @amimportcore-delete-icon__background no-repeat center;
+            content: '';
+        }
+
+        th._no-header {
+            font-weight: 600;
+            color: #444444;
+            padding: 13px 1rem;
+            border-bottom: 5px solid #fff;
+        }
+
+        td.-amwidth30 {
+            width: 30%;
+        }
+
+        td.amimportcore-filter {
+            padding: 13px 1rem;
+            border-bottom: 5px solid #fff;
+        }
+
+        td.amwidth40px {
+            width: 40px;
+            border-bottom: 5px solid #fff;
+        }
+
+        td.-amwidth30 .admin__control-select,
+        td.-amwidth30 .admin__control-multiselect {
+            width: 100%;
+        }
+
+        .admin__control-table-wrapper .admin__action-multiselect-wrap .action-menu {
+            z-index: 10;
+        }
+
+        // Override magento styles end
+
+        .amimportcore-remove {
+            position: relative;
+            text-align: right;
+        }
+    }
+
+    .amimportcore-fields-table {
+        & {
+            width: 100%;
+        }
+
+        .amimportcore-row {
+            padding: 3px 10px;
+            border-bottom: 5px solid #fff;
+        }
+
+        .amimportcore-td {
+            padding: 7px 10px;
+            background: #f1f1f1;
+            color: #403630;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .amimportcore-td.-checkbox {
+            width: 35px;
+        }
+
+        .amimportcore-td.-button {
+            text-align: right;
+        }
+
+        .amimportcore-td.-button .amimportcore-td {
+            padding-left: 15px;
+        }
+
+        .amimportcore-td.-button .amimportcore-button {
+            padding: 5px 31px;
+        }
+
+        .amimportcore-modifiers-container {
+            display: flex;
+        }
+
+        .amimportcore-modifiers-container .amimportcore-field + .amimportcore-field {
+            margin-left: 15px;
+        }
+
+        .amimportcore-delete {
+            margin-right: 30px;
+            padding: 10px;
+            width: 6px;
+            height: 30px;
+            background: @amimportcore-delete-icon__background no-repeat center;
+            cursor: pointer;
+        }
+    }
+
+    .amimportcore-fields-table .amimportcore-thead.-search {
+        .amimportcore-row {
+            background: #e3e3e3;
+        }
+
+        .amimportcore-th {
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .amimportcore-th.-button {
+            max-width: 120px;
+            width: 120px;
+            text-align: right;
+        }
+
+        .amimportcore-th.-button .action-primary {
+            padding: 5px 19px;
+            font-size: 16px;
+        }
+    }
+
+    .amimportcore-fields-table.-selected {
+        & {
+            margin-top: 20px;
+            background: @amimportcore-table__background;
+        }
+
+        .amimportcore-thead .amimportcore-row {
+            text-align: left;
+        }
+
+        .amimportcore-row {
+            border-bottom: none;
+        }
+
+        .amimportcore-thead {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .amimportcore-th {
+            padding: 15px 0 15px 15px;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .amimportcore-td {
+            padding: 20px 0 20px 15px;
+            background: @amimportcore-table__background;
+        }
+
+        .amimportcore-td.-modifier .amimportcore-button {
+            padding: 6px 5px;
+            width: 134px;
+        }
+
+        .amimportcore-td.-button,
+        .amimportcore-th.-button {
+            width: 65px;
+        }
+
+        .amimportcore-th.-button {
+            position: relative;
+        }
+
+        .amimportcore-th .amimportcore-label {
+            position: absolute;
+            top: ~'calc(50% - 10px)';
+            right: 20px;
+        }
+
+        .amimportcore-td.-modifier,
+        .amimportcore-th.-modifier {
+            width: 149px;
+        }
+
+        .amimportcore-td.-name,
+        .amimportcore-th.-name {
+            width: 30%;
+        }
+
+        .amimportcore-field {
+            padding: 5px 8px;
+            width: 100%;
+            border: 1px solid @amimportcore-border__color;
+            border-radius: 1px;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        .amimportcore-field::placeholder {
+            color: #ccc;
+        }
+
+        .amimportcore-field.-disabled {
+            box-sizing: border-box;
+            background: @amimportcore-table__background;
+            color: @amimportcore-border__color;
+        }
+    }
+
+    .amimportcore-fields-container {
+        margin-top: 30px;
+        background: #f1f1f1;
+    }
+
+    .amimportcore-fields-container {
+        .amimportcore-header {
+            display: flex;
+            margin-bottom: 5px;
+            background: #f1f1f1;
+        }
+
+        .amimportcore-title {
+            display: block;
+            padding: 15px;
+            width: 100%;
+            font-weight: 700;
+        }
+
+        .amimportcore-title.-button {
+            padding: 0 25px;
+        }
+    }
+
+    .amimportcore-button-container {
+        margin-bottom: 30px;
+        padding: 30px;
+        background: @amimportcore-table__background;
+    }
+
+    .amimportcore-button:active,
+    .amimportcore-button {
+        border-color: @amimportcore-border__color;
+        background: #e3e3e3;
+        box-shadow: none;
+        color: #514943;
+        text-shadow: none;
+    }
+
+    .amimportcore-button:hover {
+        background-color: #dbdbdb;
+        box-shadow: none;
+        color: #514943;
+    }
+
+    .amimportcore-button-margin {
+        margin-bottom: 30px;
+    }
+
+    .amimportcore-flex-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .amimportcore-search-container {
+        .amimportcore-search {
+            padding: 5px 25px 5px 10px;
+            min-width: 250px;
+            width: 100%;
+            border: 1px solid #ccc;
+            font-weight: 400;
+        }
+
+        .amimportcore-reset.-hidden {
+            display: none;
+        }
+
+        .amimportcore-reset {
+            position: absolute;
+            right: 5px;
+            width: 20px;
+            height: 32px;
+            background: @amimportcore-reset-icon__background no-repeat center;
+        }
+    }
+
+    .amimportcore-search-input {
+        position: relative;
+    }
+
+    .amimportcore-fieldset > .admin__fieldset-wrapper-content > .admin__fieldset {
+        padding-top: 0;
+    }
+
+    .amimportcore-modal-fields {
+        .modal-header .page-main-actions {
+            background: #fff;
+            border: none;
+        }
+
+        .modal-title {
+            font-size: 30px;
+        }
+    }
+
+    .amimportpro-importjob-edit,
+    .amimport-import-index,
+    .amorderimport-profile-edit,
+    .amproductimport-profile-edit,
+    .amcustomerimport-profile-edit {
+        .amimportcore-button.-brown:hover {
+            background-color: #7b776b;
+        }
+
+        .amimportcore-button.-brown {
+            border-radius: 3px;
+            background-color: #605d56;
+            color: #fff;
+            font-weight: 400;
+            transition: background-color .3s ease-in;
+        }
+
+        .amimportcore-button.-light:hover {
+            background-color: #dbdbdb;
+        }
+
+        .amimportcore-button.-light {
+            box-sizing: border-box;
+            border-radius: 3px;
+            background-color: @amimportcore-table__background;
+            transition: background-color .3s ease-in;
+        }
+    }
+
+    .amorderimport-profile-edit,
+    .amproductimport-profile-edit,
+    .amcustomerimport-profile-edit {
+        .amimportcore-field .admin__control-select,
+        .amimportcore-fieldset .admin__control-select,
+        .amimportcore-fieldset ul.ui-widget,
+        .amimportcore-textarea .admin__control-textarea,
+        .amcron-select .admin__control-select {
+            width: ~'calc(100% - 45px - 4px)';
+        }
+
+        .amcron-schedule-container .admin__field-control .admin__control-text {
+            width: 100%;
+        }
+
+        .admin__fieldset .amimportcore-button.-margin:not(:first-of-type) {
+            margin-left: 15px;
+        }
+
+        .admin__fieldset > .amimportcore-filters-fieldset {
+            margin-top: -20px;
+        }
+
+        .amimportcore-filters-fieldset .amimportcore-filters-notice {
+            margin: 0;
+        }
+
+        .amimportcore-filters-fieldset .admin__fieldset-wrapper-content .admin__fieldset {
+            padding-top: 0;
+        }
+    }
+
+    .amimportpro-importjob-edit,
+    .amimport-import-index {
+        .amimportcore-fields-table.-selected .amimportcore-td.-name,
+        .amimportcore-fields-table.-selected .amimportcore-th.-name {
+            width: 30%;
+        }
+    }
+
+    .amimportpro-importjob-edit {
+        .amimportcore-fieldset .admin__control-select {
+            width: 100%;
+        }
+    }
+
+    .amimportcore-fieldset ul.ui-widget {
+        & {
+            margin-bottom: 0;
+            border: 1px solid @amimportcore-border__color;
+        }
+
+        .tagit-new {
+            margin: 0;
+        }
+    }
+
+    .amimportcore-checkbox,
+    .amimportcore-fieldset-container {
+        .admin__field-tooltip .admin__field-tooltip-content {
+            width: 45vw;
+        }
+
+        .fieldset-wrapper-title .title {
+            font-size: 2rem;
+            font-weight: 400;
+        }
+    }
+
+    .amimportcore-template-type .admin__fieldset,
+    .amimportcore-compress-file .admin__fieldset {
+        padding-top: 0;
+    }
+
+    .amimportcore-tooltip .admin__field-tooltip-content {
+        & {
+            top: 40px;
+            bottom: inherit;
+            width: 45vw;
+        }
+
+        &:after,
+        &:before {
+            top: -32px;
+            transform: rotate(180deg);
+        }
+
+        &:after {
+            margin-top: 1px;
+        }
+    }
+
+    .amimport-import-index .amimportcore-checkbox.-type .amimportcore-tooltip .admin__field-tooltip-content {
+        & {
+            left: -14px;
+        }
+
+        &:after,
+        &:before {
+            left: 10px;
+        }
+    }
+}
+
+//
+//  Desktop +
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+    // Override magento styles start
+    .amimportcore-modal-fields {
+        left: 50%;
+    }
+    // Override magento styles end
+
+    .amimportcore-dynamic-rows {
+        td.amimportcore-filter {
+            width: 32%;
+        }
+    }
+    .amimportcore-dynamic-rows {
+        &._empty {
+            margin-bottom: 0;
+        }
+    }
+}

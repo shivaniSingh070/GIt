@@ -1,0 +1,361 @@
+/* Imports */
+@import "_custom.less";
+@import "_banner-slider.less";
+@import "_header.less";
+@import "_megamenu.less";
+@import "_check-order.less";
+@import "_navbar.less";
+@import "_breadcrumbs.less";
+@import "_footer.less";
+@import "_login.less";
+@import "_register.less";
+@import "_buttons.less";
+@import "_sidebar.less";
+@import "_contact.less";
+@import "_product-list.less";
+@import "_product-details.less";
+@import "_blog.less";
+@import "_my-account.less";
+@import "_wishlist.less";
+@import "_order-history.less";
+@import "_my-address.less";
+@import "_gift-card.less";
+@import "_logout.less";
+@import "_forgot-password.less";
+@import "_new-password.less";
+@import "_search-result.less";
+@import "_404.less";
+@import "_cart.less";
+@import "_checkout.less";
+@import "_cms.less";
+@import "_notification-message.less";
+@import "_newsletter.less";
+@import "_popup.less";
+@import "_order-catalog.less";
+@import "_cookie-low.less";
+@import "_retina-ready.less";
+@import "_responsive.less";
+
+/* Include typhograpgy.less in web/source as it is standard way to include font in magento2.
+    https://pixelmechanics.atlassian.net/browse/ENRUSM-116
+ */
+@import "_typography.less";
+
+
+/* Variables*/
+/* Colors Variable */
+@primary-text-color: #999999;
+@secondary-text-color: #191919;
+@btn-text-link-color: #F5A079;
+@bg-light-red: #e2c2bf;
+@bg-light-yellow: #f1d69f;
+@bg-light-blue: #94bcd0;
+@badge-bg-color: #DA5855;
+@green-color: #228b22;
+@text-color03: #373F44;
+@white-btn: #fff;
+@primary-bg-color: #F7E7D8;
+@secondary-bg-color: #DBAB7F;
+@gray-light-bg: #F9F9F9;
+@gray-light-bg02: #fcfcfc;
+@gray-light-bg03: #e3e3e3;
+@color-font: #8f8f8f;
+@text-color04: #c4c9ca; 
+@text-color05: #4c4949;
+@text-color06: #666666;
+
+/* Fonts Variables */
+@primary-fontFamily: 'Josefin Sans', sans-serif; 
+@heading-font: 50px;
+@heading-font45: 45px;
+@heading-font40: 40px;
+@heading-font02: 30px;
+@heading-font24: 24px;
+@heading-font22: 22px;
+@fontS20: 20px;
+@secondary-font: 18px;
+@parimary-font: 16px;
+@small-font: 14px;
+@lineHeight: 19px;
+@lineHeight26: 26px;
+@fontB: 600;
+@fontB02: 700;
+@marginNone: 0;
+@paddingNone: 0;
+@decoration-none: none;
+@uppercase-text: uppercase;
+@bgNone: none;
+@bdrNone: none;
+@pos_r:relative;
+@pos_a:absolute;
+@valignM: middle;
+@text-center: center;
+@floatL: left;
+@floatR: right;
+@displayN: none;
+@displayB: block;
+@width100: 100%;
+@width50: 50%;
+@width70: 70%;
+@height100: 100%;
+@height50: 50px;
+@height1: 1px;
+
+/* Mixins */
+/* Border Radius */
+.border-radius(@radius:5px) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+/* Box Sizing Mixin */
+.box-sizing (@type: border-box) {
+	-webkit-box-sizing: @type;
+	-moz-box-sizing:    @type;
+	box-sizing:         @type;
+}
+/* Box Shadow Mixin*/
+.box-shadow (@string) {
+	-webkit-box-shadow: @string;
+	-moz-box-shadow:    @string;
+	box-shadow:         @string;
+}
+/* Object fit Mixin */
+.object-fit(@fit: fill){
+  -o-object-fit: @fit;
+     object-fit: @fit;
+}
+/* Transition Mixin */
+.transition (@transition) {
+	-webkit-transition: @transition;  
+	-moz-transition:    @transition;
+	-ms-transition:     @transition; 
+	-o-transition:      @transition;  
+}
+/* Transform Mixin */
+.transform(@string){
+	-webkit-transform: @string;
+	-moz-transform: 	 @string;
+	-ms-transform: 		 @string;
+	-o-transform: 		 @string;
+}
+.scale (@factor) {
+	-webkit-transform: scale(@factor);
+	-moz-transform: 	 scale(@factor);
+	-ms-transform: 		 scale(@factor);
+	-o-transform: 		 scale(@factor);
+}
+.rotate (@deg) {
+	-webkit-transform: rotate(@deg);
+	-moz-transform: 	 rotate(@deg);
+	-ms-transform: 		 rotate(@deg);
+	-o-transform: 		 rotate(@deg);
+}
+.skew (@deg, @deg2) {
+	-webkit-transform:       skew(@deg, @deg2);
+	-moz-transform: 	 skew(@deg, @deg2);
+	-ms-transform: 		 skew(@deg, @deg2);
+	-o-transform: 		 skew(@deg, @deg2);
+}
+.translate (@x, @y:0) {
+	-webkit-transform:       translate(@x, @y);
+	-moz-transform: 	 translate(@x, @y);
+	-ms-transform: 		 translate(@x, @y);
+	-o-transform: 		 translate(@x, @y);
+}
+.translate3d (@x, @y: 0, @z: 0) {
+	-webkit-transform:       translate3d(@x, @y, @z);
+	-moz-transform: 	 translate3d(@x, @y, @z);
+	-ms-transform: 		 translate3d(@x, @y, @z);
+	-o-transform: 		 translate3d(@x, @y, @z);
+}
+.perspective (@value: 1000) {
+	-webkit-perspective: 	@value;
+	-moz-perspective: 	@value;
+	-ms-perspective: 	@value;
+	perspective: 		@value;
+}
+.transform-origin (@x:center, @y:center) {
+	-webkit-transform-origin: @x @y;
+	-moz-transform-origin:    @x @y;
+	-ms-transform-origin:     @x @y;
+	-o-transform-origin:      @x @y;
+}
+
+/*Flexbox display*/
+/*flex or inline-flex*/
+.flex-display(@display: flex) {
+	display: ~"-webkit-@{display}";
+	display: ~"-ms-@{display}box";
+	display: ~"-ms-@{display}"; 
+	display: @display;
+}
+
+/*The 'flex' shorthand*/
+/*- applies to: flex items*/
+/*<positive-number>, initial, auto, or none*/
+.flex(@columns: initial) {
+  -webkit-flex: @columns;
+      -ms-flex: @columns;
+          flex: @columns;
+}
+
+/*Flex Flow Direction*/
+/*- applies to: flex containers*/
+/*row | row-reverse | column | column-reverse*/
+.flex-direction(@direction: row) {
+  -webkit-flex-direction: @direction;
+      -ms-flex-direction: @direction;
+          flex-direction: @direction;
+}
+
+/*Flex Line Wrapping*/
+/*- applies to: flex containers*/
+/*nowrap | wrap | wrap-reverse*/
+.flex-wrap(@wrap: nowrap) {
+  -webkit-flex-wrap: @wrap;
+      -ms-flex-wrap: @wrap;
+          flex-wrap: @wrap;
+}
+
+/*Flex Direction and Wrap*/
+/*- applies to: flex containers*/
+/*<flex-direction> || <flex-wrap>*/
+.flex-flow(@flow) {
+  -webkit-flex-flow: @flow;
+      -ms-flex-flow: @flow;
+          flex-flow: @flow;
+}
+
+/*Display Order*/
+/* - applies to: flex items*/
+/* <integer>*/
+.flex-order(@order: 0) {
+  -webkit-order: @order;
+      -ms-order: @order;
+          order: @order;
+}
+
+/* Flex grow factor*/
+/* - applies to: flex items*/
+/* <number>*/
+.flex-grow(@grow: 0) {
+  -webkit-flex-grow: @grow;
+      -ms-flex-grow: @grow;
+          flex-grow: @grow;
+}
+
+/* Flex shrink*/
+/* - applies to: flex item shrink factor*/
+/* <number> */
+.flex-shrink(@shrink: 1) {
+  -webkit-flex-shrink: @shrink;
+      -ms-flex-shrink: @shrink;
+          flex-shrink: @shrink;
+}
+
+/*Flex basis*/
+/* - the initial main size of the flex item*/
+/* - applies to: flex items*/
+/* <width> */
+.flex-basis(@width: auto) {
+  -webkit-flex-basis: @width;
+      -ms-flex-basis: @width;
+          flex-basis: @width;
+}
+
+/* Axis Alignment*/
+/*- applies to: flex containers*/
+/*flex-start | flex-end | center | space-between | space-around */
+.justify-content(@justify: flex-start) {
+  -webkit-justify-content: @justify;
+      -ms-justify-content: @justify;
+          justify-content: @justify;
+}
+
+/* Packing Flex Lines*/
+/* - applies to: multi-line flex containers*/
+/* flex-start | flex-end | center | space-between | space-around | stretch */
+.align-content(@align: stretch) {
+  -webkit-align-content: @align;
+      -ms-align-content: @align;
+          align-content: @align;
+}
+
+/* Cross-axis Alignment*/
+/* - applies to: flex containers*/
+/* flex-start | flex-end | center | baseline | stretch */
+.align-items(@align: stretch) {
+  -webkit-align-items: @align;
+      -ms-align-items: @align;
+          align-items: @align;
+}
+
+/*Cross-axis Alignment*/
+/*- applies to: flex items*/
+/* auto | flex-start | flex-end | center | baseline | stretch */
+.align-self(@align: auto) {
+  -webkit-align-self: @align;
+      -ms-align-self: @align;
+          align-self: @align;
+}
+
+::-webkit-input-placeholder {
+  color: @primary-text-color;
+}
+::-moz-placeholder {
+  color: @primary-text-color;
+}
+:-ms-input-placeholder { 
+  color: @primary-text-color;
+}
+:-moz-placeholder {
+  color: @primary-text-color;
+}
+
+*{
+	.box-sizing(border-box);
+}
+a, .alink{
+	color: @btn-text-link-color;
+}
+a:hover,
+.alink:hover{
+	text-decoration: @decoration-none;
+	color: @btn-text-link-color;
+}
+h1,h2,h3,h4,h5,h6{
+	color: @secondary-text-color;
+}
+h2{
+	font-size: @heading-font;	
+}
+ul,ol,li{
+	list-style: none;
+	margin: @marginNone;
+	padding: @paddingNone;
+}
+body {
+	font-family: @primary-fontFamily;
+	font-size: @parimary-font;
+	line-height: @lineHeight;
+	margin: @marginNone;
+	padding: @paddingNone;
+	color: @primary-text-color;
+}
+
+
+.category-image, 
+.category-description {
+    margin-top: 90px;
+}
+
+.form.password.reset {
+	.choice {
+		&:before {
+			@media screen and (min-width: 768px){
+				float: none !important;
+			}
+		}
+	}
+}

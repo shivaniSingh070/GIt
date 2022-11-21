@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * @author NA by 29.07.19
+ * Add the Bread Crumb on the Product Page.
+ * Trello: https://trello.com/c/XeGnBIAN/94-021-mobile-menue-mobile-anpassung-mobiles-men%C3%BC	
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+	<module name="Pixelmechanics_BreadCrumbs" setup_version="1.0.1"/>
+</config>

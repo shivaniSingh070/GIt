@@ -1,0 +1,15 @@
+<!-- ko if: $data.isShowNotificationBar -->
+<div role="alertdialog" tabindex="-1" class="amgdprcookie-bar-container" data-amcookie-js="bar" afterRender="detectScroll.bind($data)">
+    <div class="amgdprcookie-bar-block">
+        <p class="amgdprcookie-policy" data-bind="html: policyText"></p>
+        <!--ko template: {
+                    name: $data.templates.buttons,
+                    data: {current: $data, settingsAction: $data.openModal} } --><!-- /ko -->
+    </div>
+</div>
+<!-- /ko -->
+<!-- ko if: $data.elems().length -->
+    <!-- ko foreach: $data.elems() -->
+        <!--ko template: getTemplate()--><!-- /ko -->
+    <!-- /ko -->
+<!-- /ko -->

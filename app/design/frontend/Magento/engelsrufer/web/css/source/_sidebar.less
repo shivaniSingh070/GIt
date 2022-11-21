@@ -1,0 +1,262 @@
+/*Merged Css from the module css fiels to improve the performance*/
+.sidebar {
+    .expand,
+    .expanded {
+        cursor: pointer;
+        float: right;
+    }
+    .o-list {
+        display: block;
+        margin-bottom: 0px;
+        padding-left: 0px;
+        li {
+            list-style: none;
+            border-bottom: 1px solid #ededed;
+            padding-bottom: 10px;
+            &.active {
+                > ul {
+                    display: block;
+                    li:last-of-type {
+                        border-bottom: 0px;
+                        padding-bottom: 0px;
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+            a {
+                &.active {
+                    font-weight: bold;
+                }
+                display: inline-block;
+            }
+            > ul {
+                padding-top: 7px;
+                margin-top: 0px;
+                display:none;
+            }
+        }
+        .level0 {
+            list-style: none;
+        }
+        .level1 a {
+            padding-left: 15px;
+        }
+        .level2 a {
+            padding-left: 30px;
+        }
+        .level3 a {
+            padding-left: 45px;
+        }
+    }
+    > .o-list {
+        display: block;
+        margin-top: 30px;
+        padding-right: 45px;
+        margin-bottom: 30px;
+    }
+}
+
+/*Merged Css from the module css fiels to improve the performance*/
+.showf {
+    display: @displayB;
+}
+/* Sidebar CSS Start Here */
+.sidebar-main .c-sidebar--categories > ul.o-list{
+	margin-bottom: 15px;
+}
+.sidebar-main{
+	padding-right: 0;
+	/* Category Menu CSS Start Here */
+	h3{
+		&:extend(.sidebar-main .filter .filter-options .filter-options-title);
+		margin-top: 0;
+		&:before{
+			&:extend(.sidebar-main .filter .filter-options .filter-options-title:before);
+		}
+		&:after{
+			&:extend(.sidebar-main .filter .filter-options .filter-options-title:after);
+		}
+	}
+	.o-list{
+		li{
+			padding: 6px 0;
+			margin: @marginNone;
+			border: @bdrNone;
+			position: @pos_r;
+			a{
+				color: @secondary-text-color;
+				&:hover{
+					color: @btn-text-link-color;
+				}				
+			}
+			span{
+				.fa{
+					&:before{
+						top: 11px !important;
+						color: @secondary-text-color;
+						&:extend(.sidebar-main .filter .filter-options .filter-options-title:before);
+					}
+				}
+			}
+		}
+		li.active{
+			>span{
+				.fa{
+					&:before{
+						&:extend(.sidebar-main .filter .filter-options .toggle-hide:before);
+					}
+				}
+			}
+			.is-active{
+				font-weight: @fontB02;
+			}
+		}
+	}
+	/* Category Menu CSS End Here */
+	
+	/* Filter CSS Start Here */
+	.filter{
+		.filter-title{
+			position: @pos_r;
+			margin-bottom: 28px;
+			strong{
+				font-size: @parimary-font;
+				text-transform: @uppercase-text;
+				color: @secondary-text-color;
+				font-weight: normal;
+			}
+			&:after{
+				content: "";
+				background: @secondary-text-color;
+				width: 59px;
+				height: 1px;
+				position: @pos_a;
+				bottom: -6px;
+				left: 0;
+			}
+		}
+		.filter-options{
+			.filter-options-title{
+				font-size: @parimary-font;
+				color: @secondary-text-color;
+				font-weight: normal;
+				text-transform: @uppercase-text;
+				position: @pos_r;
+				margin-bottom: 28px;
+				cursor: pointer;
+				&:before{
+					content: "\f078";
+					font-family: 'Font Awesome 5 Free';
+					font-weight: 900;
+					position: @pos_a;
+					right: 0;
+    				top: 0;
+					font-size: 10px;
+					.transition(all 0.5s ease 0s);
+				}
+				&:after{
+					content: "";
+					background: @secondary-text-color;
+					width: 59px;
+					height: 1px;
+					position: @pos_a;
+					bottom: -6px;
+					left: 0;
+				}
+			}
+			.toggle-hide{
+				&:before{
+					.rotate(180deg);
+				}
+			}
+		}
+		.filter-subtitle{
+			display: @displayN;
+		}
+	}
+	.toggle-hide{
+		+ .filter-options-content{
+			display: @displayB;
+		}
+	}
+	.filter-options-content{
+		display: @displayN;
+		.items{
+			.item{
+				padding: 6px 0;
+				font-size: @parimary-font;
+				color: @secondary-text-color;
+				a{
+					font-size: @parimary-font;
+					color: @secondary-text-color;
+					&:hover{
+						color: @btn-text-link-color;
+					}
+					.count{
+						color: @secondary-text-color;
+					}
+				}
+			}
+		}
+		.swatch-option{
+			height: 27px;
+			width: 27px;
+			min-width: 27px;
+			.border-radius(100%);
+			margin: 0 17px 13px 0; 
+			&:hover{
+				outline: none;			}
+		}
+		.size{
+			.swatch-option{
+				width: auto;
+				height: auto;
+				padding: 5px 12px 2px;
+				background: @white-btn;
+				border-radius: inherit;
+				border: 1px solid @primary-bg-color;
+				font-weight: 400;
+			}
+		}
+	}
+	.filter-current{
+		.filter-current-subtitle{
+			font-size: @parimary-font;
+			color: @secondary-text-color;
+			font-weight: normal;
+			text-transform: @uppercase-text;
+		}
+		.items{
+			.item{
+				font-size: @parimary-font;
+				color: @text-color04;
+				position: @pos_r;
+				a{
+					color: @text-color04;
+					&:hover{
+						color: @btn-text-link-color;
+					}
+				}
+				.remove{					
+					&:after{
+						content: "\f00d";
+						font-family: 'Font Awesome 5 Free';
+						font-weight: 600;
+						position: @pos_a;
+						right: 0;
+						top: 18px;
+						opacity: 0.4;
+					}
+					span{
+						font-size: 0;
+					}
+				}
+				.count{
+					color: @text-color04;
+				}
+			}
+		}
+	}
+	/* Filter CSS End Here */
+}
+/* Sidebar CSS End Here */

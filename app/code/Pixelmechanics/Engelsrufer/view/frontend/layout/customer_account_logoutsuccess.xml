@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * Updated by AA on 23.05.2019
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <!-- Added container class in main.content -->  
+    <referenceContainer name="main.content" htmlTag="div" htmlClass="logout-container container" />
+    <move element="page.main.title" destination="customer.account.banner" after="-"/>
+    <referenceContainer name="page.top">
+        <container name="customer.account.banner" label="Customer account banner Container" htmlTag="div" htmlClass="accountBanner banner-container" after="-">
+            <block class="Magento\Cms\Block\Block" name="login-banner">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">account-banner</argument>
+                </arguments>
+            </block>
+        </container>
+    </referenceContainer>
+    <referenceContainer name="content">
+        <container name="logoout.heading" label="logout Container" htmlTag="div" htmlClass="logout_heading" before="-">
+            <block class="Magento\Framework\View\Element\Text" name="about_us.label" before="-">
+                <arguments>
+                    <argument translate="true" name="text" xsi:type="string">You are signed out</argument>
+                </arguments>
+            </block>
+        </container>
+    </referenceContainer>
+    <referenceContainer name="footer-container">
+        <!-- added static block in footer -->
+        <container name="account.bottom" label="account bottom Container" htmlTag="div" htmlClass="statics-block-wrap bot-wrap" before="-">
+            <block class="Magento\Cms\Block\Block" name="account-static-info">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">bottom-static-banners</argument>
+                </arguments>
+            </block> 
+        </container>
+    </referenceContainer>
+</page>

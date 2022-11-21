@@ -1,0 +1,38 @@
+<tr class="amimportcore-row -dnd">
+    <td colspan="5">
+        <table class="amimportcore-fields-table">
+            <tbody class="amimportcore-fields-tbody">
+                <tr class="amimportcore-row">
+                    <td class="amimportcore-td -modifier">
+                        <button class="amimportcore-button -brown" type="button"
+                                data-bind="i18n: 'Add Modifier', click: function(){$data.addModifier($data.index)}"></button>
+                    </td>
+                    <td class="amimportcore-td -name">
+                        <input class="amimportcore-field -disabled"
+                               data-amimportcore-js="code"
+                               type="text"
+                               data-bind="value: $data.code"/>
+                    </td>
+                    <td class="amimportcore-td -name">
+                        <input class="amimportcore-field" type="text" data-bind="
+                                                                value: $data.file_field,
+                                                                valueUpdate: 'afterkeydown'"/>
+                    </td>
+                    <td class="amimportcore-td -name">
+                        <input class="amimportcore-field" type="text" data-bind="
+                                                                        value: $data.output_value,
+                                                                        valueUpdate: 'afterkeydown'"/>
+                    </td>
+                    <td class="amimportcore-td -button">
+                        <span class="amimportcore-delete" data-bind="click: $data.remove.bind($data, $data.index, $index())"></span>
+                    </td>
+                </tr>
+                <!-- ko foreach: $data.elems() -->
+                    <!-- ko ifnot: $data.isStatic -->
+                        <!--ko template: getTemplate()--><!-- /ko -->
+                    <!-- /ko -->
+                <!-- /ko -->
+            </tbody>
+        </table>
+    </td>
+</tr>

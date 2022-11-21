@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var $block \Magento\Theme\Block\Html\Title
+ */
+/* 
+* Called custom file to get product title in mobile theme
+* https://trello.com/c/uvdDQ8ml
+* By AA on 17.08.2021
+*/
+$cssClass = $block->getCssClass() ? ' ' . $block->getCssClass() : '';
+?>
+<?php
+/* get object of engelsrufer catalog helper */
+$helper = $this->helper('Pixelmechanics\Engelsrufer\Helper\Catalog');
+/* get current product object */
+$_product = $helper->getCurrentProduct();
+?>
+<div class="page-title-wrapper<?= $block->escapeHtmlAttr($cssClass) ?>">
+    <h1 class="page-title">
+        <span class="base" data-ui-id="page-title-wrapper">
+        <!-- get product name-->
+            <?php echo $_product->getName(); ?>
+        </span>
+    </h1>
+</div>
